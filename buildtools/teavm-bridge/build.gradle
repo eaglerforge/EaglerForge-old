@@ -1,0 +1,20 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.teavm:teavm-cli:0.9.2'
+    implementation 'org.teavm:teavm-tooling:0.9.2'
+}

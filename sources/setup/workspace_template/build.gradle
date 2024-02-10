@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'org.teavm' version '0.9.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'src/teavm/java'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    teavm(teavm.libs.jso)
+    teavm(teavm.libs.jsoApis)
+}
+
+teavm.js {
+    obfuscated = true
+    sourceMap = true
+    targetFileName = "../classes.js"
+    // optimization = OptimizationLevel.ADVANCED
+    outOfProcess = false
+    fastGlobalAnalysis = false
+    processMemory = 512
+    entryPointName = 'main'
+    mainClass = 'net.lax1dude.eaglercraft.v1_8.internal.teavm.MainClass'
+    outputDir = file("javascript")
+    properties = null
+    sourceMap = true
+    debugInformation = false
+}

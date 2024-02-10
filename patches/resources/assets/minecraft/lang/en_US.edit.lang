@@ -1,0 +1,418 @@
+
+# Eagler Context Redacted Diff
+# Copyright (c) 2024 lax1dude. All rights reserved.
+
+# Version: 1.0
+# Author: lax1dude
+
+> CHANGE  17 : 21  @  17 : 24
+
+~ eaglercraft.recording.unsupported=Recording Unsupported!
+~ eaglercraft.recording.stop=Stop Recording
+~ eaglercraft.recording.start=Record Screen...
+~ eaglercraft.soundCategory.voice=Voice
+
+> INSERT  1 : 195  @  1
+
++ eaglercraft.resourcePack.prompt.title=What do you want to do with '%s'?
++ eaglercraft.resourcePack.prompt.text=Tip: Hold Shift to skip this screen when selecting a resource pack!
++ eaglercraft.resourcePack.prompt.delete=Delete this resource pack
++ eaglercraft.resourcePack.prompt.add=Select this resource pack
++ eaglercraft.resourcePack.load.refreshing=Refreshing Resources...
++ eaglercraft.resourcePack.load.pleaseWait=Please Wait.
++ eaglercraft.resourcePack.load.loading=Loading resource pack...
++ eaglercraft.resourcePack.load.deleting=Deleting resource pack...
++ 
++ eaglercraft.gui.exitKey=Use '%s' to close this screen!
++ eaglercraft.gui.exitKeyRetarded=Use Backtick (`) to close this screen!
++ eaglercraft.gui.continue=Continue
++ 
++ eaglercraft.menu.forkOnGitlab=Fork on GitLab
++ eaglercraft.menu.editProfile=Edit Profile
++ eaglercraft.menu.openToLan=Invite
++ eaglercraft.menu.closeLan=Stop Sharing
++ 
++ eaglercraft.editProfile.title=Edit Profile
++ eaglercraft.editProfile.username=Username
++ eaglercraft.editProfile.playerSkin=Player Skin
++ eaglercraft.editProfile.addSkin=Add Skin
++ eaglercraft.editProfile.clearSkin=Clear List
++ 
++ eaglercraft.singleplayer.integratedStartup=Starting integrated server
++ 
++ eaglercraft.addServer.SSLWarn1=you are on an https: page!
++ eaglercraft.addServer.SSLWarn2=html5 will only allow wss://
++ 
++ eaglercraft.chat.exit=Exit Chat
++ 
++ eaglercraft.handshakeApprove.plaintext.title=Protocol Warning
++ 
++ eaglercraft.handshakeApprove.plaintext.body.0=§eThis server's 3rd party login system is 
++ eaglercraft.handshakeApprove.plaintext.body.1=§eusing insecure plain-text password login
++ 
++ eaglercraft.handshakeApprove.plaintext.body.3=This means your password can be stolen
++ eaglercraft.handshakeApprove.plaintext.body.4=by who is running this server, and also
++ eaglercraft.handshakeApprove.plaintext.body.5=any proxy you use to connect to it with
++ 
++ eaglercraft.handshakeApprove.plaintext.body.7=§7Would you like to continue?
++ 
++ eaglercraft.handshakeApprove.unsupportedAuth.title=Protocol Unsupported
++ 
++ eaglercraft.handshakeApprove.unsupportedAuth.body.0=§cThis server's login system is using a
++ eaglercraft.handshakeApprove.unsupportedAuth.body.1=§cprotocol not supported by this client
++ 
++ eaglercraft.handshakeApprove.unsupportedAuth.body.3=Please make sure you are using the
++ eaglercraft.handshakeApprove.unsupportedAuth.body.4=latest version of EaglercraftX or
++ eaglercraft.handshakeApprove.unsupportedAuth.body.5=another fork made for this server
++ 
++ eaglercraft.options.hud.fps=Show FPS
++ eaglercraft.options.hud.coords=Show XYZ
++ eaglercraft.options.hud.stats=Show Stats HUD
++ eaglercraft.options.hud.world=Show World HUD
++ eaglercraft.options.hud.player=Show Player
++ eaglercraft.options.hud.note=Check 'Video Settings' for the option to hide XYZ
++ eaglercraft.options.hud.24h=24h Day
++ eaglercraft.options.chunkFix=Chunk Lag Fix
++ eaglercraft.options.fog=Fog
++ eaglercraft.options.fxaa=FXAA Antialiasing
++ eaglercraft.options.fxaa.auto=Auto
++ eaglercraft.options.fastMath=Fast Math
++ eaglercraft.options.fastMath.0=OFF
++ eaglercraft.options.fastMath.1=Low
++ eaglercraft.options.fastMath.2=High
++ 
++ eaglercraft.key.function=Function
++ eaglercraft.key.zoomCamera=Zoom Camera
++ eaglercraft.key.close=Close Screen
++ 
++ eaglercraft.disconnect.tooManyRequests=Too Many Requests!
++ 
++ eaglercraft.auth.required=Authentication Required
++ eaglercraft.auth.continue=Join Server
++ 
++ eaglercraft.shaders.gui.optionsButton=Shaders...
++ eaglercraft.shaders.gui.title=Shaders
++ eaglercraft.shaders.gui.enable=Enable Shaders
++ eaglercraft.shaders.gui.headerTier1=Simple Effects (fast)
++ eaglercraft.shaders.gui.headerTier2=Intermediate Effects (not as fast)
++ 
++ 
++ eaglercraft.shaders.gui.option.WAVING_BLOCKS.label=Waving Grass
++ 
++ eaglercraft.shaders.gui.option.WAVING_BLOCKS.desc.0=The classic vanilla shader that make grass and leaf blocks move with the wind
++ eaglercraft.shaders.gui.option.WAVING_BLOCKS.desc.2=ON: slower, complex control flow
++ eaglercraft.shaders.gui.option.WAVING_BLOCKS.desc.3=OFF: faster, simple control flow
++ 
++ eaglercraft.shaders.gui.option.DYNAMIC_LIGHTS.label=Dynamic Lights
++ 
++ eaglercraft.shaders.gui.option.DYNAMIC_LIGHTS.desc.0=Items like torches, glowstone, jack o'lanterns, etc. light up the area around them when they are held or dropped
++ eaglercraft.shaders.gui.option.DYNAMIC_LIGHTS.desc.2=This feature usually does not affect FPS unless there is a large number of dynamic light sources close to the player
++ eaglercraft.shaders.gui.option.DYNAMIC_LIGHTS.desc.4=ON: enable dynamic lights
++ eaglercraft.shaders.gui.option.DYNAMIC_LIGHTS.desc.5=OFF: disable dynamic lights
++ 
++ eaglercraft.shaders.gui.option.GLOBAL_AMBIENT_OCCLUSION.label=Global SSAO
++ 
++ eaglercraft.shaders.gui.option.GLOBAL_AMBIENT_OCCLUSION.desc.0=Applies realistic screenspace ambient occlusion (SSAO) to areas of the screen that vanilla Minecraft's default "Smooth Lighting" feature cannot
++ eaglercraft.shaders.gui.option.GLOBAL_AMBIENT_OCCLUSION.desc.2=This effect can greatly reduce lag spikes caused by chunk updates in exchange for a decreased maximum FPS when standing still
++ eaglercraft.shaders.gui.option.GLOBAL_AMBIENT_OCCLUSION.desc.4=ON: use SSAO
++ eaglercraft.shaders.gui.option.GLOBAL_AMBIENT_OCCLUSION.desc.5=OFF: use vanilla
++ 
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.label=Sun Shadow Dist
++ 
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.desc.0=Makes the sun and moon cast shadows on the world, you almost definitely want to enable this
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.desc.2=0: off
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.desc.3=1: 16 blocks
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.desc.4=2: 32 blocks
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.desc.5=3: 64 blocks
++ eaglercraft.shaders.gui.option.SHADOWS_SUN.desc.6=4: 128 blocks
++ 
++ eaglercraft.shaders.gui.option.SHADOWS_COLORED.label=Color Shadow
++ 
++ eaglercraft.shaders.gui.option.SHADOWS_COLORED.desc.0=Makes blocks like stained glass cast colored shadows
++ eaglercraft.shaders.gui.option.SHADOWS_COLORED.desc.2=ON: colored shadows (slower)
++ eaglercraft.shaders.gui.option.SHADOWS_COLORED.desc.3=OFF: grayscale shadows (faster)
++ 
++ eaglercraft.shaders.gui.option.SHADOWS_SMOOTHED.label=Smooth Shadow
++ 
++ eaglercraft.shaders.gui.option.SHADOWS_SMOOTHED.desc.0=Smooths out the edges of sun and dynamic light shadows to get rid of aliasing
++ eaglercraft.shaders.gui.option.SHADOWS_SMOOTHED.desc.2=ON: smooth shadows (slower)
++ eaglercraft.shaders.gui.option.SHADOWS_SMOOTHED.desc.3=OFF: aliased shadows (faster)
++ 
++ eaglercraft.shaders.gui.option.REFLECTIONS_PARABOLOID.label=Env. Mapping
++ 
++ eaglercraft.shaders.gui.option.REFLECTIONS_PARABOLOID.desc.0=Renders an environment map, allows transparent blocks and moving entities to reflect their surroundings
++ eaglercraft.shaders.gui.option.REFLECTIONS_PARABOLOID.desc.2=Uses dual paraboloid mapping, only 2 render passes are required to render all reflections, instead of a full 6 render passes like a conventional cube map
++ eaglercraft.shaders.gui.option.REFLECTIONS_PARABOLOID.desc.4=ON: render env. map (slower)
++ eaglercraft.shaders.gui.option.REFLECTIONS_PARABOLOID.desc.5=OFF: disable env. map (faster)
++ 
++ eaglercraft.shaders.gui.option.REALISTIC_WATER.label=Realistic Water
++ 
++ eaglercraft.shaders.gui.option.REALISTIC_WATER.desc.0=Makes water realistic, adds reflection and refraction effects, uses raytracing
++ eaglercraft.shaders.gui.option.REALISTIC_WATER.desc.2=ON: render realistic water (slower)
++ eaglercraft.shaders.gui.option.REALISTIC_WATER.desc.3=OFF: render vanilla water (faster)
++ 
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.label=God Rays
++ 
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.desc.0=Render god rays (light shafts) for sunlight and moonlight shadows
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.desc.2=ON: render god rays (slower)
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.desc.3=OFF: disable god rays (faster)
++ 
++ eaglercraft.shaders.gui.option.SCREEN_SPACE_REFLECTIONS.label=Raytracing
++ 
++ eaglercraft.shaders.gui.option.SCREEN_SPACE_REFLECTIONS.desc.0=Renders raytraced reflections off of blocks
++ eaglercraft.shaders.gui.option.SCREEN_SPACE_REFLECTIONS.desc.2=Thanks to some advanced optimizations, this feature only has a small impact on FPS and is compatible with old hardware
++ eaglercraft.shaders.gui.option.SCREEN_SPACE_REFLECTIONS.desc.4=Both raymarching and raytracing are employed, raymarching is initially used to locate and track groups of pixels on the screen to reflect, then raytracing is used to reproject that data between multiple frames so the raymarching process only has to be repeated once or twice every few seconds
++ eaglercraft.shaders.gui.option.SCREEN_SPACE_REFLECTIONS.desc.6=ON: enable raytracing (slower)
++ eaglercraft.shaders.gui.option.SCREEN_SPACE_REFLECTIONS.desc.7=OFF: disable raytracing (faster)
++ 
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.desc.0=Render god rays (light shafts) for sunlight and moonlight shadows
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.desc.2=ON: render god rays (slower)
++ eaglercraft.shaders.gui.option.LIGHT_SHAFTS.desc.3=OFF: disable god rays (faster)
++ 
++ eaglercraft.shaders.gui.option.POST_LENS_DISTORION.label=Lens Distort
++ 
++ eaglercraft.shaders.gui.option.POST_LENS_DISTORION.desc.0=Renders chromatic abberation and lens distorion
++ eaglercraft.shaders.gui.option.POST_LENS_DISTORION.desc.2=ON: render lens distortion (slower)
++ eaglercraft.shaders.gui.option.POST_LENS_DISTORION.desc.3=OFF: disable lens distortion (faster)
++ 
++ eaglercraft.shaders.gui.option.POST_LENS_FLARES.label=Lens Flares
++ 
++ eaglercraft.shaders.gui.option.POST_LENS_FLARES.desc.0=Renders filmic lens flares for the sun
++ eaglercraft.shaders.gui.option.POST_LENS_FLARES.desc.2=ON: render lens flares (slower)
++ eaglercraft.shaders.gui.option.POST_LENS_FLARES.desc.3=OFF: disable lens flares (faster)
++ 
++ eaglercraft.shaders.gui.option.POST_BLOOM.label=Bloom
++ 
++ eaglercraft.shaders.gui.option.POST_BLOOM.desc.0=Renders bloom for emissive textures and sunlight
++ eaglercraft.shaders.gui.option.POST_BLOOM.desc.2=ON: render bloom (slower)
++ eaglercraft.shaders.gui.option.POST_BLOOM.desc.3=OFF: disable bloom (faster)
++ 
++ eaglercraft.shaders.gui.option.POST_FXAA.label=FXAA
++ 
++ eaglercraft.shaders.gui.option.POST_FXAA.desc.0=Applies FXAA antialiasing in post processing
++ eaglercraft.shaders.gui.option.POST_FXAA.desc.2=This is the preferred antialiasing method for minecraft, as classical MSAA cannot antialias the pixels of upscaled textures
++ eaglercraft.shaders.gui.option.POST_FXAA.desc.4=ON: enable fxaa (slower)
++ eaglercraft.shaders.gui.option.POST_FXAA.desc.5=OFF: disable fxaa (faster)
++ 
++ eaglercraft.shaders.gui.unsupported.title=Shaders are unavailable on this device!
++ eaglercraft.shaders.gui.unsupported.reason.hdrFramebuffer=Reason: No HDR render target support
++ 
++ eaglercraft.shaders.debugMenuTip=Press %s+4 to access the shader debug menu
++ 
++ eaglercraft.command.skull.tip=Use /eagskull to create custom skulls
++ eaglercraft.command.skull.usage=/eagskull
++ eaglercraft.command.skull.nopermission=Cheats are not enabled!
++ eaglercraft.command.skull.feedback=Created new skull: "%s"
++ eaglercraft.command.skull.error.invalid.png=Invalid PNG file!
++ eaglercraft.command.skull.error.invalid.skin=Image with size %dx%d is not a valid minecraft skin!
++ 
++ eaglercraft.command.clientStub=This command is client side!
++ 
+
+> INSERT  163 : 350  @  163
+
++ eaglercraft.singleplayer.busy.killTask=Cancel Task
++ eaglercraft.singleplayer.busy.cancelWarning=Are you sure?
++ eaglercraft.singleplayer.busy.confirmCancel=Confirm Cancel
++ 
++ eaglercraft.singleplayer.crashed.title=Recieved a crash report from integrated server!
++ eaglercraft.singleplayer.crashed.checkConsole=Check the console for more details
++ eaglercraft.singleplayer.crashed.continue=Continue
++ 
++ eaglercraft.singleplayer.failed.title=Singleplayer Task Failed!
++ eaglercraft.singleplayer.failed.killed=The worker process was killed
++ eaglercraft.singleplayer.failed.notStarted=The worker process could not start
++ 
++ eaglercraft.singleplayer.failed.singleThreadWarning.1=Worker Thread Startup Failure!
++ eaglercraft.singleplayer.failed.singleThreadWarning.2=The integrated server will run in single-threaded mode
++ 
++ eaglercraft.singleplayer.busy.listingworlds=Loading worlds
++ eaglercraft.singleplayer.failed.listingworlds=Could not fetch worlds list!
++ 
++ eaglercraft.singleplayer.busy.deleting=Deleting world
++ eaglercraft.singleplayer.failed.deleting=Failed to delete world!
++ 
++ eaglercraft.singleplayer.busy.renaming=Renaming world
++ eaglercraft.singleplayer.failed.renaming=Failed to rename world!
++ 
++ eaglercraft.singleplayer.busy.duplicating=Duplicating world
++ eaglercraft.singleplayer.failed.duplicating=Failed to duplicate world!
++ 
++ eaglercraft.singleplayer.busy.importing.1=Importing world as EPK
++ eaglercraft.singleplayer.failed.importing.1=Failed to import world as EPK!
++ 
++ eaglercraft.singleplayer.busy.importing.2=Importing world as vanilla
++ eaglercraft.singleplayer.failed.importing.2=Failed to import world as vanilla!
++ 
++ eaglercraft.singleplayer.busy.exporting.1=Exporting world as EPK
++ eaglercraft.singleplayer.failed.exporting.1=Failed to export world as EPK!
++ 
++ eaglercraft.singleplayer.busy.exporting.2=Exporting world as vanilla
++ eaglercraft.singleplayer.failed.exporting.2=Failed to export world as vanilla!
++ 
++ eaglercraft.singleplayer.busy.clearplayers=Clearing players
++ eaglercraft.singleplayer.failed.clearplayers=Failed to clear players!
++ 
++ eaglercraft.singleplayer.busy.startingIntegratedServer=Starting up integrated server
++ eaglercraft.singleplayer.failed.startingIntegratedServer=Failed to start up integrated server!
++ 
++ eaglercraft.singleplayer.busy.stoppingIntegratedServer=Shutting down integrated server
++ eaglercraft.singleplayer.failed.stoppingIntegratedServer=Failed to shut down integrated server!
++ 
++ eaglercraft.singleplayer.failed.serverCrash=Integrated server encountered an exception!
++ 
++ eaglercraft.singleplayer.failed.demo.title=Could not start demo
++ eaglercraft.singleplayer.failed.demo.desc=Failed to start integrated server!
++ 
++ eaglercraft.singleplayer.notSupported.title=Shared worlds are not supported on this browser!
++ eaglercraft.singleplayer.notSupported.desc=WebRTC is not supported
++ 
++ eaglercraft.singleplayer.import.title=Import World
++ eaglercraft.singleplayer.import.enterName=Enter world name:
++ eaglercraft.singleplayer.import.continue=Continue
++ eaglercraft.singleplayer.import.reading=Reading: '%s'
++ eaglercraft.singleplayer.import.loadSpawnChunks=Keep spawn chunks loaded: %s
++ eaglercraft.singleplayer.import.enhancedGameRules=Add extra game features: %s
++ 
++ eaglercraft.singleplayer.create.title=What do you wanna do?
++ eaglercraft.singleplayer.create.create=Create New World
++ eaglercraft.singleplayer.create.create.tooltip=Make a new world for eaglercraft
++ eaglercraft.singleplayer.create.import=Load EPK File
++ eaglercraft.singleplayer.create.import.tooltip=Load an Eaglercraft .epk world file
++ eaglercraft.singleplayer.create.vanilla=Import Vanilla World
++ eaglercraft.singleplayer.create.vanilla.tooltip=Load a vanilla minecraft 1.8 world
++ 
++ eaglercraft.singleplayer.backup.title=World Backup Menu: '%s'
++ eaglercraft.singleplayer.backup.recreate=Re-Create World
++ eaglercraft.singleplayer.backup.recreate.tooltip=Create a new world with the same seed
++ eaglercraft.singleplayer.backup.seed=Seed:
++ eaglercraft.singleplayer.backup.duplicate=Duplicate World
++ eaglercraft.singleplayer.backup.duplicate.tooltip=Copy this world into a new save
++ eaglercraft.singleplayer.backup.export=Export EPK File
++ eaglercraft.singleplayer.backup.export.tooltip=Download this world as a compressed .epk file
++ eaglercraft.singleplayer.backup.vanilla=Convert to Vanilla
++ eaglercraft.singleplayer.backup.vanilla.tooltip=Download this world as a vanilla 1.8 world
++ eaglercraft.singleplayer.backup.clearPlayerData=Delete Player Data
++ eaglercraft.singleplayer.backup.clearPlayerData.tooltip=Clears the inventories of all players except the owner
++ 
++ eaglercraft.singleplayer.backup.clearPlayerData.warning1=Are you sure you want to delete all player data?
++ eaglercraft.singleplayer.backup.clearPlayerData.warning2=All players in '%s' will lose their inventories (besides %s)
++ 
++ eaglercraft.selectWorld.backup=Backup
++ 
++ eaglercraft.selectWorld.duplicate=Duplicate World:
++ eaglercraft.selectWorld.duplicateButton=Duplicate
++ 
++ eaglercraft.networkSettings.title=Shared World Relay Servers
++ eaglercraft.networkSettings.add=Add Relay
++ eaglercraft.networkSettings.delete=Delete Relay
++ eaglercraft.networkSettings.default=Set Primary
++ eaglercraft.networkSettings.refresh=Refresh
++ eaglercraft.networkSettings.loadDefaults=Load Defaults
++ eaglercraft.networkSettings.relayTimeout=Connection Timeout:
++ eaglercraft.networkSettings.relayTimeoutChange=change
++ eaglercraft.networkSettings.relayTimeoutTitle=Change Connection Timeout
++ eaglercraft.networkSettings.downloadRelay=Download JAR
++ 
++ eaglercraft.directConnect.prompt=What would you like to do?
++ eaglercraft.directConnect.lanWorld=Join Shared World
++ eaglercraft.directConnect.lanWorldCode=Enter Join Code:
++ eaglercraft.directConnect.networkSettingsNote=Click 'Network Settings' to add a relay URL
++ eaglercraft.directConnect.ipGrabNote=Note: The world's owner can get your IP address
++ eaglercraft.directConnect.serverJoin=Connect to Server
++ eaglercraft.directConnect.lanWorldJoin=Join World
++ eaglercraft.directConnect.lanWorldRelay=Network Settings
++ 
++ eaglercraft.lanInfo.title=Shared World Info
++ eaglercraft.lanInfo.desc.0=Eaglercraft shared worlds are NOT limited to your local network like vanilla LAN worlds. This means that anyone with an internet connection and connection to the invite relay can join your world provided they have the code.
++ eaglercraft.lanInfo.desc.1=Join a shared world from the %s screen, or create one with the %s button while in a world.
++ 
++ eaglercraft.lanServer.legacyClient=Please use EaglercraftX 1.8!
++ 
++ eaglercraft.lanServer.pauseMenu0=Sharing World
++ eaglercraft.lanServer.pauseMenu1=Relay URL:
++ eaglercraft.lanServer.pauseMenu2=Join Code:
++ 
++ eaglercraft.lanServer.wouldYouLikeToKick=Would you like to kick all players?
++ 
++ eaglercraft.lanServer.worldName=World Name:
++ eaglercraft.lanServer.hidden=Hidden:
++ eaglercraft.lanServer.hideCode=hide details
++ eaglercraft.lanServer.showCode=show details
++ eaglercraft.lanServer.opened=Shared world opened on $relay$, join code is §a$code$
++ eaglercraft.lanServer.closed=Shared world closed
++ eaglercraft.lanServer.pleaseWait=Please Wait...
++ eaglercraft.lanServer.relayDisconnected=Warning: connection to invite relay was lost, you must re-share the world to invite more people
++ eaglercraft.lanServer.ipGrabNote=Note: Players joining your world can get your IP address
++ 
++ eaglercraft.addRelay.title=Add New Relay
++ eaglercraft.addRelay.name=Relay Comment
++ eaglercraft.addRelay.address=Relay Address
++ eaglercraft.addRelay.add=Add Relay
++ eaglercraft.addRelay.primary=Set Primary
++ eaglercraft.addRelay.removeText1=Do you want to remove this relay?
++ 
++ eaglercraft.noRelay.title=No Relays are Configured!
++ eaglercraft.noRelay.titleFail=No Working Relays Available!
++ eaglercraft.noRelay.noRelay1=Shared Worlds Unavailable: No Relays Configured!
++ eaglercraft.noRelay.noRelay2=Click '§nNetwork Settings§r' to fix
++ eaglercraft.noRelay.worldNotFound1=Could not locate '§c$code$§r'!
++ eaglercraft.noRelay.worldNotFound2=Make sure to add the '§f$code$§r' world's relay URL
++ eaglercraft.noRelay.worldNotFound3=to the relay list 'Network Settings' to connect
++ eaglercraft.noRelay.worldFail=Failed to connect to '$code$'!
++ 
++ eaglercraft.singleplayer.demo.create.title=What do you wanna do?
++ eaglercraft.singleplayer.demo.create.create=Play Demo World
++ eaglercraft.singleplayer.demo.create.create.tooltip=Play the Minecraft 1.8 demo and invite others
++ eaglercraft.singleplayer.demo.create.join=Join Shared World
++ eaglercraft.singleplayer.demo.create.join.tooltip=Join someone else's world and play multiplayer
++ 
++ eaglercraft.createWorld.seedNote=Note: Vanilla seeds do not work!
++ 
++ eaglercraft.singleplayer.outdatedLANServerKick=This is a 1.5.2 LAN world!
++ 
++ eaglercraft.options.debugConsoleButton=Open Debug Console
++ 
++ eaglercraft.tile.bed.setspawn=Respawn point set
++ 
++ eaglercraft.update.button=Check for updates:
++ eaglercraft.update.none=No updates available!
++ eaglercraft.update.noneNew=No new updates found
++ eaglercraft.update.found=Found new client update
++ eaglercraft.update.update=Update:
++ eaglercraft.update.author=Author:
++ eaglercraft.update.timestamp=Timestamp:
++ eaglercraft.update.size=Size (kB):
++ eaglercraft.update.startDownload=Download
++ eaglercraft.update.viewAll=View All (%d)
++ eaglercraft.update.dismiss=Dismiss
++ eaglercraft.update.downloading=Downloading Updates
++ 
++ eaglercraft.update.downloadOffline=Download Offline
++ eaglercraft.update.digitallySigned=Digitally Signed (%s)
++ eaglercraft.update.signatureInvalid=Signature Invalid!
++ 
++ eaglercraft.updateList.title=Versions Available
++ eaglercraft.updateList.download=Download
++ eaglercraft.updateList.refresh=Refresh
++ eaglercraft.updateList.note.0=Note: Updates are digitally signed, EaglercraftX will block any
++ eaglercraft.updateList.note.1=updates that were not created by lax1dude or ayunami2000
++ 
+
+> CHANGE  22 : 23  @  22 : 23
+
+~ lanServer.title=Shared World
+
+> CHANGE  1 : 2  @  1 : 2
+
+~ lanServer.start=Start Shared World
+
+> CHANGE  280 : 281  @  280 : 281
+
+~ resourcePack.openFolder=Open resource pack
+
+> CHANGE  3 : 4  @  3 : 4
+
+~ resourcePack.folderInfo=(Select resource pack files here)
+
+> EOF
