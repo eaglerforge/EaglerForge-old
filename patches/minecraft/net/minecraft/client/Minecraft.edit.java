@@ -20,9 +20,10 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 51  @  1 : 4
+> CHANGE  1 : 52  @  1 : 4
 
 ~ 
+~ import net.eaglerforge.EaglerForge;
 ~ import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
 ~ 
 ~ import org.apache.commons.lang3.Validate;
@@ -189,7 +190,11 @@
 
 > DELETE  2  @  2 : 3
 
-> CHANGE  15 : 17  @  15 : 17
+> INSERT  1 : 2  @  1
+
++ 		EaglerForge.init();
+
+> CHANGE  14 : 16  @  14 : 16
 
 ~ 		try {
 ~ 			while (true) {

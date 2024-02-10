@@ -27,7 +27,7 @@
 + eaglercraft.gui.exitKeyRetarded=Use Backtick (`) to close this screen!
 + eaglercraft.gui.continue=Continue
 + 
-+ eaglercraft.menu.forkOnGitlab=Fork on GitLab
++ eaglercraft.menu.forkOnGitlab=Fork on GitHub
 + eaglercraft.menu.editProfile=Edit Profile
 + eaglercraft.menu.openToLan=Invite
 + eaglercraft.menu.closeLan=Stop Sharing
