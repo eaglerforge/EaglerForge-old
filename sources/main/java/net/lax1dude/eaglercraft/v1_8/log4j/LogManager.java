@@ -18,7 +18,7 @@ import java.util.Map;
  * POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-public class LogManager {
+public class LogManager{
 	
 	private static final Map<String,Logger> loggerInstances = new HashMap();
 	
