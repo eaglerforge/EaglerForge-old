@@ -20,11 +20,12 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 53  @  1 : 4
+> CHANGE  1 : 54  @  1 : 4
 
 ~ 
 ~ import net.eaglerforge.EaglerForge;
 ~ import net.eaglerforge.api.ModAPI;
+~ import net.eaglerforge.api.ModData;
 ~ import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
 ~ 
 ~ import org.apache.commons.lang3.Validate;
@@ -129,7 +130,7 @@
 
 > CHANGE  1 : 2  @  1 : 2
 
-~ public class Minecraft implements IThreadListener {
+~ public class Minecraft extends ModData implements IThreadListener {
 
 > CHANGE  2 : 3  @  2 : 9
 
@@ -519,7 +520,15 @@
 
 > DELETE  110  @  110 : 114
 
-> CHANGE  108 : 109  @  108 : 148
+> CHANGE  24 : 25  @  24 : 25
+
+~ 	public void clickMouse() {
+
+> CHANGE  30 : 31  @  30 : 31
+
+~ 	public void rightClickMouse() {
+
+> CHANGE  52 : 53  @  52 : 92
 
 ~ 		Display.toggleFullscreen();
 

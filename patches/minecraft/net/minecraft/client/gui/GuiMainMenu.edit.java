@@ -13,9 +13,10 @@
 
 + import java.util.Arrays;
 
-> CHANGE  2 : 29  @  2 : 4
+> CHANGE  2 : 30  @  2 : 4
 
 ~ 
+~ import net.eaglerforge.GuiMods;
 ~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
@@ -176,11 +177,13 @@
 
 ~ 			this.field_92019_w = this.field_92021_u + (line2 ? 24 : 11);
 
-> CHANGE  10 : 23  @  10 : 12
+> CHANGE  10 : 25  @  10 : 12
 
+~ 		this.buttonList.add(new GuiButton(69420, this.width / 2 - 100, parInt1 + parInt2 * 2,
+~ 				I18n.format("eaglerforge.menu.mods")));
 ~ 		if (EaglercraftVersion.mainMenuEnableGithubButton) {
 ~ 			this.buttonList.add(
-~ 					new GuiButton(14, this.width / 2 - 100, parInt1 + parInt2 * 2, I18n.format("menu.forkOnGitlab")));
+~ 					new GuiButton(14, this.width / 2 - 100, parInt1 + parInt2 * 3, I18n.format("menu.forkOnGitlab")));
 ~ 		} else {
 ~ 			if (EagRuntime.getConfiguration().isEnableDownloadOfflineButton()
 ~ 					&& (EagRuntime.getConfiguration().getDownloadOfflineButtonLink() != null
@@ -209,7 +212,13 @@
 ~ 		if (parGuiButton.id == 4) {
 ~ 			this.mc.displayGuiScreen(new GuiScreenEditProfile(this));
 
-> CHANGE  2 : 4  @  2 : 4
+> INSERT  1 : 4  @  1
+
++ 		if (parGuiButton.id == 69420) {
++ 			this.mc.displayGuiScreen(new GuiMods(this));
++ 		}
+
+> CHANGE  1 : 3  @  1 : 3
 
 ~ 		if (parGuiButton.id == 14) {
 ~ 			EagRuntime.openLink(EaglercraftVersion.projectForkURL);

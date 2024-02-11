@@ -21,12 +21,15 @@ dependencies {
     teavm(teavm.libs.jso)
     teavm(teavm.libs.jsoApis)
 }
+dependencies {
+    implementation teavm.libs.jsoApis
+}
 
 teavm.js {
-    obfuscated = true
+    obfuscated = false;
     sourceMap = true
     targetFileName = "../classes.js"
-    // optimization = OptimizationLevel.ADVANCED
+    optimization = org.teavm.gradle.api.OptimizationLevel.AGGRESSIVE;
     outOfProcess = false
     fastGlobalAnalysis = false
     processMemory = 512

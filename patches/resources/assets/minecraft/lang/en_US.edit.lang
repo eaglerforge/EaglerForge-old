@@ -12,7 +12,7 @@
 ~ eaglercraft.recording.start=Record Screen...
 ~ eaglercraft.soundCategory.voice=Voice
 
-> INSERT  1 : 195  @  1
+> INSERT  1 : 197  @  1
 
 + eaglercraft.resourcePack.prompt.title=What do you want to do with '%s'?
 + eaglercraft.resourcePack.prompt.text=Tip: Hold Shift to skip this screen when selecting a resource pack!
@@ -207,6 +207,8 @@
 + eaglercraft.command.skull.error.invalid.skin=Image with size %dx%d is not a valid minecraft skin!
 + 
 + eaglercraft.command.clientStub=This command is client side!
++ 
++ eaglerforge.menu.mods=Mods
 + 
 
 > INSERT  163 : 350  @  163

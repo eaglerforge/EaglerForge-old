@@ -3,6 +3,7 @@ package net.lax1dude.eaglercraft.v1_8.log4j;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import net.eaglerforge.api.ModData;
 import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
 
@@ -21,7 +22,7 @@ import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
  * POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-public class Logger {
+public class Logger extends ModData {
 	
 	public final String loggerName;
 
