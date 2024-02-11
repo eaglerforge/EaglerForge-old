@@ -48,13 +48,12 @@ public class EaglercraftVersion {
 	// Miscellaneous variables:
 
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
-	public static final String mainMenuStringB = projectOriginName + " " +
-			projectOriginRevision + "-" + projectOriginVersion + " ultimate";
+	public static final String mainMenuStringB = projectForkName + " " + projectForkVersion;
 	public static final String mainMenuStringC = "";
 	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
 
-	public static final String mainMenuStringE = projectForkName + " " + projectForkVersion;
-	public static final String mainMenuStringF = "Based on eaglercraft " + projectOriginVersion;
+	public static final String mainMenuStringE = null;
+	public static final String mainMenuStringF = null;
 
 	public static final String mainMenuStringG = "Collector's Edition";
 	public static final String mainMenuStringH = "PBR Shaders";

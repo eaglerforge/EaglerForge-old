@@ -20,10 +20,11 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 52  @  1 : 4
+> CHANGE  1 : 53  @  1 : 4
 
 ~ 
 ~ import net.eaglerforge.EaglerForge;
+~ import net.eaglerforge.api.ModAPI;
 ~ import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
 ~ 
 ~ import org.apache.commons.lang3.Validate;
@@ -156,12 +157,13 @@
 
 ~ 	private final List<FutureTask<?>> scheduledTasks = new LinkedList();
 
-> INSERT  14 : 18  @  14
+> INSERT  14 : 19  @  14
 
 + 	public int joinWorldTickCounter = 0;
 + 	private int dontPauseTimer = 0;
 + 	public int bungeeOutdatedMsgTimer = 0;
 + 	private boolean isLANOpen = false;
++ 	public ModAPI modapi;
 
 > INSERT  1 : 3  @  1
 
@@ -192,7 +194,7 @@
 
 > INSERT  1 : 2  @  1
 
-+ 		EaglerForge.init();
++ 
 
 > CHANGE  14 : 16  @  14 : 16
 
@@ -221,9 +223,11 @@
 ~ 		} finally {
 ~ 			this.shutdownMinecraftApplet();
 
-> CHANGE  4 : 6  @  4 : 6
+> CHANGE  4 : 8  @  4 : 6
 
 ~ 	private void startGame() throws IOException {
+~ 		EaglerForge.init();
+~ 		this.modapi = new ModAPI(theMinecraft);
 ~ 		this.gameSettings = new GameSettings(this);
 
 > DELETE  1  @  1 : 2
@@ -305,7 +309,7 @@
 
 ~ 	private void createDisplay() {
 ~ 		Display.create();
-~ 		Display.setTitle("Eaglercraft 1.8.8");
+~ 		Display.setTitle("Eaglercraft* 1.8.8");
 
 > DELETE  2  @  2 : 39
 
