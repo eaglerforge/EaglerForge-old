@@ -25,11 +25,12 @@
 
 ~ 				I18n.format("shaders.gui.optionsButton")));
 
-> CHANGE  2 : 5  @  2 : 4
+> CHANGE  2 : 6  @  2 : 4
 
 ~ 		this.buttonList.add(broadcastSettings = new GuiButton(107, this.width / 2 + 5, this.height / 6 + 72 - 6, 150,
 ~ 				20, I18n.format(EagRuntime.getRecText(), new Object[0])));
 ~ 		broadcastSettings.enabled = EagRuntime.recSupported();
+~ 
 
 > CHANGE  8 : 10  @  8 : 9
 

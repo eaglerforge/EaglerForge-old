@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
+import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 import net.lax1dude.eaglercraft.v1_8.Keyboard;
 import net.lax1dude.eaglercraft.v1_8.Mouse;
 import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
@@ -16,6 +17,7 @@ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenConnectOption;
 import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenLANConnecting;
 import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerList;
 import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServer;
+import net.lax1dude.eaglercraft.v1_8.vfs.SYS;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiListExtended;
@@ -62,6 +64,7 @@ public class GuiMods extends GuiScreen implements GuiYesNoCallback {
 	private boolean editingServer;
 	private boolean directConnect;
 	private String hoveringText;
+	public static int ModsLoaded = 0;
 
 
 	private boolean initialized;
@@ -133,13 +136,15 @@ public class GuiMods extends GuiScreen implements GuiYesNoCallback {
 	protected void actionPerformed(GuiButton parGuiButton) {
 		if (parGuiButton.enabled) {
 			if (parGuiButton.id == 2) {
-			} else if (parGuiButton.id == 1) {
-			} else if (parGuiButton.id == 4) {
-			} else if (parGuiButton.id == 3) {
-			} else if (parGuiButton.id == 7) {
+
 			} else if (parGuiButton.id == 0) {
 				this.mc.displayGuiScreen(this.parentScreen);
 			} else if (parGuiButton.id == 8) {
+				EagRuntime.displayFileChooser("text/javascript", "js");
+				if (EagRuntime.fileChooserHasResult()){
+					ModsLoaded++;
+					EagRuntime.clearFileChooserResult();
+				}
 			}
 
 		}

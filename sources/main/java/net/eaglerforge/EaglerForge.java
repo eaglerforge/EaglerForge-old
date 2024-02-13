@@ -2,14 +2,25 @@ package net.eaglerforge;
 
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-import static net.eaglerforge.api.ModAPI.initAPI;
+import org.teavm.jso.JSBody;
 
 public class EaglerForge {
     public static final Logger log = LogManager.getLogger();
+    @JSBody(params = { "message" }, script = "alert(message)")
+    public static native void jsalert(String message);
+
+    @JSBody(params = { "message" }, script = "console.log(message)")
+    public static native void jsconsolelog(String message);
+
+    @JSBody(params = { "message" }, script = "prompt(message)")
+    public static native void jsprompt(String message);
+    @JSBody(params = { "message", "default_text" }, script = "prompt(message, default_text)")
+    public static native void jspromptdt(String message, String default_text);
+
+
+
     public static void init() {
         log.info("Starting EaglerForge!");
         log.info("Loading Mods...");
-        // TODO: Make a javascript moding api using teavm and make the mods load here
     }
 }
