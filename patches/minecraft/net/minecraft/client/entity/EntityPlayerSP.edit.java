@@ -30,7 +30,11 @@
 
 + 		this.statWriter = statWriter;
 
-> CHANGE  116 : 123  @  116 : 117
+> INSERT  19 : 20  @  19
+
++ 			mc.modapi.onUpdate();
+
+> CHANGE  97 : 104  @  97 : 98
 
 ~ 		if (((sendQueue.getNetworkManager() instanceof ClientIntegratedServerNetworkManager)
 ~ 				|| (sendQueue.getNetworkManager() instanceof LANClientNetworkManager))

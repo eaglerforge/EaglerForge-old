@@ -59,6 +59,10 @@ public class ModAPI {
         this.mc = mcIn;
         requiredList = new ArrayList<String>();
         initAPI(version);
+        newEvent("update");
+        globalsFunctor(this);
+        globalsRequireFunctor(this);
+        globalsUpdateFunctor(this);
         getModAPI().setCallbackVoidWithDataArg("displayToChat", (BaseData params) -> {
             mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentText(params.getString("msg")));
         });
@@ -112,5 +116,6 @@ public class ModAPI {
     }
 
     public void onUpdate() {
+        ModAPI.callEvent("update", new ModData());
     }
 }
