@@ -5,7 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> DELETE  2  @  2 : 3
+> CHANGE  2 : 4  @  2 : 3
+
+~ import net.eaglerforge.gui.ModGUI;
+~ 
 
 > DELETE  3  @  3 : 4
 
@@ -16,7 +19,7 @@
 > CHANGE  2 : 30  @  2 : 4
 
 ~ 
-~ import net.eaglerforge.GuiMods;
+~ import net.eaglerforge.gui.WIP_GuiMods;
 ~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
@@ -52,7 +55,9 @@
 
 > DELETE  3  @  3 : 5
 
-> DELETE  4  @  4 : 11
+> DELETE  2  @  2 : 3
+
+> DELETE  1  @  1 : 8
 
 > DELETE  2  @  2 : 3
 
@@ -214,10 +219,11 @@
 ~ 		if (parGuiButton.id == 4) {
 ~ 			this.mc.displayGuiScreen(new GuiScreenEditProfile(this));
 
-> INSERT  1 : 4  @  1
+> INSERT  1 : 5  @  1
 
 + 		if (parGuiButton.id == 69420) {
-+ 			this.mc.displayGuiScreen(new GuiMods(this));
++ 			// this.mc.displayGuiScreen(new WIP_GuiMods(this));
++ 			ModGUI.displayGui();
 + 		}
 
 > CHANGE  1 : 3  @  1 : 3

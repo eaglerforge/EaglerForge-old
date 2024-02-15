@@ -5,8 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 11  @  2 : 9
+> CHANGE  2 : 13  @  2 : 9
 
+~ import net.eaglerforge.gui.ModGUI;
+~ import net.eaglerforge.gui.WIP_GuiMods;
 ~ import net.lax1dude.eaglercraft.v1_8.Mouse;
 ~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
 ~ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
@@ -49,8 +51,10 @@
 ~ 		this.buttonList.add(lanButton = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + b0, 98, 20,
 ~ 				I18n.format(LANServerController.isLANOpen() ? "menu.closeLan" : "menu.openToLan", new Object[0])));
 
-> CHANGE  4 : 9  @  4 : 5
+> CHANGE  4 : 11  @  4 : 5
 
+~ 		this.buttonList.add(new GuiButton(69420, this.width / 2 - 100, this.height / 4 + 73 + b0,
+~ 				I18n.format("eaglerforge.menu.mods", new Object[0])));
 ~ 		lanButton.enabled = SingleplayerServerController.isWorldRunning();
 ~ 		if (!hasSentAutoSave) {
 ~ 			hasSentAutoSave = true;
@@ -73,7 +77,14 @@
 
 ~ 				this.mc.shutdownIntegratedServer(new GuiMultiplayer(new GuiMainMenu()));
 
-> CHANGE  16 : 30  @  16 : 17
+> INSERT  9 : 13  @  9
+
++ 		case 69420:
++ 			// this.mc.displayGuiScreen(new GuiMods(this));
++ 			ModGUI.displayGui();
++ 			break;
+
+> CHANGE  7 : 21  @  7 : 8
 
 ~ 			if (!LANServerController.supported()) {
 ~ 				mc.displayGuiScreen(new GuiScreenLANNotSupported(this));

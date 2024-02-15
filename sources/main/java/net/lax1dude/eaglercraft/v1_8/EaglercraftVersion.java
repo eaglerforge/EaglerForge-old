@@ -2,7 +2,6 @@ package net.lax1dude.eaglercraft.v1_8;
 
 import java.math.BigInteger;
 
-import static net.eaglerforge.GuiMods.ModsLoaded;
 
 public class EaglercraftVersion {
 	
@@ -50,7 +49,7 @@ public class EaglercraftVersion {
 	// Miscellaneous variables:
 
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
-	public static final String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + ModsLoaded + " Mods loaded)";
+	public static final String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + 0 + " Mods loaded)";
 	public static final String mainMenuStringC = "";
 	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
 

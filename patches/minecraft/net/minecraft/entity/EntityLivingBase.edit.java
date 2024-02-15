@@ -7,11 +7,9 @@
 
 > DELETE  2  @  2 : 5
 
-> CHANGE  4 : 14  @  4 : 6
+> CHANGE  4 : 12  @  4 : 6
 
 ~ 
-~ import net.eaglerforge.api.BaseData;
-~ import net.eaglerforge.api.ModData;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
 ~ 

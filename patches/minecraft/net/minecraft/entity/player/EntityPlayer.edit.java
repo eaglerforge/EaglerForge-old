@@ -7,11 +7,9 @@
 
 > DELETE  2  @  2 : 5
 
-> CHANGE  2 : 11  @  2 : 3
+> CHANGE  2 : 9  @  2 : 3
 
 ~ 
-~ import net.eaglerforge.api.BaseData;
-~ import net.eaglerforge.api.ModData;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
 ~ 
 ~ import com.google.common.base.Charsets;

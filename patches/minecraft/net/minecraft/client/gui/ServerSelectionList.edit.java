@@ -7,12 +7,11 @@
 
 > DELETE  2  @  2 : 3
 
-> INSERT  1 : 8  @  1
+> INSERT  1 : 7  @  1
 
 + 
 + import com.google.common.collect.Lists;
 + 
-+ import net.eaglerforge.GuiMods;
 + import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
 + import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerList;
 + import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;

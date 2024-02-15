@@ -1,5 +1,6 @@
 package net.eaglerforge.api;
 
+import net.eaglerforge.gui.ModGUI;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 import net.minecraft.client.ClientBrandRetriever;
@@ -90,6 +91,7 @@ public class ModAPI {
         getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
             mc.ingameGUI.getFontRenderer().drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
         });
+        ModGUI.loadFont();
     }
     static void globalsFunctor(ModAPI modAPI) {
         GlobalsListener.provideCallback((String name) -> {
