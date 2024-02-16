@@ -1,0 +1,11 @@
+name: Other
+description: Misc stuff like questions
+body:
+- type: textarea
+  attributes:
+    label: ⠀
+    description: your text
+    placeholder: |
+      your text
+  validations:
+    required: false
