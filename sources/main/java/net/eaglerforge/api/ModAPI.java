@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
+import me.otterdev.UwUAPI;
 
 import java.util.ArrayList;
 
@@ -66,6 +67,9 @@ public class ModAPI {
         getModAPI().setCallbackVoidWithDataArg("displayToChat", (BaseData params) -> {
             mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentText(params.getString("msg")));
         });
+        getModAPI().setCallbackStringWithDataArg("uwuify", (BaseData params) -> {
+            return UwUAPI.uwuify(params.getString("string"));
+        });
         getModAPI().setCallbackVoid("clickMouse", () -> {
             mc.clickMouse();
         });
@@ -75,26 +79,13 @@ public class ModAPI {
         getModAPI().set("clientBrand", ClientBrandRetriever.getClientModName());
 
         setGlobal("mcinstance", mc);
-        getModAPI().setCallbackVoidWithDataArg("log", (BaseData params) -> {
-            if (params.getString("type") == "info"){
-                log.info(params.getString("msg"));
-            }
-            if (params.getString("type") == "debug"){
-                log.debug(params.getString("msg"));
-            }
-            if (params.getString("type") == "error"){
-                log.error(params.getString("msg"));
-            }
-            if (params.getString("type") == "warn"){
-                log.warn(params.getString("msg"));
-            }
-            if (params.getString("type") == "fatal"){
-                log.fatal(params.getString("msg"));
-            }
-        });
-        getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
+        setGlobal("platform", PlatformAPI.makeModData());
+        setGlobal("logger", LoggerAPI.makeModData());
+
+
+/*        getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
             mc.ingameGUI.getFontRenderer().drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
-        });
+        });*/
         ModGUI.loadFont();
     }
     static void globalsFunctor(ModAPI modAPI) {
