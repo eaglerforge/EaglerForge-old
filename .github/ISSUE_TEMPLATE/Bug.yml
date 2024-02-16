@@ -1,0 +1,28 @@
+name: Bug
+description: report a bug
+title: "Bug report"
+body:
+- type: checkboxes
+  attributes:
+    label: by requesting a bug you must check these boxes
+    options:
+    - label: I have explained about the bug(s)
+      required: true
+    - label: I have left attachments or code lines
+      required: true
+    - label: I know that I won't waste your time
+      required: true
+    - label: I just checked all of these boxes without reading the labels
+      required: false
+- type: textarea
+  attributes:
+    label: about the bug
+    description: write about the bug, how it works/happens, and where
+- type: textarea
+  attributes:
+    label: Screenshots
+    description: at least 1 screenshot of the bug (not required)
+    placeholder: |
+      screenshots of the bug
+  validations:
+    required: false

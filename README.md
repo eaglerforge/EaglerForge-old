@@ -13,15 +13,15 @@
 
  - **Utilities to decompile Minecraft 1.8 and apply patch files to it**
  - **Source code to provide the LWJGL keyboard, mouse, and OpenGL APIs in a browser**
- - **Patch files to mod the Minecraft 1.8 source code to make it browser compatible**
+ - **Patch files to mod the Minecraft 1.8 source code to make it browser-compatible**
  - **Browser-modified portions of Minecraft 1.8's open-source dependencies**
- - **Plugins for Minecraft servers to allow the eagler client to connect to them**
- - **a javascript modding api**
+ - **Plugins for Minecraft servers to allow the Eagler client to connect to them**
+ - **a javascript modding API**
 
 ### This repository does NOT contain:
 
  - **Any portion of the decompiled Minecraft 1.8 source code or resources**
- - **Any portion of Mod Coder Pack and it's config files**
+ - **Any portion of Mod Coder Pack and its config files**
  - **Data that can be used alone to reconstruct portions of the game's source code**
  - **Software configured by default to allow users to play without owning a copy of Minecraft**
 
@@ -31,7 +31,7 @@
 
 1. Make sure you have at least Java 11 installed and added to your PATH
 2. Download (clone) this repository to your computer
-3. Double click `CompileLatestClient.bat`, a GUI resembling a classic windows installer should open
+3. Double click `CompileLatestClient.bat`, a GUI resembling a classic Windows installer should open
 4. Follow the steps shown to you in the new window to finish compiling
 
 ### To compile the latest version of the client, on Linux/macOS:
@@ -40,30 +40,30 @@
 2. Download (clone) this repository to your computer
 3. Open a terminal in the folder the repository was cloned to
 4. Type `chmod +x CompileLatestClient.sh` and hit enter
-5. Type `./CompileLatestClient.sh` and hit enter, a GUI resembling a classic windows installer should open
+5. Type `./CompileLatestClient.sh` and hit enter, a GUI resembling a classic Windows installer should open
 6. Follow the steps shown to you in the new window to finish compiling
 
 ## Singleplayer
 
-As of January 2024, singleplayer and shared worlds have been added to EaglercraftX 1.8.
+As of January 2024, single-player and shared worlds have been added to EaglercraftX 1.8.
 
 Worlds are saved to your browser's local storage and are available even if your device does not have an internet connection. You can also import and export worlds in EaglercraftX as EPK files to copy them between devices and send them to your friends.
 
-You can also import and export your existing vanilla Minecraft 1.8 worlds into EaglercraftX using ZIP files if you want to try playing all your old 1.8 maps in a modern browser. The glitch that caused some chunks to become corrupt when exporting worlds as vanilla in Eaglercraft 1.5.2 no longer happens in EaglercraftX 1.8, its perfect now. Beware that the inventories of LAN world players are not saved when the world is converted to vanilla, and pets (dogs, cats, horses, etc) might sometimes forget their owners due to the UUID changes.
+You can also import and export your existing vanilla Minecraft 1.8 worlds into EaglercraftX using ZIP files if you want to try playing all your old 1.8 maps in a modern browser. The glitch that caused some chunks to become corrupt when exporting worlds as vanilla in Eaglercraft 1.5.2 no longer happens in EaglercraftX 1.8, it's perfect now. Beware that the inventories of LAN world players are not saved when the world is converted to vanilla, and pets (dogs, cats, horses, etc) might sometimes forget their owners due to the UUID changes.
 
 ## Shared Worlds
 
 **This feature used to be known as "LAN Worlds" but has been renamed to "Shared Worlds" to avoid confusion**
 
-If you would like to invite other players to join your singleplayer world and play the game together, use the "Invite" button in the pause menu. You can configure gamemode and cheats for the other players joining your world, you can also decide if you would like to hide your world from other people on your wifi network or advertise your world to them. If hidden is "off" then other people on your same wifi network will see your world listed on their game's "Multiplayer" screen with all of their servers like how sharing LAN worlds behave in vanilla Minecraft 1.8.
+If you would like to invite other players to join your single-player world and play the game together, use the "Invite" button in the pause menu. You can configure gamemode and cheat for the other players joining your world, you can also decide if you would like to hide your world from other people on your wifi network or advertise your world to them. If hidden is "off" then other people on your same wifi network will see your world listed on their game's "Multiplayer" screen with all of their servers like how sharing LAN worlds behaves in vanilla Minecraft 1.8.
 
-Once you press "Start Shared World", EaglercraftX 1.8 will give you a "join code" (usually 5 letters) to share with your friends. On a different device, go the "Multiplayer" screen and press "Direct Connect" and press "Join Shared World", enter the join code given to you when you started the shared world and press "Join World". Given a few seconds, the client should successfully be able to join your shared world from any other device on the internet that also has unrestricted internet access. If it does not work, check the "Network Settings" screen and make sure you and your friends all have the same set of shared world relay URLs configured or your clients will not be able to find each other.
+Once you press "Start Shared World", EaglercraftX 1.8 will give you a "join code" (usually 5 letters) to share with your friends. On a different device, go to the "Multiplayer" screen and press "Direct Connect" and press "Join Shared World", enter the join code given to you when you start the shared world and press "Join World". Given a few seconds, the client should successfully be able to join your shared world from any other device on the internet that also has unrestricted internet access. If it does not work, check the "Network Settings" screen and make sure you and your friends all have the same set of shared world relay URLs configured or your clients will not be able to find each other.
 
-If you would like to host your own relay, the JAR file and instructions can be downloaded from the "Network Settings" screen in the client. EaglercraftX 1.8 uses the same "LAN world" relay server that is used by Eaglercraft 1.5.2, if you would like the relay source code find a random copy of the Eaglercraft 1.5.2 source code and it should be located in the "sp-relay" folder. The relay has not been updated since then, it has only been renamed from "LAN world relay" to "Shared world relay".
+If you would like to host your relay, the JAR file and instructions can be downloaded from the "Network Settings" screen in the client. EaglercraftX 1.8 uses the same "LAN world" relay server that is used by Eaglercraft 1.5.2, if you would like the relay source code find a random copy of the Eaglercraft 1.5.2 source code and it should be located in the "sp-relay" folder. The relay has not been updated since then, it has only been renamed from "LAN world relay" to "Shared world relay".
 
 ## PBR Shaders
 
-EaglercraftX 1.8 includes a deferred physically-based renderer modeled after the GTA V rendering engine with many new improvements and a novel raytracing technique for fast realistic reflections. It can be enabled in the "Shaders" menu in the game's options screen. Shader packs in EaglercraftX are just a component of resource packs, so any custom shaders you install will be in the form of a resource pack. EaglercraftX also comes with a very well optimized built-in PBR shader pack and also a concise built-in PBR material texture pack to give all blocks and items in the game realistic lighting and materials that looks better than most vanilla Minecraft shader packs. The default shader and texture packs were created from scratch by lax1dude, shaders packs made for vanilla Minecraft will not work in EaglercraftX and no shaders in EaglercraftX were taken from vanilla Minecraft shader packs.
+EaglercraftX 1.8 includes a deferred physically-based renderer modeled after the GTA V rendering engine with many new improvements and a novel raytracing technique for fast realistic reflections. It can be enabled in the "Shaders" menu in the game's options screen. Shader packs in EaglercraftX are just a component of resource packs, so any custom shaders you install will be in the form of a resource pack. EaglercraftX also comes with a very well-optimized built-in PBR shader pack and also a concise built-in PBR material texture pack to give all blocks and items in the game realistic lighting and materials that look better than most vanilla Minecraft shader packs. The default shader and texture packs were created from scratch by lax1dude, shaders packs made for vanilla Minecraft will not work in EaglercraftX, and no shaders in EaglercraftX were taken from vanilla Minecraft shader packs.
 
 ## Making a Server
 
@@ -80,18 +80,18 @@ Configuration files and other plugin data will be written in `plugins/Eaglercraf
 1. Enable `online_mode` in BungeeCord's `config.yml` file and make sure it works
 2. Join the BungeeCord server using Minecraft Java Edition while logged into your Microsoft account
 3. Run the `/eagler` command, it will give you a temporary login code
-4. Disconnect from the server, close java edition, launch EaglercraftX 1.8
+4. Disconnect from the server, close Java edition, launch EaglercraftX 1.8
 5. Set your profile username to the username of your Microsoft account
 6. Go to the "Multiplayer" menu, press "Direct Connect", press "Connect to Server", then enter "ws://localhost:8081/"
 7. If you are using a VPS, replace "localhost" with the IP address of the VPS when you connect
 8. Press "Join Server", a login screen will be displayed, enter the temporary login code into the password field
 9. EaglerXBungee will log you into the server as the Microsoft account you generated the login code with
 
-Players using EaglercraftX will be able to see the vanilla skins of players on the server using vanilla Minecraft, but players on the server using vanilla Minecraft won't be able to see the skins of players using Eaglercraft. Instead they will see the skin of the Minecraft account that was used when the Eaglercraft player originally ran the `/eagler` command.
+Players using EaglercraftX will be able to see the vanilla skins of players on the server using vanilla Minecraft, but players on the server using vanilla Minecraft won't be able to see the skins of players using Eaglercraft. Instead, they will see the skin of the Minecraft account that was used when the Eaglercraft player originally ran the `/eagler` command.
 
-To disable this vanilla player skin feature and stop the plugin from downloading the textures of any player heads spawned with commands, edit the EaglercraftXBungee `settings.yml` file in the `plugins/EaglercraftXBungee` folder and change `download_vanilla_skins_to_clients` to `false`. Ratelimits configured in `settings.yml` define the maximum number of times per minute a single player is allowed to trigger profile/skin lookups and also define the maximum number of times per minute the entire server is allowed to actually perform profile/skin lookups.
+To disable this vanilla player skin feature and stop the plugin from downloading the textures of any player heads spawned with commands, edit the EaglercraftXBungee `settings.yml` file in the `plugins/EaglercraftXBungee` folder and change `download_vanilla_skins_to_clients` to `false`. Ratelimits configured in `settings.yml` define the maximum number of times per minute a single player is allowed to trigger profile/skin lookups and also define the maximum number of times per minute the entire server is allowed to perform profile/skin lookups.
 
-By default, EaglercraftXBungee will use a local SQLite database in the server's working directory to store player skins and authentication codes. SQLite will be downloaded automatically if it is not already present. If you would like to use MySQL or something else instead, EaglercraftXBungee is JDBC-based and supports any database type that you can find a driver for. You can set the path of the database, path of the driver JAR, and the name of the driver class (example: `org.sqlite.JDBC`) for storing player skins in `settings.yml` and for storing login codes and profiles in `authservice.yml`.
+By default, EaglercraftXBungee will use a local SQLite database in the server's working directory to store player skins and authentication codes. SQLite will be downloaded automatically if it is not already present. If you would like to use MySQL or something else instead, EaglercraftXBungee is JDBC-based and supports any database type that you can find a driver for. You can set the path of the database, the path of the driver JAR, and the name of the driver class (example: `org.sqlite.JDBC`) for storing player skins in `settings.yml` and for storing login codes and profiles in `authservice.yml`.
 
 ### Offline Mode Instructions
 
@@ -99,13 +99,13 @@ By setting `online_mode` to `false` in the BungeeCord `config.yml` the authentic
 
 ### Built-in HTTP server
 
-When configuring the EaglercraftXBungee `listeners.yml` file, every listener includes an `http_server` section that can be used to configure the listener to also behave like a regular HTTP server when the websocket address is entered into a browser. If this is disabled people will get the normal "404 Websocket Upgrade Failure" instead when they accidentally type your server address into their browser. `root` defines the path to the folder containing index.html and the other files you want to host, relative to the `plugins/EaglercraftXBungee` folder. This can be useful for hosting the client if the offline download doesn't work for some reason but might slow your BungeeCord server down if lots of people are loading it all the time.
+When configuring the EaglercraftXBungee `listeners.yml` file, every listener includes an `http_server` section that can be used to configure the listener to also behave like a regular HTTP server when the WebSocket address is entered into a browser. If this is disabled people will get the normal "404 WebSocket Upgrade Failure" instead when they accidentally type your server address into their browser. `root` defines the path to the folder containing index.html and the other files you want to host, relative to the `plugins/EaglercraftXBungee` folder. This can be useful for hosting the client if the offline download doesn't work for some reason but might slow your BungeeCord server down if lots of people are loading it all the time.
 
 ## Launch Options
 
 The EaglercraftX 1.8 client is configured primarily through a variable called `window.eaglercraftXOpts` that must be set before the client starts up.
 
-The default eaglercraftXOpts values is this:
+The default eaglercraftXOpts values are this:
 
     const relayId = Math.floor(Math.random() * 3);
     window.eaglercraftXOpts = {
@@ -130,17 +130,17 @@ The default eaglercraftXOpts values is this:
 - `assetsURI:` the URL of the assets.epk file **(required)**
 - `localesURI:` the URL where extra .lang files can be found
 - `worldsDB:` the name of the IndexedDB database to store worlds in
-- `demoMode:` whether to launch the game in java edition demo mode
+- `demoMode:` whether to launch the game in Java edition demo mode
 - `servers:` a list of default servers to display on the Multiplayer screen
 - `relays:` the default list of shared world relays to use for invites
-- `checkShaderGLErrors:` enables more verbose opengl error logging for the shaders
+- `checkShaderGLErrors:` enables more verbose OpenGL error logging for the shaders
 - `enableDownloadOfflineButton:` whether to show a "Download Offline" button on the title screen
 - `downloadOfflineButtonLink:` overrides the download link for the "Download Offline" button
 - `html5CursorSupport:` enables support for showing the CSS "pointer" cursor over buttons
 - `allowUpdateSvc:` enables the certificate-based update system
 - `allowUpdateDL:` allows the client to download new updates it finds
 - `logInvalidCerts:` print update certificates with invalid signatures to console
-- `enableSignatureBadge:` show a badge on the title screen indicating if digital signature is valid
+- `enableSignatureBadge:` shows a badge on the title screen indicating if the digital signature is valid
 - `checkRelaysForUpdates:` proprietary feature used in offline downloads
 
 ## Developing a Client
