@@ -16,12 +16,14 @@
  
   - Creator and lead developer of Eagler Reborn
   - coded built-in relay system
+  - made the documentation
 
 
  ZXMushroom63:
  
   - Wrote the plugin system and API
   - Added a skip button for the start screen!!!!!!!!!!! Wow!
+  - Wrote the plugin docs
  
  EaglercraftX Developers
  ~~~~~~~~~~~~~~~~~~~~~~~
