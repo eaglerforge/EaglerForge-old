@@ -60,6 +60,10 @@ public class ModAPI {
         this.mc = mcIn;
         requiredList = new ArrayList<String>();
         initAPI(version);
+
+        newEvent("load");
+        newEvent("gui");
+
         newEvent("update");
         globalsFunctor(this);
         globalsRequireFunctor(this);
@@ -81,9 +85,7 @@ public class ModAPI {
         setGlobal("mcinstance", mc);
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
-
-
-/*        getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
+        /*getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
             mc.ingameGUI.getFontRenderer().drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
         });*/
         ModGUI.loadFont();

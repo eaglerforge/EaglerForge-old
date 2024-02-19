@@ -11,7 +11,7 @@ public class EaglercraftVersion {
 	/// Customize these to fit your fork:
 	
 	public static final String projectForkName = "EaglerForge";
-	public static final String projectForkVersion = "v1";
+	public static final String projectForkVersion = "v1.1";
 	public static final String projectForkVendor = "radmanplays";
 	
 	public static final String projectForkURL = "https://github.com/eaglerforge/EaglerForge";

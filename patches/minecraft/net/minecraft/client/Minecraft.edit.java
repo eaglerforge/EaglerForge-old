@@ -20,12 +20,13 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 54  @  1 : 4
+> CHANGE  1 : 55  @  1 : 4
 
 ~ 
 ~ import net.eaglerforge.EaglerForge;
 ~ import net.eaglerforge.api.ModAPI;
 ~ import net.eaglerforge.api.ModData;
+~ import net.eaglerforge.api.ModLoader;
 ~ import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
 ~ 
 ~ import org.apache.commons.lang3.Validate;
@@ -300,7 +301,13 @@
 + 		this.displayGuiScreen(new GuiScreenEditProfile(mainMenu));
 + 
 
-> DELETE  3  @  3 : 15
+> DELETE  3  @  3 : 6
+
+> CHANGE  1 : 4  @  1 : 9
+
+~ 		ModLoader.loadLoader();
+~ 		ModLoader.loadModsFromLocalStorage();
+~ 		ModLoader.loadMods(ModLoader.Mods);
 
 > CHANGE  16 : 17  @  16 : 24
 

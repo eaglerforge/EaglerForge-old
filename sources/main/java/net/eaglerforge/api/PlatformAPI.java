@@ -7,7 +7,7 @@ import org.teavm.jso.JSBody;
 public class PlatformAPI {
 
     @JSBody(params = { }, script = "return navigator.platform;")
-    public static native boolean getplatformOS();
+    public static native void getplatformOS();
     public static ModData makeModData() {
         ModData platformGlobal = new ModData();
         platformGlobal.setCallbackBoolean("isOfflineDownload", () -> {
@@ -31,15 +31,12 @@ public class PlatformAPI {
         platformGlobal.setCallbackBoolean("recSupported", () -> {
             return EagRuntime.recSupported();
         });
-        platformGlobal.setCallbackString("getRecText", () -> {
-            return EagRuntime.getRecText();
-        });
         platformGlobal.setCallbackVoid("toggleRec", () -> {
             EagRuntime.toggleRec();
         });
-        platformGlobal.setCallbackBoolean("getPlatformOS", () -> {
+        platformGlobal.setCallbackVoid("getPlatformOS", () -> {
             //return EagRuntime.getPlatformOS();
-            return getplatformOS();
+            getplatformOS();
         });
         return platformGlobal;
     }
