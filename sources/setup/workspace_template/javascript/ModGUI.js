@@ -162,7 +162,7 @@ function displayGui() {
     notice.style =
       "color: yellow; display: block; margin-top: 2rem; width: 0; white-space: nowrap;";
     container.appendChild(notice);
-    //ModAPI.events.callEvent("gui", {});
+    ModAPI.events.callEvent("gui", {});
     document.body.appendChild(container);
   }
   gui();
