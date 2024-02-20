@@ -1,6 +1,7 @@
 package net.eaglerforge.api;
 
 import net.lax1dude.eaglercraft.v1_8.EagRuntime;
+import net.minecraft.client.Minecraft;
 import org.teavm.jso.JSBody;
 
 // this is me.otterdev.PlatformAPI but modified to have more features and be more optimized
@@ -8,6 +9,7 @@ public class PlatformAPI {
 
     @JSBody(params = { }, script = "return navigator.platform;")
     public static native void getplatformOS();
+
     public static ModData makeModData() {
         ModData platformGlobal = new ModData();
         platformGlobal.setCallbackBoolean("isOfflineDownload", () -> {

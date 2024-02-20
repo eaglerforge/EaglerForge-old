@@ -5,10 +5,9 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 13  @  2 : 9
+> CHANGE  2 : 12  @  2 : 9
 
 ~ import net.eaglerforge.gui.ModGUI;
-~ import net.eaglerforge.gui.WIP_GuiMods;
 ~ import net.lax1dude.eaglercraft.v1_8.Mouse;
 ~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
 ~ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;

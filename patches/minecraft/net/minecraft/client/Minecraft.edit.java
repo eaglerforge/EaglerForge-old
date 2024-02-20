@@ -159,22 +159,23 @@
 
 ~ 	private final List<FutureTask<?>> scheduledTasks = new LinkedList();
 
-> INSERT  14 : 19  @  14
+> INSERT  14 : 18  @  14
 
 + 	public int joinWorldTickCounter = 0;
 + 	private int dontPauseTimer = 0;
 + 	public int bungeeOutdatedMsgTimer = 0;
 + 	private boolean isLANOpen = false;
+
+> INSERT  1 : 5  @  1
+
 + 	public ModAPI modapi;
-
-> INSERT  1 : 3  @  1
-
++ 
 + 	public SkullCommand eagskullCommand;
 + 
 
 > CHANGE  2 : 3  @  2 : 5
 
-~ 		StringTranslate.doCLINIT();
+~ 		StringTranslate.initClient();
 
 > CHANGE  1 : 2  @  1 : 9
 
@@ -194,11 +195,7 @@
 
 > DELETE  2  @  2 : 3
 
-> INSERT  1 : 2  @  1
-
-+ 
-
-> CHANGE  14 : 16  @  14 : 16
+> CHANGE  15 : 17  @  15 : 17
 
 ~ 		try {
 ~ 			while (true) {
@@ -317,7 +314,7 @@
 
 ~ 	private void createDisplay() {
 ~ 		Display.create();
-~ 		Display.setTitle("Eaglercraft* 1.8.8");
+~ 		Display.setTitle("Eaglercraft 1.8.8");
 
 > DELETE  2  @  2 : 39
 
@@ -739,7 +736,11 @@
 
 > DELETE  36  @  36 : 41
 
-> INSERT  14 : 16  @  14
+> CHANGE  12 : 13  @  12 : 13
+
+~ 		return this.addScheduledTaskFuture(new Runnable() {
+
+> INSERT  1 : 3  @  1
 
 + 				Minecraft.this.loadingScreen.eaglerShow(I18n.format("resourcePack.load.refreshing"),
 + 						I18n.format("resourcePack.load.pleaseWait"));
@@ -791,16 +792,31 @@
 
 > DELETE  4  @  4 : 12
 
-> CHANGE  11 : 15  @  11 : 23
+> CHANGE  9 : 10  @  9 : 10
+
+~ 	public <V> ListenableFuture<V> addScheduledTaskFuture(Callable<V> callableToSchedule) {
+
+> CHANGE  1 : 5  @  1 : 13
 
 ~ 		ListenableFutureTask listenablefuturetask = ListenableFutureTask.create(callableToSchedule);
 ~ 		synchronized (this.scheduledTasks) {
 ~ 			this.scheduledTasks.add(listenablefuturetask);
 ~ 			return listenablefuturetask;
 
-> DELETE  8  @  8 : 12
+> CHANGE  3 : 4  @  3 : 4
 
-> DELETE  24  @  24 : 32
+~ 	public ListenableFuture<Object> addScheduledTaskFuture(Runnable runnableToSchedule) {
+
+> CHANGE  1 : 2  @  1 : 2
+
+~ 		return this.addScheduledTaskFuture(Executors.callable(runnableToSchedule));
+
+> CHANGE  2 : 4  @  2 : 4
+
+~ 	public void addScheduledTask(Runnable runnableToSchedule) {
+~ 		this.addScheduledTaskFuture(Executors.callable(runnableToSchedule));
+
+> DELETE  26  @  26 : 34
 
 > INSERT  7 : 27  @  7
 

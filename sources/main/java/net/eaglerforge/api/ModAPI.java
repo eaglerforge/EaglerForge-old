@@ -6,9 +6,10 @@ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
+import me.otterdev.UwUAPI;
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
-import me.otterdev.UwUAPI;
+import net.eaglerforge.EaglerForge;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,7 @@ public class ModAPI {
 
         newEvent("load");
         newEvent("gui");
+        newEvent("drawhud");
 
         newEvent("update");
         globalsFunctor(this);
@@ -85,9 +87,22 @@ public class ModAPI {
         setGlobal("mcinstance", mc);
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
-        /*getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
-            mc.ingameGUI.getFontRenderer().drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
-        });*/
+        getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
+            mc.fontRendererObj.drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
+            EaglerForge.jsconsolelog("your params : " + params.getString("msg")+" "+params.getFloat("x")+" "+params.getFloat("y")+" "+params.getInt("color"));
+        });
+        getModAPI().setCallbackInt("getdisplayHeight", () -> {
+            return mc.displayHeight;
+        });
+        getModAPI().setCallbackInt("getdisplayWidth", () -> {
+            return mc.displayWidth;
+        });
+        getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
+            mc.fontRendererObj.drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
+        });
+        getModAPI().setCallbackVoidWithDataArg("drawString", (BaseData params) -> {
+            mc.fontRendererObj.drawString(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"), false);
+        });
         ModGUI.loadFont();
     }
     static void globalsFunctor(ModAPI modAPI) {

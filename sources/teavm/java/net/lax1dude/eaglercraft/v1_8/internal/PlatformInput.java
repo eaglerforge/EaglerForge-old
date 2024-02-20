@@ -576,7 +576,7 @@ public class PlatformInput {
 				lockKeys();
 				lockKeys = true;
 			}
-			requestFullscreenonbody();
+			requestFullscreen(canvas);
 		}
 	}
 
@@ -598,9 +598,6 @@ public class PlatformInput {
 
 	@JSBody(params = { "element" }, script = "element.requestFullscreen();")
 	private	 static native void requestFullscreen(HTMLElement element);
-
-	@JSBody(params = { }, script = "let gamebody = document.getElementById('game_frame');\n" + "gamebody.requestFullscreen();")
-	private	 static native void requestFullscreenonbody();
 
 	public static void showCursor(EnumCursorType cursor) {
 		switch(cursor) {

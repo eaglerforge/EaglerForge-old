@@ -5,11 +5,14 @@
 # Version: 1.0
 # Author: lax1dude
 
-> INSERT  2 : 8  @  2
+> INSERT  2 : 11  @  2
 
 + import java.util.ArrayList;
 + import java.util.Collection;
 + import java.util.List;
++ 
++ import net.eaglerforge.api.ModAPI;
++ import net.eaglerforge.api.ModData;
 + import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 + import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
 + 
@@ -61,7 +64,12 @@
 + 			j -= 10;
 + 		}
 
-> INSERT  19 : 30  @  19
+> INSERT  14 : 16  @  14
+
++ 		ModAPI.callEvent("drawhud", new ModData());
++ 
+
+> INSERT  5 : 16  @  5
 
 + 	public void renderGameOverlayCrosshairs(int scaledResWidth, int scaledResHeight) {
 + 		if (this.showCrosshair()) {
