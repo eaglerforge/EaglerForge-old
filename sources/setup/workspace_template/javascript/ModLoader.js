@@ -127,5 +127,8 @@ function loadLoader() {
     console.log(
       "EaglerML: Starting to load " + ModsArr.length + " Mods..."
     );
+    window.returntotalloadedmods = function returntotalloadedmods(){
+      return totalLoaded
+    }
   };
 }
