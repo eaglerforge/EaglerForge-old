@@ -20,10 +20,11 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 55  @  1 : 4
+> CHANGE  1 : 56  @  1 : 4
 
 ~ 
 ~ import net.eaglerforge.EaglerForge;
+~ import net.eaglerforge.api.BaseData;
 ~ import net.eaglerforge.api.ModAPI;
 ~ import net.eaglerforge.api.ModData;
 ~ import net.eaglerforge.api.ModLoader;
@@ -613,8 +614,17 @@
 ~ 							DebugFramebufferView.switchView(1);
 ~ 						}
 
-> CHANGE  5 : 6  @  5 : 6
+> CHANGE  5 : 15  @  5 : 6
 
+~ 						ModData event = new ModData();
+~ 						event.set("key", k);
+~ 						event.set("preventDefault", false);
+~ 						BaseData newEvent = ModAPI.callEvent("key", event);
+~ 
+~ 						if (newEvent.has("preventDefault") && newEvent.getBoolean("preventDefault")) {
+~ 							return;
+~ 						}
+~ 						k = newEvent.has("key") ? newEvent.getInt("key") : k;
 ~ 						if (k == 1 || (k > -1 && k == this.gameSettings.keyBindClose.getKeyCode())) {
 
 > INSERT  11 : 18  @  11

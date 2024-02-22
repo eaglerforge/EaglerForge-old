@@ -1,6 +1,7 @@
 package net.eaglerforge.api;
 
 import net.lax1dude.eaglercraft.v1_8.EagRuntime;
+import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
 import net.minecraft.client.Minecraft;
 import org.teavm.jso.JSBody;
 
@@ -39,6 +40,15 @@ public class PlatformAPI {
         platformGlobal.setCallbackVoid("getPlatformOS", () -> {
             //return EagRuntime.getPlatformOS();
             getplatformOS();
+        });
+        platformGlobal.setCallbackVoid("getUserAgentString", () -> {
+            PlatformRuntime.getUserAgentString();
+        });
+        platformGlobal.setCallbackVoid("getGLRenderer", () -> {
+            PlatformRuntime.getGLRenderer();
+        });
+        platformGlobal.setCallbackVoid("getGLVersion", () -> {
+            PlatformRuntime.getGLVersion();
         });
         return platformGlobal;
     }

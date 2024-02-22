@@ -5,9 +5,12 @@ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 
 public class LoggerAPI {
-    public static final Logger log = LogManager.getLogger();
+    public static Logger log = LogManager.getLogger();
     public static ModData makeModData() {
         ModData loggerGlobal = new ModData();
+        loggerGlobal.setCallbackVoidWithDataArg("setlogger", (BaseData params) -> {
+            log = LogManager.getLogger(params.getString("name"));
+        });
         loggerGlobal.setCallbackVoidWithDataArg("loginfo", (BaseData params) -> {
             log.info(params.getString("string"));
         });

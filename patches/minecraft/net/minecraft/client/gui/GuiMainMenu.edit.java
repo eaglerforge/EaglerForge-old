@@ -5,7 +5,11 @@
 # Version: 1.0
 # Author: lax1dude
 
-> DELETE  2  @  2 : 3
+> CHANGE  2 : 5  @  2 : 3
+
+~ import static net.eaglerforge.api.ModLoader.returntotalloadedmods;
+~ import static net.lax1dude.eaglercraft.v1_8.EaglercraftVersion.*;
+~ 
 
 > DELETE  3  @  3 : 4
 
@@ -51,9 +55,10 @@
 
 > DELETE  3  @  3 : 5
 
-> CHANGE  4 : 5  @  4 : 11
+> CHANGE  4 : 6  @  4 : 11
 
 ~ import net.eaglerforge.gui.ModGUI;
+~ import org.teavm.jso.JSBody;
 
 > DELETE  2  @  2 : 3
 
@@ -160,13 +165,12 @@
 
 ~ 		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, i + 72 + 24, 98, 20,
 
-> CHANGE  1 : 10  @  1 : 5
+> CHANGE  1 : 9  @  1 : 5
 
 ~ 		this.buttonList.add(new GuiButton(4, this.width / 2 + 2, i + 72 + 24, 98, 20,
 ~ 				I18n.format("menu.editProfile", new Object[0])));
 ~ 
 ~ 		this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, i + 72 + 24));
-~ 
 ~ 		if (isFork) {
 ~ 			this.openGLWarning1 = EaglercraftVersion.mainMenuStringE;
 ~ 			this.openGLWarning2 = EaglercraftVersion.mainMenuStringF;

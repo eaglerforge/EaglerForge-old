@@ -1,6 +1,10 @@
 package net.lax1dude.eaglercraft.v1_8;
 
+import org.teavm.jso.JSBody;
+
 import java.math.BigInteger;
+
+import static net.eaglerforge.api.ModLoader.returntotalloadedmods;
 
 public class EaglercraftVersion {
 	
@@ -42,12 +46,13 @@ public class EaglercraftVersion {
 	
 	// Miscellaneous variables:
 
+	public static int loadedmods = returntotalloadedmods();
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
-	public static final String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + 0 + " Mods loaded)";
+	public static String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + loadedmods + " Mods loaded)";
 	public static final String mainMenuStringC = "";
 	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
 
-	public static final String mainMenuStringE = "based on eaglercraft " + projectOriginVersion;
+	public static final String mainMenuStringE = "Based on eaglercraft " + projectOriginVersion;
 	public static final String mainMenuStringF = null;
 
 	public static final String mainMenuStringG = "Collector's Edition";

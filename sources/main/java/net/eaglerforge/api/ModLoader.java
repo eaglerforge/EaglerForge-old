@@ -17,6 +17,10 @@ public class ModLoader {
     @JSBody(params = {}, script = "try { return JSON.parse(localStorage.getItem('ml::Mods')||'[]') } catch(err) {return []}")
     private static native String[] retrieveMods();
 
+    @JSBody(params = {}, script = "return returntotalloadedmods()")
+    public static native int returntotalloadedmods();
+
+
     public static void saveModsToLocalStorage() {
         saveMods(Mods);
     };
