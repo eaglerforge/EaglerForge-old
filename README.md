@@ -2,7 +2,7 @@
 
 ### Play Minecraft 1.8 in your browser, supports singleplayer and multiplayer with a javascript modding api
 
-![EaglercraftX 1.8 Screenshot Main Menu](https://github.com/eaglerforge/EaglerForge/assets/95340057/ba3efdd9-550c-496c-84f3-f3c329afbf8a)
+![EaglercraftX 1.8 Screenshot Main Menu](https://github.com/eaglerforge/EaglerForge/assets/95340057/474f88c5-3574-4cd2-9780-3d55f94a13e7)
 
 
 ### eaglerforge mods menu screenshot
