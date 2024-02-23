@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  6 : 9  @  6 : 9
+
+~ 	public int windowId;
+~ 	public int slot;
+~ 	public ItemStack item;
+
 > EOF

@@ -9,4 +9,13 @@
 
 + 
 
+> CHANGE  6 : 12  @  6 : 12
+
+~ 	public boolean invulnerable;
+~ 	public boolean flying;
+~ 	public boolean allowFlying;
+~ 	public boolean creativeMode;
+~ 	public float flySpeed;
+~ 	public float walkSpeed;
+
 > EOF

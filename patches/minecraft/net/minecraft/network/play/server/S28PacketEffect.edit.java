@@ -9,4 +9,11 @@
 
 + 
 
+> CHANGE  6 : 10  @  6 : 10
+
+~ 	public int soundType;
+~ 	public BlockPos soundPos;
+~ 	public int soundData;
+~ 	public boolean serverWide;
+
 > EOF

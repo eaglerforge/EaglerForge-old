@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  6 : 9  @  6 : 9
+
+~ 	public int leash;
+~ 	public int entityId;
+~ 	public int vehicleEntityId;
+
 > EOF

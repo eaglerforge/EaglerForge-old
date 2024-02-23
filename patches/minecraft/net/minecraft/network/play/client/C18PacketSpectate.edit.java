@@ -11,7 +11,7 @@
 
 > CHANGE  7 : 8  @  7 : 8
 
-~ 	private EaglercraftUUID id;
+~ 	public EaglercraftUUID id;
 
 > CHANGE  4 : 5  @  4 : 5
 

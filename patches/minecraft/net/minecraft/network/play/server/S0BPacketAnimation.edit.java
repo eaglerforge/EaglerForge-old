@@ -9,4 +9,9 @@
 
 + 
 
+> CHANGE  6 : 8  @  6 : 8
+
+~ 	public int entityId;
+~ 	public int type;
+
 > EOF

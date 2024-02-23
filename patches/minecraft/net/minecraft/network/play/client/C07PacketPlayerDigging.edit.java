@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  7 : 10  @  7 : 10
+
+~ 	public BlockPos position;
+~ 	public EnumFacing facing;
+~ 	public C07PacketPlayerDigging.Action status;
+
 > EOF

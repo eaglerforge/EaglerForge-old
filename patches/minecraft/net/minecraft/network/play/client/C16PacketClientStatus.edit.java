@@ -9,4 +9,8 @@
 
 + 
 
+> CHANGE  5 : 6  @  5 : 6
+
+~ 	public C16PacketClientStatus.EnumState status;
+
 > EOF

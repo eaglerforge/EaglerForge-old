@@ -9,4 +9,15 @@
 
 + 
 
+> CHANGE  5 : 13  @  5 : 13
+
+~ 	public double x;
+~ 	public double y;
+~ 	public double z;
+~ 	public float yaw;
+~ 	public float pitch;
+~ 	public boolean onGround;
+~ 	public boolean moving;
+~ 	public boolean rotating;
+
 > EOF

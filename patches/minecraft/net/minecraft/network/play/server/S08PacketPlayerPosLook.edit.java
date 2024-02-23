@@ -9,4 +9,12 @@
 
 + 
 
+> CHANGE  5 : 10  @  5 : 10
+
+~ 	public double x;
+~ 	public double y;
+~ 	public double z;
+~ 	public float yaw;
+~ 	public float pitch;
+
 > EOF

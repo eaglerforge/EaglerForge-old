@@ -9,4 +9,17 @@
 
 + 
 
+> CHANGE  8 : 10  @  8 : 10
+
+~ 	public int entityId;
+~ 	public boolean hardcoreMode;
+
+> CHANGE  1 : 2  @  1 : 2
+
+~ 	public int dimension;
+
+> CHANGE  1 : 2  @  1 : 2
+
+~ 	public int maxPlayers;
+
 > EOF

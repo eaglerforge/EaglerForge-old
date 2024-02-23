@@ -64,7 +64,14 @@
 
 ~ 			return Chunk.getNoSkyLightValue();
 
-> CHANGE  1299 : 1300  @  1299 : 1300
+> INSERT  94 : 98  @  94
+
++ 	public Block getBlock(BlockPos pos) {
++ 		return getBlockState(pos).getBlock();
++ 	}
++ 
+
+> CHANGE  1205 : 1206  @  1205 : 1206
 
 ~ 						this.worldInfo.setThunderTime((this.rand.nextInt(12000) / 2) + 3600);
 

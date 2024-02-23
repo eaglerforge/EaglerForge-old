@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  5 : 8  @  5 : 8
+
+~ 	public float health;
+~ 	public int foodLevel;
+~ 	public float saturationLevel;
+
 > EOF

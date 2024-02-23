@@ -10,6 +10,10 @@ import me.otterdev.UwUAPI;
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
 import net.eaglerforge.EaglerForge;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.block.material.Material;
 
 import java.util.ArrayList;
 
@@ -51,6 +55,10 @@ public class ModAPI {
         if (data == null) {
             return;
         }
+        switch (global) {
+            case "player":
+                mc.thePlayer.loadModData(data);
+        }
     }
 
     public void onRequire(String global) {
@@ -69,8 +77,110 @@ public class ModAPI {
         newEvent("gui");
         newEvent("drawhud");
         newEvent("key");
+        newEvent("postmotionupdate");
+        newEvent("motionupdate");
+        newEvent("premotionupdate");
 
         newEvent("update");
+
+        /*newEvent("packetjoingame");
+        newEvent("packetspawnobject");
+        newEvent("packetspawnxporb");
+        newEvent("packetspawnglobalentity");
+        newEvent("packetspawnpainting");
+        newEvent("packetentityvelocity");
+        newEvent("packetentitymetadata");
+        newEvent("packetspawnplayer");
+        newEvent("packetentityteleport");
+        newEvent("packethelditemchange");
+        newEvent("packetentity");
+        newEvent("packetentityheadlook");
+        newEvent("packetdestroyentities");
+        newEvent("packetplayerposlook");
+        newEvent("packetmultiblockchange");
+        newEvent("packetchunkdata");
+        newEvent("packetblockchange");
+        newEvent("packetdisconnect");
+        newEvent("packetcollectitem");
+        newEvent("packetchat");
+        newEvent("packetanimation");
+        newEvent("packetusebed");
+        newEvent("packetspawnmob");
+        newEvent("packettimeupdate");
+        newEvent("packetspawnposition");
+        newEvent("packetentityattatch");
+        newEvent("packetentitystatus");
+        newEvent("packetupdatehealth");
+        newEvent("packetsetxp");
+        newEvent("packetrespawn");
+        newEvent("packetexplosion");
+        newEvent("packetopenwindow");
+        newEvent("packetsetslot");
+        newEvent("packetconfirmtransaction");
+        newEvent("packetwindowitems");
+        newEvent("packetsigneditoropen");
+        newEvent("packetupdatesign");
+        newEvent("packetupdatetileentity");
+        newEvent("packetwindowproperty");
+        newEvent("packetentityequipment");
+        newEvent("packetclosewindow");
+        newEvent("packetblockaction");
+        newEvent("packetblockbreakanim");
+        newEvent("packetmapchunkbulk");
+        newEvent("packetchangegamestate");
+        newEvent("packetmaps");
+        newEvent("packeteffect");
+        newEvent("packetstatistics");
+        newEvent("packetentityeffect");
+        newEvent("packetcombatevent");
+        newEvent("packetserverdifficulty");
+        newEvent("packetcamera");
+        newEvent("packetworldborder");
+        newEvent("packettitle");
+        newEvent("packetsetcompressionlevel");
+        newEvent("packetplayerlistheaderfooter");
+        newEvent("packetremoveentityeffect");
+        newEvent("packetplayerlistitem");
+        newEvent("packetkeepalive");
+        newEvent("packetplayerabilities");
+        newEvent("packettabcomplete");
+        newEvent("packetsoundeffect");
+        newEvent("packetresourcepack");
+        newEvent("packetupdateentitynbt");
+        newEvent("packetcustompayload");
+        newEvent("packetscoreboardobjective");
+        newEvent("packetupdatescore");
+        newEvent("packetdisplayscoreboard");
+        newEvent("packetteams");
+        newEvent("packetparticles");
+        newEvent("packetentityproperties");
+
+        newEvent("sendpacketanimation");
+        newEvent("sendpacketentityaction");
+        newEvent("sendpacketinput");
+        newEvent("sendpacketclosewindow");
+        newEvent("sendpacketclickwindow");
+        newEvent("sendpacketconfirmtransaction");
+        newEvent("sendpacketkeepalive");
+        newEvent("sendpacketchatmessage");
+        newEvent("sendpacketuseentity");
+        newEvent("sendpacketplayer");
+        newEvent("sendpacketplayerposition");
+        newEvent("sendpacketplayerlook");
+        newEvent("sendpacketplayerposlook");
+        newEvent("sendpacketplayerdigging");
+        newEvent("sendpacketplayerblockplacement");
+        newEvent("sendpackethelditemchange");
+        newEvent("sendpacketcreativeinventoryaction");
+        newEvent("sendpacketenchantitem");
+        newEvent("sendpacketupdatesign");
+        newEvent("sendpacketplayerabilities");
+        newEvent("sendpackettabcomplete");
+        newEvent("sendpacketclientsettings");
+        newEvent("sendpacketclientstatus");
+        newEvent("sendpacketcustompayload");
+        newEvent("sendpacketspectate");
+        newEvent("sendpacketresourcepackstatus");*/
         globalsFunctor(this);
         globalsRequireFunctor(this);
         globalsUpdateFunctor(this);
@@ -91,13 +201,13 @@ public class ModAPI {
         });
         getModAPI().set("clientBrand", ClientBrandRetriever.getClientModName());
 
+        setGlobal("enchantments", Enchantment.makeModDataStatic());
+        setGlobal("blocks", Blocks.makeModData());
+        setGlobal("items", Items.makeModData());
+        setGlobal("materials", Material.makeModDataStatic());
         setGlobal("mcinstance", mc);
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
-        getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
-            mc.fontRendererObj.drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
-            EaglerForge.jsconsolelog("your params : " + params.getString("msg")+" "+params.getFloat("x")+" "+params.getFloat("y")+" "+params.getInt("color"));
-        });
         getModAPI().setCallbackInt("getdisplayHeight", () -> {
             return mc.displayHeight;
         });
@@ -135,6 +245,15 @@ public class ModAPI {
 
 
     public void onUpdate() {
+        if (requiredList.contains("player") && mc.thePlayer != null) {
+            ModAPI.setGlobal("player", mc.thePlayer.makeModData());
+        }
+/*        if (requiredList.contains("network") && mc.thePlayer != null && mc.thePlayer.sendQueue != null) {
+            ModAPI.setGlobal("network", mc.thePlayer.sendQueue.makeModData());
+        }*/
+        if (requiredList.contains("settings") && mc.gameSettings != null) {
+            ModAPI.setGlobal("settings", mc.gameSettings.makeModData());
+        }
         ModAPI.callEvent("update", new ModData());
     }
 }

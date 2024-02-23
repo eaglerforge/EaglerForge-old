@@ -21,4 +21,8 @@
 + import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 + 
 
+> CHANGE  2 : 3  @  2 : 3
+
+~ 	public final Map<K, V> registryObjects = this.createUnderlyingMap();
+
 > EOF

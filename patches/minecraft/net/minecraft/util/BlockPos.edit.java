@@ -7,15 +7,67 @@
 
 > DELETE  2  @  2 : 3
 
-> INSERT  1 : 4  @  1
+> INSERT  1 : 7  @  1
 
 + 
 + import com.google.common.collect.AbstractIterator;
 + 
++ import net.eaglerforge.api.BaseData;
++ import net.eaglerforge.api.ModData;
++ import net.minecraft.client.Minecraft;
 
 > DELETE  1  @  1 : 5
 
-> INSERT  55 : 65  @  55
+> INSERT  32 : 78  @  32
+
++ 	@Override
++ 	public void loadModData(BaseData data) {
++ 		super.loadModData(data);
++ 	}
++ 
++ 	public static BlockPos fromModData(BaseData data) {
++ 		return new BlockPos(Vec3i.fromModData(data));
++ 	}
++ 
++ 	@Override
++ 	public ModData makeModData() {
++ 		ModData data = super.makeModData();
++ 		data.setCallbackVoid("reload", () -> {
++ 			loadModData(data);
++ 		});
++ 		data.setCallbackObject("getRef", () -> {
++ 			return this;
++ 		});
++ 		data.setCallbackObjectWithDataArg("add", (BaseData params) -> {
++ 			return add(params.getInt("x"), params.getInt("y"), params.getInt("z")).makeModData();
++ 		});
++ 		data.setCallbackObjectWithDataArg("up", (BaseData params) -> {
++ 			return up(params.getInt("n")).makeModData();
++ 		});
++ 		data.setCallbackObjectWithDataArg("down", (BaseData params) -> {
++ 			return down(params.getInt("n")).makeModData();
++ 		});
++ 		data.setCallbackObjectWithDataArg("north", (BaseData params) -> {
++ 			return north(params.getInt("n")).makeModData();
++ 		});
++ 		data.setCallbackObjectWithDataArg("south", (BaseData params) -> {
++ 			return south(params.getInt("n")).makeModData();
++ 		});
++ 		data.setCallbackObjectWithDataArg("east", (BaseData params) -> {
++ 			return east(params.getInt("n")).makeModData();
++ 		});
++ 		data.setCallbackObjectWithDataArg("west", (BaseData params) -> {
++ 			return west(params.getInt("n")).makeModData();
++ 		});
++ 		data.setCallbackObject("getBlock", () -> {
++ 			loadModData(data);
++ 			return Minecraft.getMinecraft().theWorld.getBlock(this).makeModData();
++ 		});
++ 		return data;
++ 	}
++ 
+
+> INSERT  23 : 33  @  23
 
 + 	/**
 + 	 * eagler

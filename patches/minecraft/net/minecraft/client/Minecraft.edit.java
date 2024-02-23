@@ -134,11 +134,12 @@
 
 ~ public class Minecraft extends ModData implements IThreadListener {
 
-> CHANGE  2 : 3  @  2 : 9
+> CHANGE  2 : 4  @  2 : 10
 
 ~ 	public static final boolean isRunningOnMac = false;
+~ 	public ServerData currentServerData;
 
-> DELETE  12  @  12 : 14
+> DELETE  11  @  11 : 13
 
 > INSERT  11 : 12  @  11
 

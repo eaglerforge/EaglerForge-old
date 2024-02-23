@@ -9,4 +9,15 @@
 
 + 
 
+> CHANGE  7 : 15  @  7 : 15
+
+~ 	public int mapId;
+~ 	public byte mapScale;
+~ 	public Vec4b[] mapVisiblePlayersVec4b;
+~ 	public int mapMinX;
+~ 	public int mapMinY;
+~ 	public int mapMaxX;
+~ 	public int mapMaxY;
+~ 	public byte[] mapDataBytes;
+
 > EOF

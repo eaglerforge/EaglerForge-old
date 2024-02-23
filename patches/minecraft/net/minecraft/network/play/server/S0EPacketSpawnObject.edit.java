@@ -9,4 +9,17 @@
 
 + 
 
+> CHANGE  7 : 17  @  7 : 17
+
+~ 	public int entityId;
+~ 	public int x;
+~ 	public int y;
+~ 	public int z;
+~ 	public int speedX;
+~ 	public int speedY;
+~ 	public int speedZ;
+~ 	public int pitch;
+~ 	public int yaw;
+~ 	public int type;
+
 > EOF

@@ -9,4 +9,11 @@
 
 + 
 
+> CHANGE  7 : 11  @  7 : 11
+
+~ 	public BlockPos blockPosition;
+~ 	public int instrument;
+~ 	public int pitch;
+~ 	public Block block;
+
 > EOF

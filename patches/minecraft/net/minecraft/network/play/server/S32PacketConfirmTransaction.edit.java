@@ -9,4 +9,9 @@
 
 + 
 
+> CHANGE  5 : 7  @  5 : 7
+
+~ 	public int windowId;
+~ 	public short actionNumber;
+
 > EOF

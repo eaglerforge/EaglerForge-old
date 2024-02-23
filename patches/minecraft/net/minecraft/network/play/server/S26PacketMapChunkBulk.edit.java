@@ -11,4 +11,11 @@
 
 > DELETE  3  @  3 : 4
 
+> CHANGE  3 : 7  @  3 : 7
+
+~ 	public int[] xPositions;
+~ 	public int[] zPositions;
+~ 	public S21PacketChunkData.Extracted[] chunksData;
+~ 	public boolean isOverworld;
+
 > EOF

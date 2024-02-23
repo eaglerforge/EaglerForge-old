@@ -9,4 +9,16 @@
 
 + 
 
+> CHANGE  6 : 15  @  6 : 15
+
+~ 	public S44PacketWorldBorder.Action action;
+~ 	public int size;
+~ 	public double centerX;
+~ 	public double centerZ;
+~ 	public double targetSize;
+~ 	public double diameter;
+~ 	public long timeUntilTarget;
+~ 	public int warningTime;
+~ 	public int warningDistance;
+
 > EOF

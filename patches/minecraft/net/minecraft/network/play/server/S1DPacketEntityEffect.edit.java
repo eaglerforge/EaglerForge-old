@@ -9,4 +9,12 @@
 
 + 
 
+> CHANGE  6 : 11  @  6 : 11
+
+~ 	public int entityId;
+~ 	public byte effectId;
+~ 	public byte amplifier;
+~ 	public int duration;
+~ 	public byte hideParticles;
+
 > EOF

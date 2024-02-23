@@ -9,4 +9,8 @@
 
 + 
 
+> CHANGE  6 : 7  @  6 : 7
+
+~ 	public IChatComponent reason;
+
 > EOF

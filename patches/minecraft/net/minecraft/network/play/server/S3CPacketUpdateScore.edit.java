@@ -9,4 +9,11 @@
 
 + 
 
+> CHANGE  7 : 11  @  7 : 11
+
+~ 	public String name = "";
+~ 	public String objective = "";
+~ 	public int value;
+~ 	public S3CPacketUpdateScore.Action action;
+
 > EOF

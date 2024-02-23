@@ -9,4 +9,12 @@
 
 + 
 
+> CHANGE  6 : 11  @  6 : 11
+
+~ 	public S45PacketTitle.Type type;
+~ 	public IChatComponent message;
+~ 	public int fadeInTime;
+~ 	public int displayTime;
+~ 	public int fadeOutTime;
+
 > EOF

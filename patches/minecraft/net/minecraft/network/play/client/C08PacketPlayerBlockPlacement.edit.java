@@ -9,4 +9,13 @@
 
 + 
 
+> CHANGE  8 : 14  @  8 : 14
+
+~ 	public BlockPos position;
+~ 	public int placedBlockDirection;
+~ 	public ItemStack stack;
+~ 	public float facingX;
+~ 	public float facingY;
+~ 	public float facingZ;
+
 > EOF

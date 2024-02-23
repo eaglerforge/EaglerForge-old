@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  7 : 10  @  7 : 10
+
+~ 	public String objectiveName;
+~ 	public String objectiveValue;
+~ 	public IScoreObjectiveCriteria.EnumRenderType type;
+
 > EOF

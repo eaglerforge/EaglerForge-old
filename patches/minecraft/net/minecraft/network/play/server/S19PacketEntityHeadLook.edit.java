@@ -9,4 +9,9 @@
 
 + 
 
+> CHANGE  7 : 9  @  7 : 9
+
+~ 	public int entityId;
+~ 	public byte yaw;
+
 > EOF

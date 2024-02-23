@@ -14,7 +14,11 @@
 ~ import com.google.common.collect.Lists;
 ~ 
 
-> CHANGE  35 : 36  @  35 : 36
+> CHANGE  7 : 8  @  7 : 8
+
+~ 	public int entityId;
+
+> CHANGE  27 : 28  @  27 : 28
 
 ~ 				EaglercraftUUID uuid = parPacketBuffer.readUuid();
 

@@ -15,9 +15,11 @@
 
 > DELETE  1  @  1 : 3
 
-> INSERT  3 : 25  @  3
+> INSERT  3 : 27  @  3
 
 + 
++ import net.eaglerforge.api.BaseData;
++ import net.eaglerforge.api.ModData;
 + import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
 + import net.minecraft.nbt.CompressedStreamTools;
 + import net.minecraft.nbt.NBTTagCompound;
@@ -44,7 +46,11 @@
 
 > DELETE  5  @  5 : 11
 
-> DELETE  3  @  3 : 8
+> CHANGE  1 : 2  @  1 : 2
+
+~ public class GameSettings extends ModData {
+
+> DELETE  1  @  1 : 6
 
 > DELETE  1  @  1 : 9
 
@@ -129,7 +135,170 @@
 
 ~ 		this.renderDistanceChunks = 4;
 
-> DELETE  3  @  3 : 18
+> CHANGE  3 : 75  @  3 : 16
+
+~ 	public void loadModData(BaseData data) {
+~ 		mouseSensitivity = data.getFloat("mouseSensitivity");
+~ 		invertMouse = data.getBoolean("invertMouse");
+~ 		renderDistanceChunks = data.getInt("renderDistanceChunks");
+~ 		viewBobbing = data.getBoolean("viewBobbing");
+~ 		anaglyph = data.getBoolean("anaglyph");
+~ 		fboEnable = data.getBoolean("fboEnable");
+~ 		limitFramerate = data.getInt("limitFramerate");
+~ 		clouds = data.getInt("clouds");
+~ 
+~ 		fancyGraphics = data.getBoolean("fancyGraphics");
+~ 		ambientOcclusion = data.getInt("ambientOcclusion");
+~ 		chatVisibility = EntityPlayer.EnumChatVisibility.valueOf(data.getString("chatVisibility"));
+~ 		chatColours = data.getBoolean("chatColours");
+~ 		chatLinks = data.getBoolean("chatLinks");
+~ 		chatLinksPrompt = data.getBoolean("chatLinksPrompt");
+~ 		chatOpacity = data.getFloat("chatOpacity");
+~ 		enableVsync = data.getBoolean("enableVsync");
+~ 		snooperEnabled = data.getBoolean("snooperEnabled");
+~ 
+~ 		allowBlockAlternatives = data.getBoolean("allowBlockAlternatives");
+~ 		reducedDebugInfo = data.getBoolean("reducedDebugInfo");
+~ 		hideServerAddress = data.getBoolean("hideServerAddress");
+~ 		pauseOnLostFocus = data.getBoolean("pauseOnLostFocus");
+~ 		touchscreen = data.getBoolean("touchscreen");
+~ 		overrideWidth = data.getInt("overrideWidth");
+~ 		overrideHeight = data.getInt("overrideHeight");
+~ 		heldItemTooltips = data.getBoolean("heldItemTooltips");
+~ 		chatScale = data.getFloat("chatScale");
+~ 		chatWidth = data.getFloat("chatWidth");
+~ 
+~ 		chatHeightUnfocused = data.getFloat("chatHeightUnfocused");
+~ 		chatHeightFocused = data.getFloat("chatHeightFocused");
+~ 		fovSetting = data.getFloat("fovSetting");
+~ 		gammaSetting = data.getFloat("gammaSetting");
+~ 		saturation = data.getFloat("saturation");
+~ 
+~ 		guiScale = data.getInt("guiScale");
+~ 		fxaa = data.getInt("fxaa");
+~ 		particleSetting = data.getInt("particleSetting");
+~ 
+~ 		thirdPersonView = data.getInt("thirdPersonView");
+~ 		mipmapLevels = data.getInt("mipmapLevels");
+~ 
+~ 		forceUnicodeFont = data.getBoolean("forceUnicodeFont");
+~ 		hudFps = data.getBoolean("hudFps");
+~ 		hudCoords = data.getBoolean("hudCoords");
+~ 		hudPlayer = data.getBoolean("hudPlayer");
+~ 		hudWorld = data.getBoolean("hudWorld");
+~ 		hudStats = data.getBoolean("hudStats");
+~ 		hud24h = data.getBoolean("hud24h");
+~ 		chunkFix = data.getBoolean("chunkFix");
+~ 		fog = data.getBoolean("fog");
+~ 
+~ 		hideGUI = data.getBoolean("hideGUI");
+~ 		smoothCamera = data.getBoolean("smoothCamera");
+~ 		debugCamEnable = data.getBoolean("debugCamEnable");
+~ 		showDebugInfo = data.getBoolean("showDebugInfo");
+~ 		showDebugProfilerChart = data.getBoolean("showDebugProfilerChart");
+~ 		showInventoryAchievementHint = data.getBoolean("showInventoryAchievementHint");
+~ 
+~ 		difficulty = EnumDifficulty.valueOf(data.getString("difficulty"));
+~ 
+~ 		lastServer = data.getString("lastServer");
+~ 		language = data.getString("language");
+~ 
+~ 		BaseData[] parBaseDatas = data.getBaseDataArr("keyBindings");
+~ 		for (int i = 0; i < keyBindings.length; i++) {
+~ 			if (keyBindings[i] != null && parBaseDatas[i] != null) {
+~ 				keyBindings[i].loadModData(parBaseDatas[i]);
+~ 			}
+~ 		}
+
+> INSERT  2 : 89  @  2
+
++ 	public ModData makeModData() {
++ 		ModData data = new ModData();
++ 
++ 		data.setCallbackVoid("reload", () -> {
++ 			loadModData(data);
++ 		});
++ 
++ 		data.setCallbackObject("getRef", () -> {
++ 			return this;
++ 		});
++ 
++ 		ModData[] parModDatas = new ModData[keyBindings.length];
++ 		for (int i = 0; i < keyBindings.length; i++) {
++ 			if (keyBindings[i] != null) {
++ 				parModDatas[i] = keyBindings[i].makeModData();
++ 			}
++ 		}
++ 
++ 		data.set("keyBindings", parModDatas);
++ 
++ 		data.set("mouseSensitivity", mouseSensitivity);
++ 		data.set("invertMouse", invertMouse);
++ 		data.set("renderDistanceChunks", renderDistanceChunks);
++ 		data.set("viewBobbing", viewBobbing);
++ 		data.set("anaglyph", anaglyph);
++ 		data.set("fboEnable", fboEnable);
++ 		data.set("limitFramerate", limitFramerate);
++ 		data.set("clouds", clouds);
++ 
++ 		data.set("fancyGraphics", fancyGraphics);
++ 		data.set("ambientOcclusion", ambientOcclusion);
++ 		data.set("chatVisibility", chatVisibility.name());
++ 		data.set("chatColours", chatColours);
++ 		data.set("chatLinks", chatLinks);
++ 		data.set("chatLinksPrompt", chatLinksPrompt);
++ 		data.set("chatOpacity", chatOpacity);
++ 		data.set("snooperEnabled", snooperEnabled);
++ 		data.set("enableVsync", enableVsync);
++ 
++ 		data.set("allowBlockAlternatives", allowBlockAlternatives);
++ 		data.set("reducedDebugInfo", reducedDebugInfo);
++ 		data.set("hideServerAddress", hideServerAddress);
++ 		data.set("advancedItemTooltips", advancedItemTooltips);
++ 		data.set("pauseOnLostFocus", pauseOnLostFocus);
++ 		data.set("touchscreen", touchscreen);
++ 		data.set("overrideWidth", overrideWidth);
++ 		data.set("overrideHeight", overrideHeight);
++ 		data.set("heldItemTooltips", heldItemTooltips);
++ 		data.set("chatScale", chatScale);
++ 		data.set("chatWidth", chatWidth);
++ 
++ 		data.set("chatHeightUnfocused", chatHeightUnfocused);
++ 		data.set("chatHeightFocused", chatHeightFocused);
++ 		data.set("fovSetting", fovSetting);
++ 		data.set("gammaSetting", gammaSetting);
++ 		data.set("saturation", saturation);
++ 
++ 		data.set("guiScale", guiScale);
++ 		data.set("fxaa", fxaa);
++ 		data.set("particleSetting", particleSetting);
++ 		data.set("thirdPersonView", thirdPersonView);
++ 		data.set("mipmapLevels", mipmapLevels);
++ 
++ 		data.set("forceUnicodeFont", forceUnicodeFont);
++ 		data.set("hudFps", hudFps);
++ 		data.set("hudCoords", hudCoords);
++ 		data.set("hudPlayer", hudPlayer);
++ 		data.set("hudWorld", hudWorld);
++ 		data.set("hudStats", hudStats);
++ 		data.set("hud24h", hud24h);
++ 		data.set("chunkFix", chunkFix);
++ 		data.set("fog", fog);
++ 		data.set("hideGUI", hideGUI);
++ 		data.set("smoothCamera", smoothCamera);
++ 		data.set("debugCamEnable", debugCamEnable);
++ 		data.set("showDebugInfo", showDebugInfo);
++ 		data.set("showDebugProfilerChart", showDebugProfilerChart);
++ 		data.set("showInventoryAchievementHint", showInventoryAchievementHint);
++ 
++ 		data.set("difficulty", difficulty.name());
++ 
++ 		data.set("lastServer", lastServer);
++ 		data.set("language", language);
++ 
++ 		return data;
++ 	}
++ 
 
 > CHANGE  3 : 4  @  3 : 4
 

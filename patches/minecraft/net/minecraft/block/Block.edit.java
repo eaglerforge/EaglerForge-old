@@ -5,12 +5,113 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  3 : 5  @  3 : 135
+> CHANGE  3 : 8  @  3 : 135
 
+~ 
+~ import net.eaglerforge.api.BaseData;
+~ import net.eaglerforge.api.ModData;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 ~ 
 
-> CHANGE  354 : 355  @  354 : 355
+> CHANGE  31 : 32  @  31 : 32
+
+~ public class Block extends ModData {
+
+> INSERT  50 : 51  @  50
+
++ 	protected boolean fullCube = true;
+
+> INSERT  24 : 26  @  24
+
++ 	public boolean noRender = false;
++ 	public boolean forceRender = false;
+
+> INSERT  1 : 73  @  1
+
++ 	public void loadModData(BaseData data) {
++ 		unlocalizedName = data.getString("unlocalizedName");
++ 		slipperiness = data.getFloat("slipperiness");
++ 		blockParticleGravity = data.getFloat("blockParticleGravity");
++ 
++ 		minX = data.getDouble("minX");
++ 		minY = data.getDouble("minY");
++ 		minZ = data.getDouble("minY");
++ 		maxX = data.getDouble("maxX");
++ 		maxY = data.getDouble("maxY");
++ 		maxZ = data.getDouble("maxZ");
++ 
++ 		enableStats = data.getBoolean("enableStats");
++ 		needsRandomTick = data.getBoolean("needsRandomTick");
++ 		isBlockContainer = data.getBoolean("isBlockContainer");
++ 		useNeighborBrightness = data.getBoolean("useNeighborBrightness");
++ 		translucent = data.getBoolean("translucent");
++ 		fullBlock = data.getBoolean("fullBlock");
++ 
++ 		lightOpacity = data.getInt("lightOpacity");
++ 		lightValue = data.getInt("lightValue");
++ 
++ 		blockHardness = data.getFloat("blockHardness");
++ 		blockResistance = data.getFloat("blockResistance");
++ 
++ 		noRender = data.getBoolean("noRender");
++ 		forceRender = data.getBoolean("forceRender");
++ 		fullCube = data.getBoolean("fullCube");
++ 	}
++ 
++ 	public ModData makeModData() {
++ 		ModData data = new ModData();
++ 		data.set("unlocalizedName", unlocalizedName);
++ 		data.set("slipperiness", slipperiness);
++ 		data.set("blockParticleGravity", blockParticleGravity);
++ 
++ 		data.set("minX", minX);
++ 		data.set("minY", minY);
++ 		data.set("minZ", minZ);
++ 		data.set("maxX", maxX);
++ 		data.set("maxY", maxY);
++ 		data.set("maxZ", maxZ);
++ 
++ 		data.set("blockMaterial", blockMaterial.makeModData());
++ 
++ 		data.set("enableStats", enableStats);
++ 		data.set("needsRandomTick", needsRandomTick);
++ 		data.set("isBlockContainer", isBlockContainer);
++ 		data.set("useNeighborBrightness", useNeighborBrightness);
++ 		data.set("translucent", translucent);
++ 		data.set("fullBlock", fullBlock);
++ 		data.set("fullCube", fullCube);
++ 
++ 		data.set("lightOpacity", lightOpacity);
++ 		data.set("lightValue", lightValue);
++ 		data.set("blockHardness", blockHardness);
++ 		data.set("blockResistance", blockResistance);
++ 		data.set("noRender", noRender);
++ 		data.set("forceRender", forceRender);
++ 
++ 		data.setCallbackInt("getID", () -> {
++ 			return getIdFromBlock(this);
++ 		});
++ 		data.setCallbackVoid("reload", () -> {
++ 			loadModData(data);
++ 		});
++ 		data.setCallbackObject("getRef", () -> {
++ 			return this;
++ 		});
++ 		return data;
++ 	}
++ 
+
+> CHANGE  132 : 133  @  132 : 133
+
+~ 		return this.fullCube && (!this.noRender);
+
+> INSERT  67 : 70  @  67
+
++ 		if (this.noRender || this.forceRender) {
++ 			return this.forceRender;
++ 		}
+
+> CHANGE  47 : 48  @  47 : 48
 
 ~ 	public void randomTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
 

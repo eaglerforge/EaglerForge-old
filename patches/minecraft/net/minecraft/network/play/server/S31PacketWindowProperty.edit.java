@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  5 : 8  @  5 : 8
+
+~ 	public int windowId;
+~ 	public int varIndex;
+~ 	public int varValue;
+
 > EOF

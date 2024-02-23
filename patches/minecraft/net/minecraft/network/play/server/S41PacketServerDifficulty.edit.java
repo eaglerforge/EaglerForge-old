@@ -9,4 +9,9 @@
 
 + 
 
+> CHANGE  6 : 8  @  6 : 8
+
+~ 	public EnumDifficulty difficulty;
+~ 	public boolean difficultyLocked;
+
 > EOF

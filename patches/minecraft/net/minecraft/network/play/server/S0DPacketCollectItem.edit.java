@@ -9,4 +9,9 @@
 
 + 
 
+> CHANGE  5 : 7  @  5 : 7
+
+~ 	public int collectedItemEntityId;
+~ 	public int entityId;
+
 > EOF

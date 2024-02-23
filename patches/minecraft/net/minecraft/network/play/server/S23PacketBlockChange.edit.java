@@ -9,4 +9,8 @@
 
 + 
 
+> CHANGE  9 : 10  @  9 : 10
+
+~ 	public BlockPos blockPosition;
+
 > EOF

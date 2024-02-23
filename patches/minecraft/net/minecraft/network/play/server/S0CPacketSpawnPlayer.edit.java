@@ -10,11 +10,18 @@
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
 ~ 
 
-> CHANGE  11 : 12  @  11 : 12
+> CHANGE  10 : 18  @  10 : 18
 
-~ 	private EaglercraftUUID playerId;
+~ 	public int entityId;
+~ 	public EaglercraftUUID playerId;
+~ 	public int x;
+~ 	public int y;
+~ 	public int z;
+~ 	public byte yaw;
+~ 	public byte pitch;
+~ 	public int currentItem;
 
-> CHANGE  65 : 66  @  65 : 66
+> CHANGE  59 : 60  @  59 : 60
 
 ~ 	public EaglercraftUUID getPlayer() {
 
