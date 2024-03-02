@@ -18,13 +18,14 @@
 
 + import java.util.Locale;
 
-> INSERT  1 : 14  @  1
+> INSERT  1 : 15  @  1
 
 + import java.util.TimeZone;
 + 
 + import com.google.common.base.Strings;
 + import com.google.common.collect.Lists;
 + 
++ import net.eaglerforge.api.ModAPI;
 + import net.lax1dude.eaglercraft.v1_8.Display;
 + import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 + import net.lax1dude.eaglercraft.v1_8.HString;
@@ -299,7 +300,11 @@
 + 		}
 + 
 
-> CHANGE  10 : 11  @  10 : 11
+> INSERT  5 : 6  @  5
+
++ 					"ModAPI: " + ModAPI.version, this.mc.debug, this.mc.renderGlobal.getDebugInfoRenders(),
+
+> CHANGE  5 : 6  @  5 : 6
 
 ~ 					HString.format("Chunk-relative: %d %d %d", new Object[] { Integer.valueOf(blockpos.getX() & 15),
 

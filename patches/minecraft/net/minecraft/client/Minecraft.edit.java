@@ -748,19 +748,7 @@
 
 > DELETE  36  @  36 : 41
 
-> INSERT  11 : 20  @  11
-
-+ 	public static ModData makeModData() {
-+ 		ModData mcglobal = new ModData();
-+ 		mcglobal.setCallbackString("currentScreen", () -> {
-+ 			return getMinecraft().currentScreen.toString();
-+ 		});
-+ 
-+ 		return mcglobal;
-+ 	}
-+ 
-
-> CHANGE  1 : 2  @  1 : 2
+> CHANGE  12 : 13  @  12 : 13
 
 ~ 		return this.addScheduledTaskFuture(new Runnable() {
 

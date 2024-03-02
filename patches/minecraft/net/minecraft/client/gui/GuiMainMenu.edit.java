@@ -161,16 +161,14 @@
 + 		}
 + 
 
-> CHANGE  6 : 7  @  6 : 7
+> CHANGE  8 : 11  @  8 : 10
 
-~ 		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, i + 72 + 24, 98, 20,
-
-> CHANGE  1 : 9  @  1 : 5
-
-~ 		this.buttonList.add(new GuiButton(4, this.width / 2 + 2, i + 72 + 24, 98, 20,
+~ 		this.buttonList.add(new GuiButton(4, this.width / 2 + 2, i + 72 + 12, 98, 20,
 ~ 				I18n.format("menu.editProfile", new Object[0])));
 ~ 
-~ 		this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, i + 72 + 24));
+
+> CHANGE  1 : 5  @  1 : 2
+
 ~ 		if (isFork) {
 ~ 			this.openGLWarning1 = EaglercraftVersion.mainMenuStringE;
 ~ 			this.openGLWarning2 = EaglercraftVersion.mainMenuStringF;
@@ -186,11 +184,11 @@
 
 > CHANGE  10 : 25  @  10 : 12
 
-~ 		this.buttonList.add(new GuiButton(69420, this.width / 2 - 100, parInt1 + parInt2 * 2,
+~ 		this.buttonList.add(new GuiButton(69420, this.width / 2 + 2, parInt1 + parInt2 * 2, 98, 20,
 ~ 				I18n.format("eaglerforge.menu.mods")));
 ~ 		if (EaglercraftVersion.mainMenuEnableGithubButton) {
-~ 			this.buttonList.add(
-~ 					new GuiButton(14, this.width / 2 - 100, parInt1 + parInt2 * 3, I18n.format("menu.forkOnGitlab")));
+~ 			this.buttonList.add(new GuiButton(14, this.width / 2 - 100, parInt1 + parInt2 * 2, 98, 20,
+~ 					I18n.format("menu.forkOnGitlab")));
 ~ 		} else {
 ~ 			if (EagRuntime.getConfiguration().isEnableDownloadOfflineButton()
 ~ 					&& (EagRuntime.getConfiguration().getDownloadOfflineButtonLink() != null

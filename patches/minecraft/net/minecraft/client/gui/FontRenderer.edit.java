@@ -7,8 +7,10 @@
 
 > DELETE  2  @  2 : 6
 
-> CHANGE  4 : 11  @  4 : 6
+> CHANGE  4 : 13  @  4 : 6
 
+~ 
+~ import net.eaglerforge.api.ModData;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 ~ 
 ~ import net.lax1dude.eaglercraft.v1_8.HString;

@@ -6,6 +6,7 @@ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ChatComponentText;
 import me.otterdev.UwUAPI;
 import org.teavm.jso.JSBody;
@@ -25,6 +26,7 @@ import net.minecraft.client.gui.Gui;
 public class ModAPI {
 
     private static Minecraft mc;
+    private static ScaledResolution sr;
 
     private static Gui gui;
     public ArrayList<String> requiredList;
@@ -212,12 +214,18 @@ public class ModAPI {
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
         setGlobal("emptygui", EmptyGui.makeModData());
-        setGlobal("mc", mc.makeModData());
+        setGlobal("ScaledResolution", ScaledResolution.makeModData());
+        getModAPI().setCallbackString("currentScreen", () -> {
+            return mc.currentScreen.toString();
+        });
         getModAPI().setCallbackInt("getdisplayHeight", () -> {
             return mc.displayHeight;
         });
         getModAPI().setCallbackInt("getdisplayWidth", () -> {
             return mc.displayWidth;
+        });
+        getModAPI().setCallbackInt("getFONT_HEIGHT", () -> {
+            return mc.fontRendererObj.FONT_HEIGHT;
         });
         getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
             mc.fontRendererObj.drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));
