@@ -20,7 +20,7 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 56  @  1 : 4
+> CHANGE  1 : 57  @  1 : 4
 
 ~ 
 ~ import net.eaglerforge.EaglerForge;
@@ -28,6 +28,7 @@
 ~ import net.eaglerforge.api.ModAPI;
 ~ import net.eaglerforge.api.ModData;
 ~ import net.eaglerforge.api.ModLoader;
+~ import net.eaglerforge.gui.EmptyGui;
 ~ import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
 ~ 
 ~ import org.apache.commons.lang3.Validate;
@@ -743,11 +744,23 @@
 
 > CHANGE  2 : 3  @  2 : 6
 
-~ 				return "Definitely Not; You're an eagler";
+~ 				return "true";
 
 > DELETE  36  @  36 : 41
 
-> CHANGE  12 : 13  @  12 : 13
+> INSERT  11 : 20  @  11
+
++ 	public static ModData makeModData() {
++ 		ModData mcglobal = new ModData();
++ 		mcglobal.setCallbackString("currentScreen", () -> {
++ 			return getMinecraft().currentScreen.toString();
++ 		});
++ 
++ 		return mcglobal;
++ 	}
++ 
+
+> CHANGE  1 : 2  @  1 : 2
 
 ~ 		return this.addScheduledTaskFuture(new Runnable() {
 

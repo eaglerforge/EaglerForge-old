@@ -1,5 +1,6 @@
 package net.eaglerforge.api;
 
+import net.eaglerforge.gui.EmptyGui;
 import net.eaglerforge.gui.ModGUI;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
@@ -24,6 +25,8 @@ import net.minecraft.client.gui.Gui;
 public class ModAPI {
 
     private static Minecraft mc;
+
+    private static Gui gui;
     public ArrayList<String> requiredList;
     public static final Logger log = LogManager.getLogger();
     public static String version = projectForkVersion;
@@ -196,8 +199,8 @@ public class ModAPI {
         getModAPI().setCallbackVoid("rightClickMouse", () -> {
             mc.rightClickMouse();
         });
-        getModAPI().setCallbackVoid("getFPS", () -> {
-            getDebugFPS();
+        getModAPI().setCallbackInt("getFPS", () -> {
+            return getDebugFPS();
         });
         getModAPI().set("clientBrand", ClientBrandRetriever.getClientModName());
 
@@ -208,6 +211,8 @@ public class ModAPI {
         setGlobal("mcinstance", mc);
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
+        setGlobal("emptygui", EmptyGui.makeModData());
+        setGlobal("mc", mc.makeModData());
         getModAPI().setCallbackInt("getdisplayHeight", () -> {
             return mc.displayHeight;
         });
@@ -221,7 +226,7 @@ public class ModAPI {
             mc.fontRendererObj.drawString(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"), false);
         });
         getModAPI().setCallbackVoidWithDataArg("drawRect", (BaseData params) -> {
-            Gui.drawRect(params.getInt("left"), params.getInt("top"), params.getInt("right"), params.getInt("bottom"), params.getInt("color"));
+            gui.drawRect(params.getInt("left"), params.getInt("top"), params.getInt("right"), params.getInt("bottom"), params.getInt("color"));
         });
         ModGUI.loadFont();
     }
