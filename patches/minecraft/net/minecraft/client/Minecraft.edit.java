@@ -5,8 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 4  @  2 : 17
+> CHANGE  2 : 6  @  2 : 17
 
+~ import static net.eaglerforge.EaglerForge.removeanvil;
+~ 
 ~ import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL._wglBindFramebuffer;
 ~ 
 
@@ -161,8 +163,9 @@
 
 > DELETE  9  @  9 : 11
 
-> CHANGE  4 : 5  @  4 : 7
+> CHANGE  3 : 5  @  3 : 7
 
+~ 	public static ResourceLocation mojangLogo;
 ~ 	private final List<FutureTask<?>> scheduledTasks = new LinkedList();
 
 > INSERT  14 : 18  @  14
@@ -300,10 +303,11 @@
 
 ~ 			mainMenu = new GuiConnecting(mainMenu, this, this.serverName, this.serverPort);
 
-> INSERT  2 : 4  @  2
+> INSERT  2 : 5  @  2
 
 + 		this.displayGuiScreen(new GuiScreenEditProfile(mainMenu));
 + 
++ 		removeanvil();
 
 > DELETE  3  @  3 : 6
 

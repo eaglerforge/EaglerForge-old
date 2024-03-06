@@ -188,6 +188,7 @@ public class ModAPI {
         newEvent("sendpacketcustompayload");
         newEvent("sendpacketspectate");
         newEvent("sendpacketresourcepackstatus");*/
+        newEvent("packetchat");
         globalsFunctor(this);
         globalsRequireFunctor(this);
         globalsUpdateFunctor(this);

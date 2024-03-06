@@ -9,9 +9,12 @@
 
 > DELETE  4  @  4 : 6
 
-> INSERT  1 : 19  @  1
+> INSERT  1 : 22  @  1
 
 + 
++ import net.eaglerforge.api.BaseData;
++ import net.eaglerforge.api.ModAPI;
++ import net.eaglerforge.api.ModData;
 + import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 + import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 + import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
@@ -56,7 +59,11 @@
 
 > DELETE  32  @  32 : 34
 
-> CHANGE  3 : 4  @  3 : 4
+> CHANGE  1 : 2  @  1 : 2
+
+~ public class NetHandlerPlayClient extends ModData implements INetHandlerPlayClient {
+
+> CHANGE  1 : 2  @  1 : 2
 
 ~ 	private final EaglercraftNetworkManager netManager;
 
@@ -148,7 +155,22 @@
 
 > DELETE  7  @  7 : 8
 
-> DELETE  23  @  23 : 24
+> CHANGE  23 : 37  @  23 : 24
+
+~ 		ModData eventData = new ModData();
+~ 		eventData.set("preventDefault", false);
+~ 		eventData.set("type", packetIn.type);
+~ 		eventData.set("chat", packetIn.chatComponent.getFormattedText());
+~ 		BaseData newEvent = ModAPI.callEvent("packetchat", eventData);
+~ 		if (newEvent.has("preventDefault") && newEvent.getBoolean("preventDefault") == true) {
+~ 			return;
+~ 		}
+~ 		packetIn.type = newEvent.has("type") ? newEvent.getByte("type") : packetIn.type;
+~ 		if (newEvent.has("chat")
+~ 				&& (newEvent.getString("chat").length() != packetIn.chatComponent.getFormattedText().length())) {
+~ 			packetIn.chatComponent = new ChatComponentText(newEvent.getString("chat"));
+~ 		}
+~ 
 
 > DELETE  9  @  9 : 10
 
