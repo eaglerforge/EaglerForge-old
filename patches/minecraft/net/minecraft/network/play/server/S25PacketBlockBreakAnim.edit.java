@@ -9,10 +9,4 @@
 
 + 
 
-> CHANGE  6 : 9  @  6 : 9
-
-~ 	public int breakerId;
-~ 	public BlockPos position;
-~ 	public int progress;
-
 > EOF

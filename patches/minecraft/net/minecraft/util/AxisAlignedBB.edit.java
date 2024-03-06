@@ -5,10 +5,11 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 4  @  2 : 6
+> CHANGE  2 : 5  @  2 : 6
 
 ~ import net.eaglerforge.api.BaseData;
 ~ import net.eaglerforge.api.ModData;
+~ import org.teavm.jso.JSObject;
 
 > CHANGE  1 : 8  @  1 : 8
 
@@ -20,7 +21,7 @@
 ~ 	public double maxY;
 ~ 	public double maxZ;
 
-> INSERT  278 : 348  @  278
+> INSERT  278 : 349  @  278
 
 + 
 + 	public void loadModData(BaseData data) {
@@ -92,5 +93,6 @@
 + 
 + 		return data;
 + 	}
++ 
 
 > EOF

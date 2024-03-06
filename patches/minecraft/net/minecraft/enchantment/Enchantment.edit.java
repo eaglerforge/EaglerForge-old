@@ -57,4 +57,9 @@
 + 	}
 + 
 
+> CHANGE  67 : 69  @  67 : 68
+
+~ 		for (int i = 0; i < enchantmentsList.length; ++i) {
+~ 			Enchantment enchantment = enchantmentsList[i];
+
 > EOF

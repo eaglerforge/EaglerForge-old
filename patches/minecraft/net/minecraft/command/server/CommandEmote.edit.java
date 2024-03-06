@@ -17,11 +17,7 @@
 
 + 
 
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		return "net/me";
-
-> INSERT  16 : 21  @  16
+> INSERT  18 : 23  @  18
 
 + 			if (MinecraftServer.getServer().worldServers[0].getWorldInfo().getGameRulesInstance()
 + 					.getBoolean("colorCodes")) {

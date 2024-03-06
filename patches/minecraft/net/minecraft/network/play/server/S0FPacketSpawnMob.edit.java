@@ -9,18 +9,4 @@
 
 + 
 
-> CHANGE  9 : 20  @  9 : 20
-
-~ 	public int entityId;
-~ 	public int type;
-~ 	public int x;
-~ 	public int y;
-~ 	public int z;
-~ 	public int velocityX;
-~ 	public int velocityY;
-~ 	public int velocityZ;
-~ 	public byte yaw;
-~ 	public byte pitch;
-~ 	public byte headPitch;
-
 > EOF

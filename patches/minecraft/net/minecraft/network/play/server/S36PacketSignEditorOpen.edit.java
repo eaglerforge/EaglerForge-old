@@ -9,8 +9,4 @@
 
 + 
 
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	public BlockPos signPosition;
-
 > EOF

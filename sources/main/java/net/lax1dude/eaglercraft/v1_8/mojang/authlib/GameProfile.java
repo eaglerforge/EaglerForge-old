@@ -27,7 +27,7 @@ public class GameProfile {
 	
 	private final EaglercraftUUID id;
 
-	public final String name;
+	private final String name;
 
 	private final Multimap<String, Property> properties;
 

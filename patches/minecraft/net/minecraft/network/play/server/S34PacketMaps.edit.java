@@ -9,15 +9,9 @@
 
 + 
 
-> CHANGE  7 : 15  @  7 : 15
+> CHANGE  64 : 66  @  64 : 65
 
-~ 	public int mapId;
-~ 	public byte mapScale;
-~ 	public Vec4b[] mapVisiblePlayersVec4b;
-~ 	public int mapMinX;
-~ 	public int mapMinY;
-~ 	public int mapMaxX;
-~ 	public int mapMaxY;
-~ 	public byte[] mapDataBytes;
+~ 		for (int i = 0; i < this.mapVisiblePlayersVec4b.length; ++i) {
+~ 			Vec4b vec4b = this.mapVisiblePlayersVec4b[i];
 
 > EOF

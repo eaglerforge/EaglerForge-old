@@ -7,10 +7,8 @@
 
 > DELETE  2  @  2 : 6
 
-> CHANGE  4 : 13  @  4 : 6
+> CHANGE  4 : 11  @  4 : 6
 
-~ 
-~ import net.eaglerforge.api.ModData;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 ~ 
 ~ import net.lax1dude.eaglercraft.v1_8.HString;
@@ -161,7 +159,13 @@
 + 			textColor |= -16777216;
 + 		}
 
-> CHANGE  30 : 31  @  30 : 31
+> CHANGE  6 : 9  @  6 : 8
+
+~ 		List<String> lst = this.listFormattedStringToWidth(str, wrapWidth);
+~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
+~ 			this.renderStringAligned(lst.get(i), x, y, wrapWidth, this.textColor, addShadow);
+
+> CHANGE  22 : 23  @  22 : 23
 
 ~ 		return Arrays.asList(this.wrapFormattedStringToWidth(str, wrapWidth, 0).split("\n"));
 

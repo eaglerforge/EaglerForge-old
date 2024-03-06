@@ -9,13 +9,4 @@
 
 + 
 
-> CHANGE  6 : 12  @  6 : 12
-
-~ 	public int windowId;
-~ 	public int slotId;
-~ 	public int usedButton;
-~ 	public short actionNumber;
-~ 	public ItemStack clickedItem;
-~ 	public int mode;
-
 > EOF

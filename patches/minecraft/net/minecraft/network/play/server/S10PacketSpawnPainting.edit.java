@@ -9,13 +9,4 @@
 
 + 
 
-> CHANGE  8 : 10  @  8 : 10
-
-~ 	public int entityID;
-~ 	public BlockPos position;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	public String title;
-
 > EOF

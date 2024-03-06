@@ -7,6 +7,8 @@ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.ChatComponentText;
 import me.otterdev.UwUAPI;
 import org.teavm.jso.JSBody;

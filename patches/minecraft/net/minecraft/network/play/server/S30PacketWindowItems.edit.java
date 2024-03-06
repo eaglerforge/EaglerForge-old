@@ -9,9 +9,9 @@
 
 + 
 
-> CHANGE  6 : 8  @  6 : 8
+> CHANGE  38 : 40  @  38 : 40
 
-~ 	public int windowId;
-~ 	public ItemStack[] itemStacks;
+~ 		for (int i = 0; i < this.itemStacks.length; ++i) {
+~ 			parPacketBuffer.writeItemStackToBuffer(this.itemStacks[i]);
 
 > EOF

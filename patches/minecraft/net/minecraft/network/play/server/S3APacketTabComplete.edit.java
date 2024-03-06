@@ -9,8 +9,9 @@
 
 + 
 
-> CHANGE  5 : 6  @  5 : 6
+> CHANGE  26 : 28  @  26 : 28
 
-~ 	public String[] matches;
+~ 		for (int i = 0; i < this.matches.length; ++i) {
+~ 			parPacketBuffer.writeString(this.matches[i]);
 
 > EOF

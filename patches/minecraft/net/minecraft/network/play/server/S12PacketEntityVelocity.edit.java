@@ -9,11 +9,4 @@
 
 + 
 
-> CHANGE  6 : 10  @  6 : 10
-
-~ 	public int entityID;
-~ 	public int motionX;
-~ 	public int motionY;
-~ 	public int motionZ;
-
 > EOF

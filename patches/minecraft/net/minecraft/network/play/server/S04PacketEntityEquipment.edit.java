@@ -9,10 +9,4 @@
 
 + 
 
-> CHANGE  6 : 9  @  6 : 9
-
-~ 	public int entityID;
-~ 	public int equipmentSlot;
-~ 	public ItemStack itemStack;
-
 > EOF

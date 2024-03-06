@@ -9,12 +9,10 @@
 
 + 
 
-> CHANGE  5 : 10  @  5 : 10
+> CHANGE  91 : 94  @  91 : 92
 
-~ 	public double x;
-~ 	public double y;
-~ 	public double z;
-~ 	public float yaw;
-~ 	public float pitch;
+~ 			S08PacketPlayerPosLook.EnumFlags[] types = values();
+~ 			for (int i = 0; i < types.length; ++i) {
+~ 				S08PacketPlayerPosLook.EnumFlags s08packetplayerposlook$enumflags = types[i];
 
 > EOF

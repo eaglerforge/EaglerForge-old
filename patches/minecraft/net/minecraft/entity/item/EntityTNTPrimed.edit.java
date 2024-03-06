@@ -5,8 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> INSERT  2 : 3  @  2
+> INSERT  2 : 5  @  2
 
++ import net.eaglerforge.api.BaseData;
++ import net.eaglerforge.api.ModData;
 + import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DynamicLightManager;
 
 > INSERT  90 : 101  @  90

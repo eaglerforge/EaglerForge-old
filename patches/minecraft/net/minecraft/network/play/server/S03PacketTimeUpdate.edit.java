@@ -9,9 +9,4 @@
 
 + 
 
-> CHANGE  5 : 7  @  5 : 7
-
-~ 	public long totalWorldTime;
-~ 	public long worldTime;
-
 > EOF

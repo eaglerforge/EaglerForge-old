@@ -13,13 +13,4 @@
 
 > DELETE  4  @  4 : 5
 
-> CHANGE  2 : 8  @  2 : 8
-
-~ 	public String soundName;
-~ 	public int posX;
-~ 	public int posY = Integer.MAX_VALUE;
-~ 	public int posZ;
-~ 	public float soundVolume;
-~ 	public int soundPitch;
-
 > EOF

@@ -9,12 +9,4 @@
 
 + 
 
-> CHANGE  7 : 12  @  7 : 12
-
-~ 	public int entityID;
-~ 	public int posX;
-~ 	public int posY;
-~ 	public int posZ;
-~ 	public int xpValue;
-
 > EOF

@@ -9,12 +9,4 @@
 
 + 
 
-> CHANGE  6 : 11  @  6 : 11
-
-~ 	public int windowId;
-~ 	public String inventoryType;
-~ 	public IChatComponent windowTitle;
-~ 	public int slotCount;
-~ 	public int entityId;
-
 > EOF

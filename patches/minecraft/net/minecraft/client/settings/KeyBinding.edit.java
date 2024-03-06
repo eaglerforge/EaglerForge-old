@@ -20,7 +20,17 @@
 
 ~ public class KeyBinding extends ModData implements Comparable<KeyBinding> {
 
-> INSERT  60 : 115  @  60
+> CHANGE  31 : 33  @  31 : 33
+
+~ 		for (int i = 0, l = keybindArray.size(); i < l; ++i) {
+~ 			keybindArray.get(i).unpressKey();
+
+> CHANGE  7 : 9  @  7 : 8
+
+~ 		for (int i = 0, l = keybindArray.size(); i < l; ++i) {
+~ 			KeyBinding keybinding = keybindArray.get(i);
+
+> INSERT  19 : 74  @  19
 
 + 	public void loadModData(BaseData data) {
 + 		keyCode = data.getInt("keyCode");

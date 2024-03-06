@@ -1,7 +1,5 @@
 package net.lax1dude.eaglercraft.v1_8;
 
-import org.teavm.jso.JSBody;
-
 import java.math.BigInteger;
 
 import static net.eaglerforge.api.ModLoader.returntotalloadedmods;
@@ -12,11 +10,11 @@ public class EaglercraftVersion {
 	//////////////////////////////////////////////////////////////////////
 	
 	/// Customize these to fit your fork:
-	
+
 	public static final String projectForkName = "EaglerForge";
 	public static final String projectForkVersion = "v1.2.2";
 	public static final String projectForkVendor = "radmanplays";
-	
+
 	public static final String projectForkURL = "https://github.com/eaglerforge/EaglerForge";
 	
 	//////////////////////////////////////////////////////////////////////
@@ -24,7 +22,7 @@ public class EaglercraftVersion {
 	public static final String projectOriginName = "EaglercraftX";
 	public static final String projectOriginAuthor = "lax1dude";
 	public static final String projectOriginRevision = "1.8";
-	public static final String projectOriginVersion = "u23";
+	public static final String projectOriginVersion = "u24";
 	
 	public static final String projectOriginURL = "https://gitlab.com/lax1dude/eaglercraftx-1.8"; // rest in peace
 	
@@ -35,7 +33,7 @@ public class EaglercraftVersion {
 	public static final boolean enableUpdateService = true;
 
 	public static final String updateBundlePackageName = "net.lax1dude.eaglercraft.v1_8.client";
-	public static final int updateBundlePackageVersionInt = 23;
+	public static final int updateBundlePackageVersionInt = 24;
 
 	public static final String updateLatestLocalStorageKey = "latestUpdate_" + updateBundlePackageName;
 
@@ -48,7 +46,7 @@ public class EaglercraftVersion {
 
 	public static int loadedmods = returntotalloadedmods();
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
-	public static String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + loadedmods + " Mods loaded)";
+	public static String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + 0 + " Mods loaded)";
 	public static final String mainMenuStringC = "";
 	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
 

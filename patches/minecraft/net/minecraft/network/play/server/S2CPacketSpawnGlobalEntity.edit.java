@@ -9,12 +9,4 @@
 
 + 
 
-> CHANGE  8 : 13  @  8 : 13
-
-~ 	public int entityId;
-~ 	public int x;
-~ 	public int y;
-~ 	public int z;
-~ 	public int type;
-
 > EOF

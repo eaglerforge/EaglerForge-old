@@ -7,55 +7,35 @@
 
 > DELETE  2  @  2 : 3
 
-> INSERT  2 : 7  @  2
+> INSERT  2 : 5  @  2
 
 + 
 + import com.google.common.collect.Lists;
 + 
-+ import net.eaglerforge.api.BaseData;
-+ import net.eaglerforge.api.ModData;
 
-> CHANGE  7 : 10  @  7 : 10
+> CHANGE  59 : 60  @  59 : 60
 
-~ 	public int chunkX;
-~ 	public int chunkZ;
-~ 	public S21PacketChunkData.Extracted extractedData;
+~ 		ArrayList<ExtendedBlockStorage> arraylist = Lists.newArrayList();
 
-> CHANGE  64 : 65  @  64 : 65
+> INSERT  13 : 16  @  13
 
-~ 		for (ExtendedBlockStorage extendedblockstorage1 : (ArrayList<ExtendedBlockStorage>) arraylist) {
++ 		int l = arraylist.size();
++ 		for (int k = 0; k < l; ++k) {
++ 			char[] achar = arraylist.get(k).getData();
 
-> CHANGE  8 : 9  @  8 : 9
+> CHANGE  1 : 3  @  1 : 5
 
-~ 		for (ExtendedBlockStorage extendedblockstorage2 : (ArrayList<ExtendedBlockStorage>) arraylist) {
+~ 			for (int m = 0; m < achar.length; ++m) {
+~ 				char c0 = achar[m];
 
-> CHANGE  5 : 6  @  5 : 6
+> CHANGE  5 : 7  @  5 : 8
 
-~ 			for (ExtendedBlockStorage extendedblockstorage3 : (ArrayList<ExtendedBlockStorage>) arraylist) {
+~ 		for (int k = 0; k < l; ++k) {
+~ 			j = func_179757_a(arraylist.get(k).getBlocklightArray().getData(), s21packetchunkdata$extracted.data, j);
 
-> CHANGE  33 : 34  @  33 : 34
+> CHANGE  3 : 5  @  3 : 6
 
-~ 	public static class Extracted extends ModData {
-
-> INSERT  2 : 20  @  2
-
-+ 
-+ 		public ModData makeModData() {
-+ 			ModData d = new ModData();
-+ 			d.setCallbackVoid("reload", () -> {
-+ 				loadModData(d);
-+ 			});
-+ 			d.set("data", data);
-+ 			d.set("dataSize", dataSize);
-+ 			d.setCallbackObject("getRef", () -> {
-+ 				return this;
-+ 			});
-+ 			return d;
-+ 		}
-+ 
-+ 		public void loadModData(BaseData d) {
-+ 			data = d.getByteArr("data");
-+ 			dataSize = d.getInt("dataSize");
-+ 		}
+~ 			for (int k = 0; k < l; ++k) {
+~ 				j = func_179757_a(arraylist.get(k).getSkylightArray().getData(), s21packetchunkdata$extracted.data, j);
 
 > EOF

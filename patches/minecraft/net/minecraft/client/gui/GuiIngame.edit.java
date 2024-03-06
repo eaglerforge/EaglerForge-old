@@ -5,14 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> INSERT  2 : 11  @  2
+> INSERT  2 : 7  @  2
 
 + import java.util.ArrayList;
 + import java.util.Collection;
-+ import java.util.List;
-+ 
-+ import net.eaglerforge.api.ModAPI;
-+ import net.eaglerforge.api.ModData;
 + import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 + import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
 + 
@@ -64,12 +60,7 @@
 + 			j -= 10;
 + 		}
 
-> INSERT  14 : 16  @  14
-
-+ 		ModAPI.callEvent("drawhud", new ModData());
-+ 
-
-> INSERT  5 : 16  @  5
+> INSERT  19 : 30  @  19
 
 + 	public void renderGameOverlayCrosshairs(int scaledResWidth, int scaledResHeight) {
 + 		if (this.showCrosshair()) {
@@ -85,13 +76,15 @@
 
 > DELETE  147  @  147 : 151
 
-> CHANGE  17 : 18  @  17 : 18
+> CHANGE  17 : 19  @  17 : 18
 
-~ 		for (Score score : (List<Score>) arraylist1) {
+~ 		for (int m = 0, n = arraylist1.size(); m < n; ++m) {
+~ 			Score score = (Score) arraylist1.get(m);
 
-> CHANGE  12 : 13  @  12 : 13
+> CHANGE  12 : 14  @  12 : 13
 
-~ 		for (Score score1 : (List<Score>) arraylist1) {
+~ 		for (int m = 0, n = arraylist1.size(); m < n; ++m) {
+~ 			Score score1 = (Score) arraylist1.get(m);
 
 > CHANGE  7 : 9  @  7 : 9
 

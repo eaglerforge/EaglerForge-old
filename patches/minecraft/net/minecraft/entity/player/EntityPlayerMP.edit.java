@@ -31,21 +31,22 @@
 
 ~ 		if (!this.openContainer.canInteractWith(this)) {
 
-> CHANGE  51 : 52  @  51 : 52
+> CHANGE  51 : 53  @  51 : 53
 
-~ 				for (TileEntity tileentity : (ArrayList<TileEntity>) arraylist1) {
+~ 				for (int i = 0, l = arraylist1.size(); i < l; ++i) {
+~ 					this.sendTileEntityUpdate((TileEntity) arraylist1.get(i));
 
-> CHANGE  3 : 4  @  3 : 4
+> CHANGE  2 : 4  @  2 : 4
 
-~ 				for (Chunk chunk1 : (ArrayList<Chunk>) arraylist) {
+~ 				for (int i = 0, l = arraylist.size(); i < l; ++i) {
+~ 					this.getServerForPlayer().getEntityTracker().func_85172_a(this, (Chunk) arraylist.get(i));
 
-> CHANGE  582 : 583  @  582 : 583
+> CHANGE  581 : 582  @  581 : 582
 
 ~ 		if ("seed".equals(s)) {
 
-> CHANGE  1 : 3  @  1 : 10
+> CHANGE  2 : 3  @  2 : 10
 
-~ 		} else if (!"tell".equals(s) && !"help".equals(s) && !"net/me".equals(s) && !"trigger".equals(s)) {
 ~ 			return this.mcServer.getConfigurationManager().canSendCommands(this.getGameProfile());
 
 > CHANGE  6 : 7  @  6 : 10

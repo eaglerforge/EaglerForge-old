@@ -13,9 +13,4 @@
 
 > DELETE  4  @  4 : 5
 
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public String message;
-~ 	public BlockPos targetBlock;
-
 > EOF

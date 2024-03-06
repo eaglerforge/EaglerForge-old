@@ -55,7 +55,9 @@
 
 > DELETE  3  @  3 : 5
 
-> CHANGE  4 : 6  @  4 : 11
+> DELETE  2  @  2 : 3
+
+> CHANGE  1 : 3  @  1 : 8
 
 ~ import net.eaglerforge.gui.ModGUI;
 ~ import org.teavm.jso.JSBody;
@@ -262,7 +264,7 @@
 
 ~ 			isaveformat.deleteWorldDirectory("Demo World");
 ~ 			this.mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(this, "singleplayer.busy.deleting",
-~ 					"singleplayer.failed.deleting", () -> SingleplayerServerController.isReady()));
+~ 					"singleplayer.failed.deleting", SingleplayerServerController::isReady));
 ~ 		} else {
 
 > DELETE  1  @  1 : 14

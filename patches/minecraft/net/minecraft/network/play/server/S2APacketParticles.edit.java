@@ -9,18 +9,4 @@
 
 + 
 
-> CHANGE  6 : 17  @  6 : 17
-
-~ 	public EnumParticleTypes particleType;
-~ 	public float xCoord;
-~ 	public float yCoord;
-~ 	public float zCoord;
-~ 	public float xOffset;
-~ 	public float yOffset;
-~ 	public float zOffset;
-~ 	public float particleSpeed;
-~ 	public int particleCount;
-~ 	public boolean longDistance;
-~ 	public int[] particleArguments;
-
 > EOF

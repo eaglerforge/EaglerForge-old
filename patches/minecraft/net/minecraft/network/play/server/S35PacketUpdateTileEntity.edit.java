@@ -9,9 +9,4 @@
 
 + 
 
-> CHANGE  7 : 9  @  7 : 9
-
-~ 	public BlockPos blockPos;
-~ 	public int metadata;
-
 > EOF

@@ -9,9 +9,4 @@
 
 + 
 
-> CHANGE  5 : 7  @  5 : 7
-
-~ 	public String hash;
-~ 	public C19PacketResourcePackStatus.Action status;
-
 > EOF

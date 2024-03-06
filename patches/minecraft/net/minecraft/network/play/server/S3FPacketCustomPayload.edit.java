@@ -12,8 +12,4 @@
 + 
 + import net.lax1dude.eaglercraft.v1_8.netty.ByteBuf;
 
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public String channel;
-
 > EOF

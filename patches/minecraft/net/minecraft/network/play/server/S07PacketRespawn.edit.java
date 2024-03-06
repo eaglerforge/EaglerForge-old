@@ -9,10 +9,4 @@
 
 + 
 
-> CHANGE  8 : 11  @  8 : 11
-
-~ 	public int dimensionID;
-~ 	public EnumDifficulty difficulty;
-~ 	public WorldSettings.GameType gameType;
-
 > EOF

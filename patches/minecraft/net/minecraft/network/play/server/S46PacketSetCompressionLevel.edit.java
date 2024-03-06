@@ -9,8 +9,4 @@
 
 + 
 
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public int field_179761_a;
-
 > EOF

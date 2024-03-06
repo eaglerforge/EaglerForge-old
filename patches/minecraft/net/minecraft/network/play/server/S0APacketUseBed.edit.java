@@ -9,9 +9,4 @@
 
 + 
 
-> CHANGE  8 : 10  @  8 : 10
-
-~ 	public int playerID;
-~ 	public BlockPos bedPos;
-
 > EOF

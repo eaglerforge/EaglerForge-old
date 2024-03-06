@@ -9,14 +9,4 @@
 
 + 
 
-> CHANGE  7 : 14  @  7 : 14
-
-~ 	public int entityId;
-~ 	public int posX;
-~ 	public int posY;
-~ 	public int posZ;
-~ 	public byte yaw;
-~ 	public byte pitch;
-~ 	public boolean onGround;
-
 > EOF

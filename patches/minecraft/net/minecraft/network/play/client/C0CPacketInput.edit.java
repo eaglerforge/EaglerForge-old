@@ -9,11 +9,4 @@
 
 + 
 
-> CHANGE  5 : 9  @  5 : 9
-
-~ 	public float strafeSpeed;
-~ 	public float forwardSpeed;
-~ 	public boolean jumping;
-~ 	public boolean sneaking;
-
 > EOF

@@ -9,9 +9,4 @@
 
 + 
 
-> CHANGE  6 : 8  @  6 : 8
-
-~ 	public IChatComponent header;
-~ 	public IChatComponent footer;
-
 > EOF
