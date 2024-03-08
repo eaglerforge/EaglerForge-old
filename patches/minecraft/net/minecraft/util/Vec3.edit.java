@@ -5,11 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 5  @  2 : 4
+> CHANGE  2 : 4  @  2 : 4
 
 ~ import net.eaglerforge.api.BaseData;
 ~ import net.eaglerforge.api.ModData;
-~ import org.teavm.jso.JSObject;
 
 > CHANGE  1 : 5  @  1 : 5
 
@@ -18,7 +17,7 @@
 ~ 	public double yCoord;
 ~ 	public double zCoord;
 
-> INSERT  142 : 216  @  142
+> INSERT  142 : 215  @  142
 
 + 
 + 	public void loadModData(BaseData data) {
@@ -93,6 +92,5 @@
 + 
 + 		return data;
 + 	}
-+ 
 
 > EOF

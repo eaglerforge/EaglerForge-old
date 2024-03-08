@@ -4,6 +4,7 @@ function initAPI(version) {
   ModAPI.events.types = ["event"];
   ModAPI.events.listeners = { "event": [] };
   ModAPI.globals = {};
+  ModAPI.version = version;
 
   ModAPI.addEventListener = function AddEventListener(name, callback) {
     if (!callback) {

@@ -438,21 +438,19 @@
 + 				return s + I18n.format("options.off");
 + 			}
 
-> INSERT  6 : 14  @  6
+> CHANGE  6 : 12  @  6 : 10
 
-+ 		byte[] options = EagRuntime.getStorage("g");
-+ 		if (options == null) {
-+ 			return;
-+ 		}
-+ 		loadOptions(options);
-+ 	}
-+ 
-+ 	public void loadOptions(byte[] data) {
+~ 		byte[] options = EagRuntime.getStorage("g");
+~ 		if (options == null) {
+~ 			return;
+~ 		}
+~ 		loadOptions(options);
+~ 	}
 
-> DELETE  1  @  1 : 4
+> CHANGE  1 : 5  @  1 : 2
 
-> CHANGE  1 : 3  @  1 : 2
-
+~ 	public void loadOptions(byte[] data) {
+~ 		try {
 ~ 			BufferedReader bufferedreader = new BufferedReader(
 ~ 					new InputStreamReader(EaglerZLIB.newGZIPInputStream(new EaglerInputStream(data))));
 
@@ -654,9 +652,8 @@
 + 			deferredShaderConf.writeOptions(printwriter);
 + 
 
-> INSERT  1 : 3  @  1
+> INSERT  1 : 2  @  1
 
-+ 
 + 			return bao.toByteArray();
 
 > INSERT  2 : 3  @  2

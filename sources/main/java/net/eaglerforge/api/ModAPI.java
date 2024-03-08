@@ -4,16 +4,14 @@ import net.eaglerforge.gui.EmptyGui;
 import net.eaglerforge.gui.ModGUI;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
+import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.ChatComponentText;
 import me.otterdev.UwUAPI;
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
-import net.eaglerforge.EaglerForge;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -87,7 +85,7 @@ public class ModAPI {
         newEvent("postmotionupdate");
         newEvent("motionupdate");
         newEvent("premotionupdate");
-
+        newEvent("sendchatmessage");
         newEvent("update");
 
         /*newEvent("packetjoingame");
@@ -188,7 +186,6 @@ public class ModAPI {
         newEvent("sendpacketcustompayload");
         newEvent("sendpacketspectate");
         newEvent("sendpacketresourcepackstatus");*/
-        newEvent("packetchat");
         globalsFunctor(this);
         globalsRequireFunctor(this);
         globalsUpdateFunctor(this);
@@ -218,6 +215,7 @@ public class ModAPI {
         setGlobal("logger", LoggerAPI.makeModData());
         setGlobal("emptygui", EmptyGui.makeModData());
         setGlobal("ScaledResolution", ScaledResolution.makeModData());
+        setGlobal("GlStateManager", GlStateManager.makeModData());
         getModAPI().setCallbackString("currentScreen", () -> {
             return mc.currentScreen.toString();
         });
@@ -227,8 +225,14 @@ public class ModAPI {
         getModAPI().setCallbackInt("getdisplayWidth", () -> {
             return mc.displayWidth;
         });
+        getModAPI().setCallbackInt("getdisplayWidth", () -> {
+            return mc.displayWidth;
+        });
         getModAPI().setCallbackInt("getFONT_HEIGHT", () -> {
             return mc.fontRendererObj.FONT_HEIGHT;
+        });
+        getModAPI().setCallbackIntWithDataArg("getStringWidth", (BaseData params) -> {
+            return mc.fontRendererObj.getStringWidth(params.getString("string"));
         });
         getModAPI().setCallbackVoidWithDataArg("drawStringWithShadow", (BaseData params) -> {
             mc.fontRendererObj.drawStringWithShadow(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"));

@@ -5,11 +5,7 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 5  @  2 : 3
-
-~ import static net.eaglerforge.api.ModLoader.returntotalloadedmods;
-~ import static net.lax1dude.eaglercraft.v1_8.EaglercraftVersion.*;
-~ 
+> DELETE  2  @  2 : 3
 
 > DELETE  3  @  3 : 4
 
@@ -17,9 +13,10 @@
 
 + import java.util.Arrays;
 
-> CHANGE  2 : 29  @  2 : 4
+> CHANGE  2 : 30  @  2 : 4
 
 ~ 
+~ import net.eaglerforge.gui.ModGUI;
 ~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
@@ -57,10 +54,7 @@
 
 > DELETE  2  @  2 : 3
 
-> CHANGE  1 : 3  @  1 : 8
-
-~ import net.eaglerforge.gui.ModGUI;
-~ import org.teavm.jso.JSBody;
+> DELETE  1  @  1 : 8
 
 > DELETE  2  @  2 : 3
 
@@ -169,8 +163,9 @@
 ~ 				I18n.format("menu.editProfile", new Object[0])));
 ~ 
 
-> CHANGE  1 : 5  @  1 : 2
+> CHANGE  1 : 6  @  1 : 2
 
+~ 
 ~ 		if (isFork) {
 ~ 			this.openGLWarning1 = EaglercraftVersion.mainMenuStringE;
 ~ 			this.openGLWarning2 = EaglercraftVersion.mainMenuStringF;

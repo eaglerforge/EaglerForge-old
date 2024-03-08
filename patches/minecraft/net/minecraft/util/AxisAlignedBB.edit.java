@@ -5,11 +5,10 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 5  @  2 : 6
+> CHANGE  2 : 4  @  2 : 6
 
 ~ import net.eaglerforge.api.BaseData;
 ~ import net.eaglerforge.api.ModData;
-~ import org.teavm.jso.JSObject;
 
 > CHANGE  1 : 8  @  1 : 8
 

@@ -9,9 +9,10 @@
 
 > DELETE  1  @  1 : 3
 
-> INSERT  4 : 20  @  4
+> INSERT  4 : 21  @  4
 
 + 
++ import net.eaglerforge.gui.ModGUI;
 + import org.apache.commons.lang3.StringUtils;
 + 
 + import com.google.common.base.Splitter;
@@ -53,20 +54,22 @@
 
 ~ 		for (int l = 0, m = this.labelList.size(); l < m; ++l) {
 
-> INSERT  3 : 33  @  3
+> CHANGE  3 : 14  @  3 : 10
 
-+ 		long millis = System.currentTimeMillis();
-+ 		long closeKeyTimeout = millis - showingCloseKey;
-+ 		if (closeKeyTimeout < 3000l) {
-+ 			int alpha1 = 0xC0000000;
-+ 			int alpha2 = 0xFF000000;
-+ 			if (closeKeyTimeout > 2500l) {
-+ 				float f = (float) (3000l - closeKeyTimeout) * 0.002f;
-+ 				if (f < 0.03f)
-+ 					f = 0.03f;
-+ 				alpha1 = (int) (f * 192.0f) << 24;
-+ 				alpha2 = (int) (f * 255.0f) << 24;
-+ 			}
+~ 		long millis = System.currentTimeMillis();
+~ 		long closeKeyTimeout = millis - showingCloseKey;
+~ 		if (closeKeyTimeout < 3000l) {
+~ 			int alpha1 = 0xC0000000;
+~ 			int alpha2 = 0xFF000000;
+~ 			if (closeKeyTimeout > 2500l) {
+~ 				float f = (float) (3000l - closeKeyTimeout) * 0.002f;
+~ 				if (f < 0.03f)
+~ 					f = 0.03f;
+~ 				alpha1 = (int) (f * 192.0f) << 24;
+~ 				alpha2 = (int) (f * 255.0f) << 24;
+
+> INSERT  1 : 17  @  1
+
 + 			String str;
 + 			int k = getCloseKey();
 + 			if (k == KeyboardConstants.KEY_GRAVE) {
@@ -83,10 +86,8 @@
 + 			fontRendererObj.drawStringWithShadow(str, x + 2, y + 2, 0xFFAAAA | alpha2);
 + 			if (closeKeyTimeout > 2500l)
 + 				GlStateManager.disableBlend();
-+ 		}
-+ 
 
-> CHANGE  2 : 14  @  2 : 4
+> CHANGE  4 : 23  @  4 : 9
 
 ~ 	protected int getCloseKey() {
 ~ 		if (this instanceof GuiContainer) {
@@ -100,16 +101,26 @@
 ~ 		if (((this.mc.theWorld == null || this.mc.thePlayer.getHealth() <= 0.0F) && parInt1 == 1)
 ~ 				|| parInt1 == this.mc.gameSettings.keyBindClose.getKeyCode()
 ~ 				|| (parInt1 == 1 && (this.mc.gameSettings.keyBindClose.getKeyCode() == 0 || this.mc.areKeysLocked()))) {
+~ 			if (!ModGUI.isGuiOpen()) {
+~ 				this.mc.displayGuiScreen((GuiScreen) null);
+~ 				if (this.mc.currentScreen == null) {
+~ 					this.mc.setIngameFocus();
+~ 				}
+~ 			} else {
+~ 				ModGUI.closeGui();
 
-> INSERT  4 : 6  @  4
+> CHANGE  1 : 3  @  1 : 3
 
-+ 		} else if (parInt1 == 1) {
-+ 			showingCloseKey = System.currentTimeMillis();
+~ 		} else if (parInt1 == 1) {
+~ 			showingCloseKey = System.currentTimeMillis();
 
-> DELETE  1  @  1 : 2
+> INSERT  1 : 2  @  1
 
-> CHANGE  3 : 4  @  3 : 13
++ 	}
 
+> CHANGE  1 : 3  @  1 : 2
+
+~ 	public static String getClipboardString() {
 ~ 		return EagRuntime.getClipboard();
 
 > CHANGE  4 : 5  @  4 : 11

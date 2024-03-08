@@ -30,7 +30,7 @@ public class EaglercraftVersion {
 	
 	// Updating configuration
 	
-	public static final boolean enableUpdateService = true;
+	public static final boolean enableUpdateService = false;
 
 	public static final String updateBundlePackageName = "net.lax1dude.eaglercraft.v1_8.client";
 	public static final int updateBundlePackageVersionInt = 26;
@@ -46,7 +46,7 @@ public class EaglercraftVersion {
 
 	public static int loadedmods = returntotalloadedmods();
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
-	public static String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + 0 + " Mods loaded)";
+	public static String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + loadedmods + " Mods loaded)";
 	public static final String mainMenuStringC = "";
 	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
 

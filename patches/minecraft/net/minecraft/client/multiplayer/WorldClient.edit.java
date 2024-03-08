@@ -17,20 +17,12 @@
 
 > DELETE  5  @  5 : 6
 
-> CHANGE  11 : 12  @  11 : 15
-
-~ import net.minecraft.util.*;
-
-> CHANGE  196 : 197  @  196 : 197
+> CHANGE  211 : 212  @  211 : 212
 
 ~ 		EaglercraftRandom random = new EaglercraftRandom();
 
 > CHANGE  83 : 84  @  83 : 85
 
 ~ 				return "Non-integrated multiplayer server";
-
-> INSERT  44 : 45  @  44
-
-+ 
 
 > EOF

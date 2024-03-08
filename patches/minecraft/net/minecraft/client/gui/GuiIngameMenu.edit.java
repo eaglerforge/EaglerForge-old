@@ -5,9 +5,8 @@
 # Version: 1.0
 # Author: lax1dude
 
-> CHANGE  2 : 12  @  2 : 9
+> CHANGE  2 : 11  @  2 : 9
 
-~ import net.eaglerforge.gui.ModGUI;
 ~ import net.lax1dude.eaglercraft.v1_8.Mouse;
 ~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
 ~ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
@@ -18,11 +17,12 @@
 ~ import net.lax1dude.eaglercraft.v1_8.update.GuiUpdateCheckerOverlay;
 ~ import net.minecraft.client.audio.PositionedSoundRecord;
 
-> CHANGE  4 : 7  @  4 : 5
+> CHANGE  4 : 8  @  4 : 5
 
 ~ import net.minecraft.util.ChatComponentText;
 ~ import net.minecraft.util.EnumChatFormatting;
 ~ import net.minecraft.util.ResourceLocation;
+~ import net.eaglerforge.gui.ModGUI;
 
 > DELETE  2  @  2 : 4
 
@@ -50,10 +50,8 @@
 ~ 		this.buttonList.add(lanButton = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + b0, 98, 20,
 ~ 				I18n.format(LANServerController.isLANOpen() ? "menu.closeLan" : "menu.openToLan", new Object[0])));
 
-> CHANGE  4 : 11  @  4 : 5
+> CHANGE  4 : 9  @  4 : 5
 
-~ 		this.buttonList.add(new GuiButton(69420, this.width / 2 - 100, this.height / 4 + 73 + b0,
-~ 				I18n.format("eaglerforge.menu.mods", new Object[0])));
 ~ 		lanButton.enabled = SingleplayerServerController.isWorldRunning();
 ~ 		if (!hasSentAutoSave) {
 ~ 			hasSentAutoSave = true;

@@ -146,4 +146,8 @@
 + 				.getBoolean("loadSpawnChunks"))
 + 			return false;
 
+> INSERT  6 : 7  @  6
+
++ 
+
 > EOF

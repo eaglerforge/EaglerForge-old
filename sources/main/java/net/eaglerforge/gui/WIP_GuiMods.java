@@ -12,7 +12,6 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.vfs.SYS;
 import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
@@ -50,7 +49,6 @@ public class WIP_GuiMods extends GuiScreen {
 		this.buttonList.add(btn = new GuiOptionButton(2, this.width / 2 - 154, this.height - 48,
 				I18n.format("eaglerforge.menu.mods.addmod"
 						+ "", new Object[0])));
-		btn.enabled = SYS.VFS != null;
 		this.buttonList.add(
 				new GuiOptionButton(1, this.width / 2 + 4, this.height - 48, I18n.format("gui.done", new Object[0])));
 		if (!this.changed) {
@@ -117,8 +115,6 @@ public class WIP_GuiMods extends GuiScreen {
 	protected void actionPerformed(GuiButton parGuiButton) {
 		if (parGuiButton.enabled) {
 			if (parGuiButton.id == 2) {
-				if (SYS.VFS == null)
-					return;
 				EagRuntime.displayFileChooser("text/javascript", "js");
 			} else if (parGuiButton.id == 1) {
 				if (this.changed) {
@@ -162,7 +158,6 @@ public class WIP_GuiMods extends GuiScreen {
 			return;
 		logger.info("Loading resource pack: {}", packFile.fileName);
 		mc.loadingScreen.eaglerShow(I18n.format("resourcePack.load.loading"), packFile.fileName);
-		SYS.loadResourcePack(packFile.fileName, new ByteArrayInputStream(packFile.fileData), null);
 
 		ArrayList arraylist = Lists.newArrayList();
 

@@ -13,12 +13,15 @@
 
 > DELETE  1  @  1 : 2
 
-> INSERT  1 : 3  @  1
+> INSERT  1 : 2  @  1
 
-+ import net.minecraft.nbt.JsonToNBT;
 + import net.minecraft.nbt.NBTTagCompound;
 
-> INSERT  23 : 64  @  23
+> INSERT  5 : 6  @  5
+
++ import net.minecraft.nbt.JsonToNBT;
+
+> INSERT  18 : 59  @  18
 
 + 	@Override
 + 	public ModData makeModData() {

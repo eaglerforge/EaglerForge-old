@@ -1,5 +1,7 @@
 package net.lax1dude.eaglercraft.v1_8.opengl;
 
+import net.eaglerforge.api.BaseData;
+import net.eaglerforge.api.ModData;
 import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
@@ -25,7 +27,7 @@ import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
  * POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-public class GlStateManager {
+public class GlStateManager extends ModData {
 	
 	static final Logger logger = LogManager.getLogger("GlStateManager");
 
@@ -1185,5 +1187,44 @@ public class GlStateManager {
 
 	public static void recompileShaders() {
 		FixedFunctionPipeline.flushCache();
+	}
+
+	public static ModData makeModData() {
+		ModData GlStateManagerglobal = new ModData();
+		GlStateManagerglobal.setCallbackVoid("reload", () -> {
+			loadModData(GlStateManagerglobal);
+		});
+		GlStateManagerglobal.setCallbackVoid("pushMatrix", () -> {
+			pushMatrix();
+		});
+		GlStateManagerglobal.setCallbackVoid("popMatrix", () -> {
+			popMatrix();
+		});
+		GlStateManagerglobal.setCallbackVoidWithDataArg("scale", (BaseData params) -> {
+			scale(params.getFloat("x"),params.getFloat("y"),params.getFloat("z"));
+		});
+		GlStateManagerglobal.setCallbackVoidWithDataArg("translate", (BaseData params) -> {
+			translate(params.getFloat("x"),params.getFloat("y"),params.getFloat("z"));
+		});
+		GlStateManagerglobal.setCallbackVoidWithDataArg("recompileShaders", (BaseData params) -> {
+			recompileShaders();
+		});
+		GlStateManagerglobal.setCallbackVoidWithDataArg("color", (BaseData params) -> {
+			color(params.getFloat("colorRed"),params.getFloat("colorGreen"),params.getFloat("colorBlue"),params.getFloat("colorAlpha"));
+		});
+		GlStateManagerglobal.setCallbackVoidWithDataArg("rotate", (BaseData params) -> {
+			rotate(params.getFloat("angle"),params.getFloat("x"),params.getFloat("y"),params.getFloat("z"));
+		});
+		GlStateManagerglobal.setCallbackVoidWithDataArg("matrixMode", (BaseData params) -> {
+			matrixMode(params.getInt("mode"));
+		});
+		return GlStateManagerglobal;
+	}
+	public static void loadModData(BaseData data) {
+		stateDepthMask = data.getBoolean("stateDepthMask");
+		stateCull = data.getBoolean("stateCull");
+		stateFog = data.getBoolean("stateFog");
+		stateGlobalBlend = data.getBoolean("stateGlobalBlend");
+		stateLighting = data.getBoolean("stateLighting");
 	}
 }

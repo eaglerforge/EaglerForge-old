@@ -1,7 +1,5 @@
 package net.eaglerforge.api;
 
-import java.util.Map;
-
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSFunctor;

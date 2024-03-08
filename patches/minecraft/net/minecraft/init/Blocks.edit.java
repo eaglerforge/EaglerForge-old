@@ -5,8 +5,9 @@
 # Version: 1.0
 # Author: lax1dude
 
-> INSERT  2 : 3  @  2
+> INSERT  2 : 4  @  2
 
++ import net.eaglerforge.api.BaseData;
 + import net.eaglerforge.api.ModData;
 
 > DELETE  32  @  32 : 33
@@ -232,5 +233,9 @@
 ~ 	}
 ~ 
 ~ 	static void doBootstrap() {
+
+> INSERT  203 : 204  @  203
+
++ 
 
 > EOF

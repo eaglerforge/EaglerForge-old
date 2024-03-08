@@ -34,26 +34,11 @@
 
 ~ public abstract class Entity extends ModData implements ICommandSender {
 
-> CHANGE  12 : 17  @  12 : 17
-
-~ 	public static double posX;
-~ 	public static double posY;
-~ 	public static double posZ;
-~ 	public static double motionX;
-~ 	public static double motionY;
-
-> CHANGE  27 : 29  @  27 : 29
+> CHANGE  44 : 45  @  44 : 45
 
 ~ 	protected EaglercraftRandom rand;
-~ 	public static int ticksExisted;
 
-> CHANGE  10 : 13  @  10 : 13
-
-~ 	public static int chunkCoordX;
-~ 	public static int chunkCoordY;
-~ 	public static int chunkCoordZ;
-
-> CHANGE  13 : 14  @  13 : 14
+> CHANGE  27 : 28  @  27 : 28
 
 ~ 	protected EaglercraftUUID entityUniqueID;
 

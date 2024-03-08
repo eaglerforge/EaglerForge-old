@@ -2,7 +2,6 @@ package net.eaglerforge.api;
 
 import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.minecraft.client.Minecraft;
 import org.teavm.jso.JSBody;
 
 // this is me.otterdev.PlatformAPI but modified to have more features and be more optimized
