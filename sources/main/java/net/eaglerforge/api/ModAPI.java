@@ -8,6 +8,7 @@ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.ChatComponentText;
 import me.otterdev.UwUAPI;
 import org.teavm.jso.JSBody;
@@ -158,7 +159,7 @@ public class ModAPI {
         newEvent("packetdisplayscoreboard");
         newEvent("packetteams");
         newEvent("packetparticles");
-        newEvent("packetentityproperties");
+        newEvent("packetentityproperties");*/
 
         newEvent("sendpacketanimation");
         newEvent("sendpacketentityaction");
@@ -185,7 +186,10 @@ public class ModAPI {
         newEvent("sendpacketclientstatus");
         newEvent("sendpacketcustompayload");
         newEvent("sendpacketspectate");
-        newEvent("sendpacketresourcepackstatus");*/
+        newEvent("sendpacketresourcepackstatus");
+
+        newEvent("packetsoundeffect");
+        newEvent("packetchat");
         globalsFunctor(this);
         globalsRequireFunctor(this);
         globalsUpdateFunctor(this);
@@ -268,9 +272,9 @@ public class ModAPI {
         if (requiredList.contains("player") && mc.thePlayer != null) {
             ModAPI.setGlobal("player", mc.thePlayer.makeModData());
         }
-/*        if (requiredList.contains("network") && mc.thePlayer != null && mc.thePlayer.sendQueue != null) {
+        if (requiredList.contains("network") && mc.thePlayer != null && mc.thePlayer.sendQueue != null) {
             ModAPI.setGlobal("network", mc.thePlayer.sendQueue.makeModData());
-        }*/
+        }
         if (requiredList.contains("settings") && mc.gameSettings != null) {
             ModAPI.setGlobal("settings", mc.gameSettings.makeModData());
         }

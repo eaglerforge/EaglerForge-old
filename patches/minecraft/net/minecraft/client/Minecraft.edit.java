@@ -137,7 +137,7 @@
 
 > CHANGE  1 : 2  @  1 : 2
 
-~ public class Minecraft extends BaseData implements IThreadListener {
+~ public class Minecraft extends ModData implements IThreadListener {
 
 > CHANGE  2 : 3  @  2 : 9
 

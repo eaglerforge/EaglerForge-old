@@ -50,8 +50,10 @@
 ~ 		this.buttonList.add(lanButton = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + b0, 98, 20,
 ~ 				I18n.format(LANServerController.isLANOpen() ? "menu.closeLan" : "menu.openToLan", new Object[0])));
 
-> CHANGE  4 : 9  @  4 : 5
+> CHANGE  4 : 11  @  4 : 5
 
+~ 		this.buttonList.add(new GuiButton(69420, this.width / 2 - 100, this.height / 4 + 73 + b0,
+~ 				I18n.format("eaglerforge.menu.mods", new Object[0])));
 ~ 		lanButton.enabled = SingleplayerServerController.isWorldRunning();
 ~ 		if (!hasSentAutoSave) {
 ~ 			hasSentAutoSave = true;

@@ -101,7 +101,17 @@
 + 	}
 + 
 
-> CHANGE  247 : 248  @  247 : 248
+> CHANGE  37 : 38  @  37 : 38
+
+~ 		return this.fullBlock && (!this.noRender);
+
+> INSERT  162 : 165  @  162
+
++ 		if (this.noRender || this.forceRender) {
++ 			return this.forceRender;
++ 		}
+
+> CHANGE  47 : 48  @  47 : 48
 
 ~ 	public void randomTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
 

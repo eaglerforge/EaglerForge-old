@@ -9,4 +9,10 @@
 
 + 
 
+> CHANGE  5 : 8  @  5 : 8
+
+~ 	public int windowId;
+~ 	public short uid;
+~ 	public boolean accepted;
+
 > EOF

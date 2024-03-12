@@ -7,11 +7,13 @@
 
 > DELETE  2  @  2 : 3
 
-> INSERT  2 : 5  @  2
+> INSERT  2 : 7  @  2
 
 + 
 + import com.google.common.collect.Lists;
 + 
++ import net.eaglerforge.api.BaseData;
++ import net.eaglerforge.api.ModData;
 
 > CHANGE  59 : 60  @  59 : 60
 
@@ -37,5 +39,30 @@
 
 ~ 			for (int k = 0; k < l; ++k) {
 ~ 				j = func_179757_a(arraylist.get(k).getSkylightArray().getData(), s21packetchunkdata$extracted.data, j);
+
+> CHANGE  31 : 32  @  31 : 32
+
+~ 	public static class Extracted extends ModData {
+
+> INSERT  2 : 20  @  2
+
++ 
++ 		public ModData makeModData() {
++ 			ModData d = new ModData();
++ 			d.setCallbackVoid("reload", () -> {
++ 				loadModData(d);
++ 			});
++ 			d.set("data", data);
++ 			d.set("dataSize", dataSize);
++ 			d.setCallbackObject("getRef", () -> {
++ 				return this;
++ 			});
++ 			return d;
++ 		}
++ 
++ 		public void loadModData(BaseData d) {
++ 			data = d.getByteArr("data");
++ 			dataSize = d.getInt("dataSize");
++ 		}
 
 > EOF
