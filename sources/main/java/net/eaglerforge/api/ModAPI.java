@@ -1,16 +1,19 @@
 package net.eaglerforge.api;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import net.eaglerforge.gui.EmptyGui;
 import net.eaglerforge.gui.ModGUI;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
+import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ChatComponentText;
 import me.otterdev.UwUAPI;
+import net.minecraft.util.EnumParticleTypes;
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
 import net.minecraft.enchantment.Enchantment;
@@ -54,6 +57,10 @@ public class ModAPI {
     @JSBody(params = { "data" }, script = "console.log(data);")
     public static native void logJSObj(JSObject data);
 
+    @JSBody(params = { "minecraft" }, script = "window.Minecraft = minecraft;")
+    public static native void setMinecraftContext(BaseData minecraft);
+
+
     public void onGlobalUpdated(String global) {
         // logger.info("Global update request: "+global);
         BaseData data = getGlobal(global);
@@ -88,6 +95,7 @@ public class ModAPI {
         newEvent("premotionupdate");
         newEvent("sendchatmessage");
         newEvent("update");
+        newEvent("frame");
 
         /*newEvent("packetjoingame");
         newEvent("packetspawnobject");
@@ -208,6 +216,93 @@ public class ModAPI {
         getModAPI().setCallbackInt("getFPS", () -> {
             return getDebugFPS();
         });
+        getModAPI().setCallbackVoidWithDataArg("displayParticleAtPlayer", (BaseData params) -> {
+            if (params.getString("type") == "EXPLOSION_NORMAL") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.EXPLOSION_NORMAL);
+            } else if (params.getString("type") == "EXPLOSION_LARGE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.EXPLOSION_LARGE);
+            } else if (params.getString("type") == "EXPLOSION_HUGE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.EXPLOSION_HUGE);
+            } else if (params.getString("type") == "FIREWORKS_SPARK") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.FIREWORKS_SPARK);
+            } else if (params.getString("type") == "WATER_BUBBLE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.WATER_BUBBLE);
+            } else if (params.getString("type") == "WATER_SPLASH") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.WATER_SPLASH);
+            } else if (params.getString("type") == "WATER_WAKE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.WATER_WAKE);
+            } else if (params.getString("type") == "SUSPENDED") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SUSPENDED);
+            } else if (params.getString("type") == "SUSPENDED_DEPTH") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SUSPENDED_DEPTH);
+            } else if (params.getString("type") == "CRIT") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.CRIT);
+            } else if (params.getString("type") == "CRIT_MAGIC") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.CRIT_MAGIC);
+            } else if (params.getString("type") == "SMOKE_NORMAL") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SMOKE_NORMAL);
+            } else if (params.getString("type") == "SMOKE_LARGE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SMOKE_LARGE);
+            } else if (params.getString("type") == "SPELL") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SPELL);
+            } else if (params.getString("type") == "SPELL_INSTANT") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SPELL_INSTANT);
+            } else if (params.getString("type") == "SPELL_MOB") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SPELL_MOB);
+            } else if (params.getString("type") == "SPELL_MOB_AMBIENT") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SPELL_MOB_AMBIENT);
+            } else if (params.getString("type") == "SPELL_WITCH") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SPELL_WITCH);
+            } else if (params.getString("type") == "DRIP_WATER") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.DRIP_WATER);
+            } else if (params.getString("type") == "DRIP_LAVA") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.DRIP_LAVA);
+            } else if (params.getString("type") == "VILLAGER_ANGRY") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.VILLAGER_ANGRY);
+            } else if (params.getString("type") == "VILLAGER_HAPPY") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.VILLAGER_HAPPY);
+            } else if (params.getString("type") == "TOWN_AURA") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.TOWN_AURA);
+            } else if (params.getString("type") == "NOTE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.NOTE);
+            } else if (params.getString("type") == "PORTAL") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.PORTAL);
+            } else if (params.getString("type") == "ENCHANTMENT_TABLE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.ENCHANTMENT_TABLE);
+            } else if (params.getString("type") == "FLAME") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.FLAME);
+            } else if (params.getString("type") == "LAVA") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.LAVA);
+            } else if (params.getString("type") == "FOOTSTEP") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.FOOTSTEP);
+            } else if (params.getString("type") == "CLOUD") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.CLOUD);
+            } else if (params.getString("type") == "REDSTONE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.REDSTONE);
+            } else if (params.getString("type") == "SNOWBALL") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SNOWBALL);
+            } else if (params.getString("type") == "SNOW_SHOVEL") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SNOW_SHOVEL);
+            } else if (params.getString("type") == "SLIME") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.SLIME);
+            } else if (params.getString("type") == "HEART") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.HEART);
+            } else if (params.getString("type") == "BARRIER") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.BARRIER);
+            } else if (params.getString("type") == "ITEM_CRACK") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.ITEM_CRACK);
+            } else if (params.getString("type") == "BLOCK_CRACK") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.BLOCK_CRACK);
+            } else if (params.getString("type") == "BLOCK_DUST") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.BLOCK_DUST);
+            } else if (params.getString("type") == "WATER_DROP") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.WATER_DROP);
+            } else if (params.getString("type") == "ITEM_TAKE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.ITEM_TAKE);
+            } else if (params.getString("type") == "MOB_APPEARANCE") {
+                mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.MOB_APPEARANCE);
+            }
+        });
         getModAPI().set("clientBrand", ClientBrandRetriever.getClientModName());
 
         setGlobal("enchantments", Enchantment.makeModDataStatic());
@@ -215,6 +310,7 @@ public class ModAPI {
         setGlobal("items", Items.makeModData());
         setGlobal("materials", Material.makeModDataStatic());
         setGlobal("mcinstance", mc);
+        setMinecraftContext(mc);
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
         setGlobal("emptygui", EmptyGui.makeModData());
@@ -247,6 +343,12 @@ public class ModAPI {
         getModAPI().setCallbackVoidWithDataArg("drawRect", (BaseData params) -> {
             gui.drawRect(params.getInt("left"), params.getInt("top"), params.getInt("right"), params.getInt("bottom"), params.getInt("color"));
         });
+        getModAPI().setCallbackVoid("reloadchunks", () -> {
+            mc.renderGlobal.loadRenderers();
+        });
+        getModAPI().setCallbackString("getProfileName", () -> {
+            return EaglerProfile.getName();
+        });
         ModGUI.loadFont();
     }
     static void globalsFunctor(ModAPI modAPI) {
@@ -275,9 +377,12 @@ public class ModAPI {
         if (requiredList.contains("network") && mc.thePlayer != null && mc.thePlayer.sendQueue != null) {
             ModAPI.setGlobal("network", mc.thePlayer.sendQueue.makeModData());
         }
+        ModAPI.callEvent("update", new ModData());
+    }
+    public void onFrame(){
         if (requiredList.contains("settings") && mc.gameSettings != null) {
             ModAPI.setGlobal("settings", mc.gameSettings.makeModData());
         }
-        ModAPI.callEvent("update", new ModData());
+        ModAPI.callEvent("frame", new ModData());
     }
 }

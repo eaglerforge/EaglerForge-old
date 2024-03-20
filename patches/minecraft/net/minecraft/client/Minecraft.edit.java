@@ -549,7 +549,11 @@
 
 > DELETE  2  @  2 : 10
 
-> INSERT  9 : 28  @  9
+> INSERT  5 : 6  @  5
+
++ 		Minecraft.getMinecraft().modapi.onFrame();
+
+> INSERT  4 : 23  @  4
 
 + 		RateLimitTracker.tick();
 + 

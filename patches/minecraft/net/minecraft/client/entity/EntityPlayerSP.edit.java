@@ -31,7 +31,7 @@
 
 + 		this.statWriter = statWriter;
 
-> INSERT  2 : 141  @  2
+> INSERT  2 : 157  @  2
 
 + 	@Override
 + 	public ModData makeModData() {
@@ -54,7 +54,8 @@
 + 		data.set("clientBrand", clientBrand);
 + 		data.set("sprintToggleTimer", sprintToggleTimer);
 + 		data.set("sprintingTicksLeft", sprintingTicksLeft);
-+ 
++ 		data.set("moveForward", moveForward);
++ 		data.set("moveStrafing", moveStrafing);
 + 		data.set("renderArmYaw", renderArmYaw);
 + 		data.set("renderArmPitch", renderArmPitch);
 + 		data.set("prevRenderArmYaw", prevRenderArmYaw);
@@ -145,6 +146,21 @@
 + 		data.setCallbackBoolean("isSpectator", () -> {
 + 			return isSpectator();
 + 		});
++ 		data.setCallbackFloat("getSpeed", () -> {
++ 			return getSpeed();
++ 		});
++ 		data.setCallbackBoolean("isMoving", () -> {
++ 			return isMoving();
++ 		});
++ 		data.setCallbackBoolean("hasMotion", () -> {
++ 			return hasMotion();
++ 		});
++ 		data.setCallbackFloat("getSpeed", () -> {
++ 			return getSpeed();
++ 		});
++ 		data.setCallbackVoidWithDataArg("setSpeed", (BaseData params) -> {
++ 			setSpeed(params.getFloat("speed"));
++ 		});
 + 		return data;
 + 	}
 + 
@@ -215,5 +231,61 @@
 ~ 			message = newEvent.has("message") ? newEvent.getString("message") : message;
 ~ 			this.sendQueue.addToSendQueue(new C01PacketChatMessage(message));
 ~ 		}
+
+> INSERT  426 : 479  @  426
+
++ 
++ 	public float getSpeed() {
++ 		return (float) Math
++ 				.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
++ 	}
++ 
++ 	public void strafe() {
++ 		strafe(getSpeed());
++ 	}
++ 
++ 	public boolean isMoving() {
++ 		return mc.thePlayer != null
++ 				&& (mc.thePlayer.movementInput.moveForward != 0F || mc.thePlayer.movementInput.moveStrafe != 0F);
++ 	}
++ 
++ 	public boolean hasMotion() {
++ 		return mc.thePlayer.motionX != 0D && mc.thePlayer.motionZ != 0D && mc.thePlayer.motionY != 0D;
++ 	}
++ 
++ 	public void strafe(final float speed) {
++ 		if (!isMoving())
++ 			return;
++ 
++ 		final double yaw = getDirection();
++ 		mc.thePlayer.motionX = -Math.sin(yaw) * speed;
++ 		mc.thePlayer.motionZ = Math.cos(yaw) * speed;
++ 	}
++ 
++ 	public double getDirection() {
++ 		float rotationYaw = mc.thePlayer.rotationYaw;
++ 
++ 		if (mc.thePlayer.moveForward < 0F)
++ 			rotationYaw += 180F;
++ 
++ 		float forward = 1F;
++ 		if (mc.thePlayer.moveForward < 0F)
++ 			forward = -0.5F;
++ 		else if (mc.thePlayer.moveForward > 0F)
++ 			forward = 0.5F;
++ 
++ 		if (mc.thePlayer.moveStrafing > 0F)
++ 			rotationYaw -= 90F * forward;
++ 
++ 		if (mc.thePlayer.moveStrafing < 0F)
++ 			rotationYaw += 90F * forward;
++ 
++ 		return Math.toRadians(rotationYaw);
++ 	}
++ 
++ 	public void setSpeed(float speed) {
++ 		this.motionX = -(Math.sin((double) this.getDirection()) * (double) speed);
++ 		this.motionZ = Math.cos((double) this.getDirection()) * (double) speed;
++ 	}
 
 > EOF
