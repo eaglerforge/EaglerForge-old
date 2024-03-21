@@ -32,8 +32,8 @@ public class EaglercraftVersion {
 	
 	public static final boolean enableUpdateService = false;
 
-	public static final String updateBundlePackageName = "io.github.eaglerforge.eaglerforge";
-	public static final int updateBundlePackageVersionInt = 0;
+	public static final String updateBundlePackageName = "io.github.eaglerforge";
+	public static final int updateBundlePackageVersionInt = 1;
 
 	public static final String updateLatestLocalStorageKey = "latestUpdate_" + updateBundlePackageName;
 
