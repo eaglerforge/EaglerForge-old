@@ -564,6 +564,9 @@ public class PlatformInput {
 	@JSBody(params = { "mediaQuery" }, script = "return mediaQuery.matches;")
 	private static native boolean mediaQueryMatches(JSObject mediaQuery);
 
+	@JSBody(params = {}, script = "return document.getElementById('game_frame');")
+	private static native HTMLElement game_frame();
+
 	public static void toggleFullscreen() {
 		if (isFullscreen()) {
 			if (keyboardLockSupported) {
@@ -576,7 +579,7 @@ public class PlatformInput {
 				lockKeys();
 				lockKeys = true;
 			}
-			requestFullscreen(canvas);
+			requestFullscreen(game_frame());
 		}
 	}
 

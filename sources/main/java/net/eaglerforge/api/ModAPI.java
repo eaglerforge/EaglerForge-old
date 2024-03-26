@@ -1,19 +1,17 @@
 package net.eaglerforge.api;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-import net.eaglerforge.gui.EmptyGui;
 import net.eaglerforge.gui.ModGUI;
+import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
 import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
+import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ChatComponentText;
 import me.otterdev.UwUAPI;
-import net.minecraft.util.EnumParticleTypes;
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
 import net.minecraft.enchantment.Enchantment;
@@ -216,7 +214,7 @@ public class ModAPI {
         getModAPI().setCallbackInt("getFPS", () -> {
             return getDebugFPS();
         });
-        getModAPI().setCallbackVoidWithDataArg("displayParticleAtPlayer", (BaseData params) -> {
+        /*getModAPI().setCallbackVoidWithDataArg("displayParticleAtPlayer", (BaseData params) -> {
             if (params.getString("type") == "EXPLOSION_NORMAL") {
                 mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.EXPLOSION_NORMAL);
             } else if (params.getString("type") == "EXPLOSION_LARGE") {
@@ -302,7 +300,7 @@ public class ModAPI {
             } else if (params.getString("type") == "MOB_APPEARANCE") {
                 mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.MOB_APPEARANCE);
             }
-        });
+        });*/
         getModAPI().set("clientBrand", ClientBrandRetriever.getClientModName());
 
         setGlobal("enchantments", Enchantment.makeModDataStatic());
@@ -313,9 +311,10 @@ public class ModAPI {
         setMinecraftContext(mc);
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
-        setGlobal("emptygui", EmptyGui.makeModData());
+        //setGlobal("emptygui", EmptyGui.makeModData());
         setGlobal("ScaledResolution", ScaledResolution.makeModData());
         setGlobal("GlStateManager", GlStateManager.makeModData());
+        setGlobal("sp", SingleplayerServerController.makeModData());
         getModAPI().setCallbackString("currentScreen", () -> {
             return mc.currentScreen.toString();
         });
@@ -368,6 +367,7 @@ public class ModAPI {
             modAPI.onUpdate();
         });
     }
+ 
 
 
     public void onUpdate() {
@@ -376,6 +376,9 @@ public class ModAPI {
         }
         if (requiredList.contains("network") && mc.thePlayer != null && mc.thePlayer.sendQueue != null) {
             ModAPI.setGlobal("network", mc.thePlayer.sendQueue.makeModData());
+        }
+        if (requiredList.contains("server") && mc.getCurrentServerData() != null) {
+            ModAPI.setGlobal("server", server.makeModData());
         }
         ModAPI.callEvent("update", new ModData());
     }

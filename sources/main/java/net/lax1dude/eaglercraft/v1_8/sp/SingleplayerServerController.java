@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import net.eaglerforge.api.ModData;
 import net.lax1dude.eaglercraft.v1_8.internal.PlatformWebRTC;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +32,7 @@ import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.SaveFormatComparator;
 import net.minecraft.world.storage.WorldInfo;
+import org.teavm.jso.JSObject;
 
 /**
  * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
@@ -47,7 +49,7 @@ import net.minecraft.world.storage.WorldInfo;
  * POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-public class SingleplayerServerController implements ISaveFormat {
+public class SingleplayerServerController extends ModData implements ISaveFormat {
 
 	public static final String IPC_CHANNEL = "~!IPC";
 	public static final String PLAYER_CHANNEL = "~!LOCAL_PLAYER";
@@ -591,4 +593,33 @@ public class SingleplayerServerController implements ISaveFormat {
 		Minecraft mc = Minecraft.getMinecraft();
 		return mc != null && mc.thePlayer != null && mc.thePlayer.sendQueue.isClientInEaglerSingleplayerOrLAN();
 	}
+
+	public static ModData makeModData() {
+		ModData spglobal = new ModData();
+		spglobal.setCallbackBoolean("isIntegratedServerWorkerStarted", () -> {
+			return isIntegratedServerWorkerStarted();
+		});
+		spglobal.setCallbackVoid("startIntegratedServerWorker", () -> {
+			startIntegratedServerWorker();
+		});
+		spglobal.setCallbackBoolean("isIntegratedServerWorkerAlive", () -> {
+			return isIntegratedServerWorkerAlive();
+		});
+		spglobal.setCallbackBoolean("isReady", () -> {
+			return isReady();
+		});
+
+		spglobal.set("IPC_CHANNEL", IPC_CHANNEL);
+		spglobal.set("PLAYER_CHANNEL", PLAYER_CHANNEL);
+		spglobal.set("statusState", statusState);
+		spglobal.set("loggingState", loggingState);
+		spglobal.set("worldStatusString", worldStatusString);
+		spglobal.set("worldStatusProgress", worldStatusProgress);
+		spglobal.set("isPaused", isPaused);
+		spglobal.set("integratedServerTPS", (JSObject) integratedServerTPS);
+		spglobal.set("integratedServerLastTPSUpdate", integratedServerLastTPSUpdate);
+		return spglobal;
+	}
+
+
 }

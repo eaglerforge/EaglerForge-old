@@ -105,7 +105,7 @@
 ~ 				for (int i = 0, l = list.size(); i < l; ++i) {
 ~ 					y = list.get(i).calculateYOffset(this.getEntityBoundingBox(), y);
 
-> INSERT  232 : 602  @  232
+> INSERT  232 : 603  @  232
 
 + 	public void loadModData(BaseData data) {
 + 		posX = data.getDouble("x");
@@ -363,6 +363,7 @@
 + 		data.setCallbackBoolean("getAlwaysRenderNameTagForRender", () -> {
 + 			return getAlwaysRenderNameTagForRender();
 + 		});
++ 
 + 		data.setCallbackFloatWithDataArg("getBrightness", (BaseData params) -> {
 + 			return getBrightness(params.getFloat("var1"));
 + 		});
