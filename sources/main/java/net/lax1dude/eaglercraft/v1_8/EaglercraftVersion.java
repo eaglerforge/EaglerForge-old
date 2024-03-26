@@ -12,10 +12,10 @@ public class EaglercraftVersion {
 	/// Customize these to fit your fork:
 
 	public static final String projectForkName = "EaglerForge";
-	public static final String projectForkVersion = "v1.2.5";
+	public static final String projectForkVersion = "v1.3";
 	public static final String projectForkVendor = "radmanplays";
 
-	public static final String projectForkURL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+	public static final String projectForkURL = "https://github.com/eaglerforge/EaglerForge";
 
 	//////////////////////////////////////////////////////////////////////
 	
@@ -58,7 +58,7 @@ public class EaglercraftVersion {
 
 	public static final long demoWorldSeed = (long) "North Carolina".hashCode();
 
-	public static final boolean mainMenuEnableGithubButton = false;
+	public static final boolean mainMenuEnableGithubButton = true;
 
 	public static final boolean forceDemoMode = false;
 
