@@ -22,7 +22,7 @@
 ~ import net.minecraft.util.ChatComponentText;
 ~ import net.minecraft.util.EnumChatFormatting;
 ~ import net.minecraft.util.ResourceLocation;
-~ import net.eaglerforge.gui.ModGUI;
+~ import net.eaglerforge.gui.ModManager;
 
 > DELETE  2  @  2 : 4
 
@@ -79,8 +79,8 @@
 > INSERT  9 : 13  @  9
 
 + 		case 69420:
-+ 			// this.mc.displayGuiScreen(new GuiMods(this));
-+ 			ModGUI.displayGui();
++ 			this.mc.displayGuiScreen(new ModManager(this));
++ 			// ModGUI.displayGui();
 + 			break;
 
 > CHANGE  7 : 21  @  7 : 8
