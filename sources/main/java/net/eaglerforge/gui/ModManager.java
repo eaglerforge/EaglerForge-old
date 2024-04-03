@@ -26,7 +26,7 @@ import net.minecraft.client.resources.ResourcePackListEntryFound;
 import net.minecraft.client.resources.ResourcePackRepository;
 
 
-public class WIP_GuiMods extends GuiScreen {
+public class ModManager extends GuiScreen {
 	private static final Logger logger = LogManager.getLogger();
 	private final GuiScreen parentScreen;
 	private List<ResourcePackListEntry> availableResourcePacks;
@@ -35,7 +35,7 @@ public class WIP_GuiMods extends GuiScreen {
 	private GuiResourcePackSelected selectedResourcePacksList;
 	private boolean changed = false;
 
-	public WIP_GuiMods(GuiScreen parentScreenIn) {
+	public ModManager(GuiScreen parentScreenIn) {
 		this.parentScreen = parentScreenIn;
 	}
 
