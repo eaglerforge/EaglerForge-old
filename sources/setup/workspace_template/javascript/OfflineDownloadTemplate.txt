@@ -317,7 +317,9 @@ function displayGui() {
     var modNumber = 1;
     var container = document.createElement("div");
     container.id = "eaglerpl_gui";
-    container.style = '@import "https://eaglerforge.github.io/files/newui.css"'; 
+    var newUIStyle = document.createElement("style");
+    newUIStyle.innerHTML = '@import "https://eaglerforge.github.io/files/newui.css"';
+    container.appendChild(newUIStyle);
     var modList = document.createElement("div");
     modList.style = "height: calc(var(--local-scale) * 80px);";
     modList.class = "menucontainer grid";
