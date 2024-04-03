@@ -317,8 +317,327 @@ function displayGui() {
     var modNumber = 1;
     var container = document.createElement("div");
     container.id = "eaglerpl_gui";
-    var newUIStyle = document.createElement("style");
-    newUIStyle.innerHTML = '@import "https://eaglerforge.github.io/files/newui.css"';
+    container.innerHTML = `<style>:root {
+  --global-scale: 3;
+  --default-shadow: #3F3F3F;
+  --default-color: #FFFFFF;
+}
+
+.menucontainer {
+  margin: calc(var(--local-scale) * 12px) auto calc(var(--local-scale) * 5px);
+  width: fit-content;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--local-scale) * 1px);
+}
+
+::-webkit-scrollbar {
+  width: calc(var(--global-scale) * 6px);
+  height: calc(var(--global-scale) * 6px);
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  height: calc(var(--global-scale) * 32px);
+  box-shadow: inset calc(var(--global-scale) * -1px) calc(var(--global-scale) * -1px) 0 0 #808080;
+  background: #C0C0C0;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Minecraft"; /* Ensure Minecraft font is applied to anchor tags */
+}
+
+[contenteditable] {
+  outline: none;
+}
+
+body {
+  --local-scale: calc(var(--scale, 1) * var(--global-scale));
+  margin: calc(var(--local-scale) * 4px) calc(var(--local-scale) * 4px);
+}
+
+.grid {
+  display: grid;
+}
+
+div.scrollitem {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+div.scrollcontent {
+  display: grid;
+  align-items: center;
+  background-attachment: local;
+  overflow-y: auto;
+  height: auto;
+}
+
+div.scrollitem {
+  display: grid;
+  align-content: center;
+  width: calc(var(--local-scale) * 200px);
+  height: calc(var(--local-scale) * 20px);
+  padding: calc(var(--local-scale) * 5px) calc(var(--local-scale) * 4px);
+  border-style: solid;
+  text-align: left;
+  background-color: transparent;
+  border-color: transparent;
+  border-width: calc(var(--local-scale) * 1px);
+}
+
+div.scrollitem:focus,
+div.scrollitem:focus-within {
+  background-color: #000000;
+  border-color: #808080;
+}
+
+div.fgtop,
+div.fgbottom,
+.dirt {
+  margin: 0;
+  color: #fff;
+  --local-scale: calc(var(--scale, 1) * var(--global-scale));
+  background-image: url("https://mcphackers.org/images/dirt.svg");
+  background-size: calc(var(--local-scale) * 32px);
+  background-color: #404040;
+  background-blend-mode: multiply;
+}
+
+div.fgtop,
+div.fgbottom {
+  width: 100%;
+  z-index:10;
+  height: calc(var(--local-scale) * 32px);
+  box-shadow: 0px 0px calc(var(--local-scale) * 4px) calc(var(--local-scale) * 2px) #000000;
+}
+
+.darkbg {
+  background-color: #202020;
+  background-blend-mode: multiply;
+}
+
+.gradient {
+  background-size: cover;
+  background-image: linear-gradient(to bottom, #303060, #050500);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.mod-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin: 10px auto 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.mod-container img {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.mod-container .url-container {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mod-container img {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.mod-container .url-container {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mod-container.selected {
+  border: 1px solid #ffffff;
+}
+
+h1,
+h2,
+a,
+.mcgray_ui, .black, .darkblue, .darkgreen, .darkaqua, .darkred, .darkpurple, .gold, .gray, .darkgray, .blue, .green, .aqua, .red, .lightpurple, .yellow, .white,
+.mc,
+.mcsplash,
+.mcbutton,
+.mcbutton_disabled,
+.mcslider,
+.mctextfield,
+.mcbuttontext {
+  outline: none;
+  --local-scale: calc(var(--scale, 0.8) * var(--global-scale));
+  --local-color: var(--text-color, var(--default-color));
+  --local-shadow: var(--shadow-color, var(--default-shadow));
+  font-weight: 100;
+  font-family: "Minecraft";
+  word-spacing: calc(2px * var(--local-scale));
+  line-height: calc(9px * var(--local-scale));
+  font-size: calc(8px * var(--local-scale));
+  text-shadow: calc(var(--local-scale)* 1px) calc(var(--local-scale) * 1px) 0 var(--local-shadow);
+  color: var(--local-color);
+}
+
+.mcslider::before {
+  position: absolute;
+  text-align: center;
+  width: inherit;
+  content: var(--slider-text, "");
+}
+
+ul {
+  padding-inline-start: calc(16px * var(--local-scale));
+}
+
+::marker {
+  letter-spacing: calc(4px * var(--local-scale));
+  content: "\2022";
+}
+
+.mcbutton,
+.mcbutton_disabled,
+.mctextfield,
+.mcslider,
+.mcbuttontext {
+  display: block;
+  margin-top: calc(var(--local-scale) * 3px);
+  margin-bottom: calc(var(--local-scale) * 3px);
+  margin-right: calc(var(--local-scale) * 3px);
+  margin-left: calc(var(--local-scale) * 3px);
+  box-sizing: border-box;
+  padding: calc(var(--local-scale) * 4px) 0px;
+  text-align: center;
+  text-decoration: none;
+  background-size: cover;
+  background-image: url("https://mcphackers.org/images/button.svg");
+  line-height: 1;
+  --shadow-color: #383838;
+  --text-color: #E0E0E0;
+  width: calc(var(--local-scale) * 160px);
+  height: calc(var(--local-scale) * 16px);
+  font-size: calc(var(--local-scale) * 8px);
+}
+
+.mcbutton:focus,
+.mcbutton:hover {
+  background-image: url("https://mcphackers.org/images/button_active.svg");
+}
+
+.mcbuttontext {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  pointer-events: none;
+}
+
+.mcbutton:hover,
+.mcbutton:focus,
+.mcslider:hover,
+.mcslider:hover + .mcbuttontext,
+.mcslider:focus + .mcbuttontext,
+.mcbutton:hover + .mcbuttontext,
+.mcbutton:focus + .mcbuttontext {
+  --shadow-color: #3F3F28;
+  --text-color: #FFFFA0;
+}
+
+/* Text colors */
+
+a.res { --shadow-color: #153F15; --text-color: #55FF55; }
+a.res:hover, a.res:focus { --shadow-color: #002A00; --text-color: #00AA00; }
+a { --shadow-color: #15153F; --text-color: #5555FF; }
+a:hover, a:focus { --shadow-color: #00002A; --text-color: #0000AA; }
+h1, h2 { --shadow-color: #3F3F3F; --text-color: #FFFFFF; }
+
+.mcbutton_disabled,
+.mcgray_ui { --shadow-color: #282828 !important; --text-color: #A0A0A0 !important; }
+.black { --shadow-color: #000000 !important; --text-color: #000000 !important; }
+.darkblue { --shadow-color: #00002A !important; --text-color: #0000AA !important; }
+.darkgreen { --shadow-color: #002A00 !important; --text-color: #00AA00 !important; }
+.darkaqua { --shadow-color: #002A2A !important; --text-color: #00AAAA !important; }
+.darkred { --shadow-color: #2A0000 !important; --text-color: #AA0000 !important; }
+.darkpurple { --shadow-color: #2A002A !important; --text-color: #AA00AA !important; }
+.gold { --shadow-color: #2A2A00 !important; --text-color: #FFAA00 !important; }
+.gray { --shadow-color: #2A2A2A !important; --text-color: #AAAAAA !important; }
+.darkgray { --shadow-color: #151515 !important; --text-color: #555555 !important; }
+.blue { --shadow-color: #15153F !important; --text-color: #5555FF !important; }
+.green { --shadow-color: #153F15 !important; --text-color: #55FF55 !important; }
+.aqua { --shadow-color: #153F3F !important; --text-color: #55FFFF !important; }
+.red { --shadow-color: #3F1515 !important; --text-color: #FF5555 !important; }
+.lightpurple { --shadow-color: #3F153F !important; --text-color: #FF55FF !important; }
+.yellow { --shadow-color: #3F3F15 !important; --text-color: #FFFF55 !important; }
+.white { --shadow-color: #3F3F3F !important; --text-color: #FFFFFF !important; }
+
+/* --- */
+
+.mcslider {
+  -webkit-appearance: none;
+  background-size: cover;
+  background-image: url("https://mcphackers.org/images/button_inactive.svg");
+}
+
+.mcslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: calc(var(--local-scale) * 8px);
+  height: calc(var(--local-scale) * 20px);
+  background-size: cover;
+  background-image: url("https://mcphackers.org/images/slider.svg");
+  cursor: pointer;
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
+.center:not(.mctextfield) {
+  text-align: center;
+}
+
+.center_vertical {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.flex,
+.flex_space {
+  display: flex;
+  column-gap: calc(var(--local-scale) * 6px);
+  align-content: center;
+  align-items: center;
+}
+.flex_space {
+  justify-content: space-between;
+}
+.minwidth {
+  width: fit-content;
+}</style>`
     container.appendChild(newUIStyle);
     var modList = document.createElement("div");
     modList.style = "height: calc(var(--local-scale) * 80px);";
