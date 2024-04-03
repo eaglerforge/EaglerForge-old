@@ -13,18 +13,17 @@
 
 > DELETE  2  @  2 : 3
 
-> CHANGE  1 : 14  @  1 : 11
+> CHANGE  1 : 13  @  1 : 11
 
 ~ import java.util.Set;
 ~ 
 ~ import net.lax1dude.eaglercraft.v1_8.internal.PlatformAudio;
 ~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftSoundManager;
-~ 
 ~ import com.google.common.collect.Lists;
 ~ 
+~ import net.lax1dude.eaglercraft.v1_8.EaglercraftSoundManager;
 ~ import net.lax1dude.eaglercraft.v1_8.IOUtils;
+~ import net.lax1dude.eaglercraft.v1_8.ThreadLocalRandom;
 ~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
 ~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 ~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
@@ -87,6 +86,6 @@
 
 > CHANGE  6 : 7  @  6 : 7
 
-~ 			return (SoundEventAccessorComposite) arraylist.get((new EaglercraftRandom()).nextInt(arraylist.size()));
+~ 			return (SoundEventAccessorComposite) arraylist.get(ThreadLocalRandom.current().nextInt(arraylist.size()));
 
 > EOF
