@@ -378,7 +378,7 @@ public class ClientMain {
 			div.setAttribute("style", "z-index:100;position:absolute;top:135px;left:10%;right:10%;bottom:50px;background-color:white;border:1px solid #cccccc;overflow-x:hidden;overflow-y:scroll;font:18px sans-serif;padding:40px;");
 			el.appendChild(img);
 			el.appendChild(div);
-			div.setInnerHTML("<h2><svg style=\"vertical-align:middle;margin:0px 16px 8px 8px;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" fill=\"none\"><path stroke=\"#000000\" stroke-width=\"3\" stroke-linecap=\"square\" d=\"M1.5 8.5v34h45v-28m-3-3h-10v-3m-3-3h-10m15 6h-18v-3m-3-3h-10\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M12 21h0m0 4h0m4 0h0m0-4h0m-2 2h0m20-2h0m0 4h0m4 0h0m0-4h0m-2 2h0\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M20 30h0 m2 2h0 m2 2h0 m2 2h0 m2 -2h0 m2 -2h0 m2 -2h0\"/></svg>+ This device is incompatible with Eaglercraft&ensp;:(</h2>"
+			div.setInnerHTML("<h2><svg style=\"vertical-align:middle;margin:0px 16px 8px 8px;\" xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" fill=\"none\"><path stroke=\"#000000\" stroke-width=\"3\" stroke-linecap=\"square\" d=\"M1.5 8.5v34h45v-28m-3-3h-10v-3m-3-3h-10m15 6h-18v-3m-3-3h-10\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M12 21h0m0 4h0m4 0h0m0-4h0m-2 2h0m20-2h0m0 4h0m4 0h0m0-4h0m-2 2h0\"/><path stroke=\"#000000\" stroke-width=\"2\" stroke-linecap=\"square\" d=\"M20 30h0 m2 2h0 m2 2h0 m2 2h0 m2 -2h0 m2 -2h0 m2 -2h0\"/></svg>+ This device is incompatible with EaglerForge&ensp;:(</h2>"
 					+ "<div style=\"margin-left:40px;\">"
 					+ "<p style=\"font-size:1.2em;\"><b style=\"font-size:1.1em;\">Issue:</b> <span style=\"color:#BB0000;\" id=\"crashReason\"></span><br /></p>"
 					+ "<p style=\"margin-left:10px;font:0.9em monospace;\" id=\"crashUserAgent\"></p>"
@@ -393,6 +393,7 @@ public class ClientMain {
 					+ "<li style=\"margin-top:7px;\">If your browser is out of date, please update it to the latest version</li>"
 					+ "<li style=\"margin-top:7px;\">If you are using an old OS such as Windows 7, please try Windows 10 or 11</li>"
 					+ "<li style=\"margin-top:7px;\">If you have a GPU launched before 2009, WebGL 2.0 support may be impossible</li>"
+					+ "<li style=\"margin-top:7px;\">Try loading without mods</li>"
 					+ "</ol>"
 					+ "</div>");
 			
