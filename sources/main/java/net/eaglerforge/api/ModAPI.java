@@ -1,3 +1,4 @@
+//Please don't break
 package net.eaglerforge.api;
 
 import net.eaglerforge.gui.ModGUI;
@@ -95,7 +96,7 @@ public class ModAPI {
         newEvent("update");
         newEvent("frame");
 
-        /*newEvent("packetjoingame");
+        newEvent("packetjoingame");
         newEvent("packetspawnobject");
         newEvent("packetspawnxporb");
         newEvent("packetspawnglobalentity");
@@ -214,7 +215,7 @@ public class ModAPI {
         getModAPI().setCallbackInt("getFPS", () -> {
             return getDebugFPS();
         });
-        /*getModAPI().setCallbackVoidWithDataArg("displayParticleAtPlayer", (BaseData params) -> {
+        getModAPI().setCallbackVoidWithDataArg("displayParticleAtPlayer", (BaseData params) -> {
             if (params.getString("type") == "EXPLOSION_NORMAL") {
                 mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.EXPLOSION_NORMAL);
             } else if (params.getString("type") == "EXPLOSION_LARGE") {
@@ -300,7 +301,7 @@ public class ModAPI {
             } else if (params.getString("type") == "MOB_APPEARANCE") {
                 mc.effectRenderer.emitParticleAtEntity(mc.thePlayer, EnumParticleTypes.MOB_APPEARANCE);
             }
-        });*/
+        });
         getModAPI().set("clientBrand", ClientBrandRetriever.getClientModName());
 
         setGlobal("enchantments", Enchantment.makeModDataStatic());
