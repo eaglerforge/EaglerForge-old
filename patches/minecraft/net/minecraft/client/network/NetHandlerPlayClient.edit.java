@@ -9,7 +9,7 @@
 
 > DELETE  4  @  4 : 6
 
-> INSERT  1 : 22  @  1
+> INSERT  1 : 25  @  1
 
 + 
 + import net.eaglerforge.api.BaseData;
@@ -22,12 +22,15 @@
 + import com.google.common.collect.Maps;
 + 
 + import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
++ import net.lax1dude.eaglercraft.v1_8.profile.CapePackets;
++ import net.lax1dude.eaglercraft.v1_8.profile.ServerCapeCache;
 + import net.lax1dude.eaglercraft.v1_8.profile.ServerSkinCache;
 + import net.lax1dude.eaglercraft.v1_8.profile.SkinPackets;
 + import net.lax1dude.eaglercraft.v1_8.socket.EaglercraftNetworkManager;
 + import net.lax1dude.eaglercraft.v1_8.sp.lan.LANClientNetworkManager;
 + import net.lax1dude.eaglercraft.v1_8.sp.socket.ClientIntegratedServerNetworkManager;
 + import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
++ import net.lax1dude.eaglercraft.v1_8.voice.VoiceClientController;
 + import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 + import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
 + import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerFolderResourcePack;
@@ -83,27 +86,31 @@
 
 ~ 	private final Map<EaglercraftUUID, NetworkPlayerInfo> playerInfoMap = Maps.newHashMap();
 
-> CHANGE  2 : 5  @  2 : 3
+> CHANGE  2 : 7  @  2 : 3
 
 ~ 	private boolean isIntegratedServer = false;
 ~ 	private final EaglercraftRandom avRandomizer = new EaglercraftRandom();
 ~ 	private final ServerSkinCache skinCache;
+~ 	private final ServerCapeCache capeCache;
+~ 	public boolean currentFNAWSkinAllowedState = true;
 
 > CHANGE  1 : 2  @  1 : 2
 
 ~ 	public NetHandlerPlayClient(Minecraft mcIn, GuiScreen parGuiScreen, EaglercraftNetworkManager parNetworkManager,
 
-> INSERT  5 : 8  @  5
+> INSERT  5 : 9  @  5
 
 + 		this.skinCache = new ServerSkinCache(parNetworkManager, mcIn.getTextureManager());
++ 		this.capeCache = new ServerCapeCache(parNetworkManager, mcIn.getTextureManager());
 + 		this.isIntegratedServer = (parNetworkManager instanceof ClientIntegratedServerNetworkManager)
 + 				|| (parNetworkManager instanceof LANClientNetworkManager);
 
-> INSERT  4 : 5  @  4
+> INSERT  4 : 6  @  4
 
 + 		this.skinCache.destroy();
++ 		this.capeCache.destroy();
 
-> INSERT  2 : 154  @  2
+> INSERT  2 : 158  @  2
 
 + 	public ServerSkinCache getSkinCache() {
 + 		return this.skinCache;
@@ -257,10 +264,21 @@
 + 		return data;
 + 	}
 + 
++ 	public ServerCapeCache getCapeCache() {
++ 		return this.capeCache;
++ 	}
++ 
 
 > DELETE  1  @  1 : 2
 
-> DELETE  19  @  19 : 20
+> INSERT  16 : 20  @  16
+
++ 		if (VoiceClientController.isClientSupported()) {
++ 			VoiceClientController.initializeVoiceClient((pkt) -> this.netManager
++ 					.sendPacket(new C17PacketCustomPayload(VoiceClientController.SIGNAL_CHANNEL, pkt)));
++ 		}
+
+> DELETE  3  @  3 : 4
 
 > DELETE  105  @  105 : 106
 
@@ -296,8 +314,11 @@
 
 > DELETE  22  @  22 : 23
 
-> CHANGE  8 : 11  @  8 : 9
+> CHANGE  8 : 14  @  8 : 9
 
+~ 		VoiceClientController.handleServerDisconnect();
+~ 		Minecraft.getMinecraft().getRenderManager()
+~ 				.setEnableFNAWSkins(this.gameController.gameSettings.enableFNAWSkins);
 ~ 		if (this.gameController.theWorld != null) {
 ~ 			this.gameController.loadWorld((WorldClient) null);
 ~ 		}
@@ -878,11 +899,12 @@
 ~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
 ~ 			S38PacketPlayerListItem.AddPlayerData s38packetplayerlistitem$addplayerdata = lst.get(i);
 
-> CHANGE  1 : 4  @  1 : 2
+> CHANGE  1 : 5  @  1 : 2
 
 ~ 				EaglercraftUUID uuid = s38packetplayerlistitem$addplayerdata.getProfile().getId();
 ~ 				this.playerInfoMap.remove(uuid);
 ~ 				this.skinCache.evictSkin(uuid);
+~ 				this.capeCache.evictCape(uuid);
 
 > DELETE  34  @  34 : 35
 
@@ -992,13 +1014,20 @@
 
 > DELETE  11  @  11 : 13
 
-> INSERT  9 : 28  @  9
+> INSERT  9 : 43  @  9
 
 + 		} else if ("EAG|Skins-1.8".equals(packetIn.getChannelName())) {
 + 			try {
 + 				SkinPackets.readPluginMessage(packetIn.getBufferData(), skinCache);
 + 			} catch (IOException e) {
 + 				logger.error("Couldn't read EAG|Skins-1.8 packet!");
++ 				logger.error(e);
++ 			}
++ 		} else if ("EAG|Capes-1.8".equals(packetIn.getChannelName())) {
++ 			try {
++ 				CapePackets.readPluginMessage(packetIn.getBufferData(), capeCache);
++ 			} catch (IOException e) {
++ 				logger.error("Couldn't read EAG|Capes-1.8 packet!");
 + 				logger.error(e);
 + 			}
 + 		} else if ("EAG|UpdateCert-1.8".equals(packetIn.getChannelName())) {
@@ -1013,8 +1042,18 @@
 + 					logger.error(e);
 + 				}
 + 			}
++ 		} else if (VoiceClientController.SIGNAL_CHANNEL.equals(packetIn.getChannelName())) {
++ 			if (VoiceClientController.isClientSupported()) {
++ 				VoiceClientController.handleVoiceSignalPacket(packetIn.getBufferData());
++ 			}
++ 		} else if ("EAG|FNAWSEn-1.8".equals(packetIn.getChannelName())) {
++ 			this.currentFNAWSkinAllowedState = packetIn.getBufferData().readBoolean();
++ 			Minecraft.getMinecraft().getRenderManager().setEnableFNAWSkins(
++ 					this.currentFNAWSkinAllowedState && Minecraft.getMinecraft().gameSettings.enableFNAWSkins);
 
-> DELETE  5  @  5 : 6
+> DELETE  1  @  1 : 2
+
+> DELETE  3  @  3 : 4
 
 > DELETE  19  @  19 : 20
 
