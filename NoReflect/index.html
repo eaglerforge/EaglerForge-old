@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoReflect Generator Front-end</title>
+    <style>
+        h1 {
+            text-shadow: 0px 0px 3px;
+            color: lime;
+        }
+        html, body {
+            font-family: monospace;
+            background-color: rgb(0, 0, 15);
+        }
+        textarea {
+            border: 1px solid lime;
+            box-shadow: 0px 0px 3px lime;
+            background-color: transparent;
+            color: lime;
+            text-shadow: 0px 0px 3px;
+            min-height: 10rem;
+            min-width: 50rem;
+        }
+        textarea:focus {
+            outline: 0;
+        }
+        input[type=file] {
+            color: lime;
+            text-shadow: 0px 0px 3px;
+        }
+        input[type=file]::-webkit-file-upload-button {
+            color: red;
+            text-shadow: 0px 0px 3px;
+            background-color: transparent;
+            border: 1px solid red;
+            box-shadow: 0px 0px 6px red;
+            cursor: pointer;
+        }
+        #generate {
+            color: lime;
+            text-shadow: 0px 0px 3px;
+            background-color: transparent;
+            border: 1px solid lime;
+            box-shadow: 0px 0px 3px lime;
+            cursor: pointer;
+        }
+        #generate:active {
+            box-shadow: 0px 0px 0px lime;
+        }
+        #logs {
+            max-height: 16rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin-top: 2rem;
+            color: orange;
+        }
+    </style>
+    <script src="FileSaver.js"></script>
+    <script src="jszip.min.js"></script>
+    <script src="javaRecon.js"></script>
+    <script src="generate.js"></script>
+</head>
+<body>
+<h1>> NoReflect Generator WebUI</h1>
+<br>
+<span>Config</span>
+<br>
+<textarea id="config">
+    {
+        "targetFiles": ["net.minecraft.item.ItemStack"],
+        "managerFile": "net.eaglerforge.reflect.PLReflect"
+    }
+</textarea>
+<br><br>
+<input id="data" type="file" webkitdirectory>
+<br><br>
+<button id="generate">
+    Generate
+</button>
+<div id="logs">
+    //Loading...
+</div>
+</body>
+</html>
