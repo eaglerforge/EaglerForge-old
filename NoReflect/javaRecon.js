@@ -103,22 +103,22 @@ function reconJ(java, className) {
                 argStr += ", "
             }
         }
-
+        let prefix = isStatic ? className : `((${className}) params.get("_self"))`;
         let impl;
         if (returnType === "void") {
             impl = `setCallbackVoidWithArgs("${methodName}", (BaseData params) -> {
-                ((${className}) params.get("_self")).${methodName}(${argStr});
+                ${prefix}.${methodName}(${argStr});
             });
             `;
         } else if (callbackStatementsTypes.includes(returnType)) {
             impl = `${callbackStatements[returnType]}("${methodName}", (BaseData params) -> {
-                return (${returnType}) ((${className}) params.get("_self")).${methodName}(${argStr});
+                return (${returnType}) ${prefix}.${methodName}(${argStr});
             });
             `;
         } else {
             usedClasses.push(returnType);
             impl = `setCallbackReflectiveWithArgs("${methodName}", (BaseData params) -> {
-                return (${returnType}) ((${className}) params.get("_self")).${methodName}(${argStr});
+                return (${returnType}) ${prefix}.${methodName}(${argStr});
             });
             `;
         }
@@ -129,7 +129,8 @@ function reconJ(java, className) {
             returnType: returnType,
             isStatic: isStatic,
             arguments: arguments,
-            impl: impl
+            impl: impl,
+            idx: methods.indexOf(method)
         };
     });
     return {

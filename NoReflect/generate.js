@@ -82,26 +82,26 @@ function process(file, reader, classDataDump, className) {
         reader.addEventListener("load", ()=>{
             var output = reader.result;
             classDataDump[className] = (reconJ(output, className));
-            console.log(classDataDump[className].usedClasses);
             res(output);
         });
         reader.readAsText(file);
     });
 }
-function createManagerFile(managerTemplate, config, zip, dataDump) {
+function createManagerFile(managerTemplate, config, zip, dataDump, classIdMap) {
     var manager = managerTemplate;
     var filePath = config.managerFile.replaceAll(".", "/") + ".java";
 
     for (let i = 0; i < config.targetFiles.length; i++) {
         manager = `import ${config.targetFiles[i]}` + ";\n" + manager;
     }
-    manager = `package ${config.managerFile.match(/(.*)(?=\.[^.]*$)/g)[0]}` + ";\n" + manager;
-    
+    var imports = [];
 
     var classText = "";
     var classes = Object.keys(dataDump);
     for (let i = 0; i < classes.length; i++) {
         const className = classes[i];
+        imports = [...new Set(imports.concat(dataDump[className].usedClasses))];
+
         var tmpClassText = templateClassdef;
         tmpClassText = tmpClassText.replaceAll("%classname%", className);
 
@@ -179,21 +179,39 @@ function createManagerFile(managerTemplate, config, zip, dataDump) {
             tmpMethodText = tmpMethodText.replaceAll("%methodimpl%", method.impl);
             methodText += tmpMethodText;
         }
+
         tmpClassText = tmpClassText.replaceAll("%methoddefs%", methodText);
 
         classText += tmpClassText;
     }
+    for (let i = 0; i < config.imports.length; i++) {
+        manager = `import ${config.imports[i]}` + ";\n" + manager;
+        logTxt(`Force imported classid: ${config.imports[i]}`);
+    }
+
+    if (config.attemptAutoImport) {
+        for (let i = 0; i < imports.length; i++) {
+            if (classIdMap.has(imports[i])) {
+                manager = `import ${classIdMap.get(imports[i])}` + ";\n" + manager;
+                logTxt(`Imported classid: ${classIdMap.get(imports[i])}`);
+            }
+        }
+    }
+
+    manager = `package ${config.managerFile.match(/(.*)(?=\.[^.]*$)/g)[0]}` + ";\n" + manager;
+
     manager = manager.replaceAll("%classdefs%", classText);
 
     zip.file(filePath, manager);
 }
 async function generate(fileList) {
+    var classToLocationMap = new Map();
     var cfg;
     var output = new JSZip();
     const reader = new FileReader();
     var classDataDump = {};
     logClear();
-    logTxt("[LOG] Build @ "+(new Date()));
+    logTxt("[INIT] Build @ "+(new Date()));
     if (!fileList || fileList.length === 0) {
         logTxt("[ERROR] Filelist is empty.")
         return;
@@ -212,14 +230,22 @@ async function generate(fileList) {
         if (file.webkitRelativePath.endsWith(".java")) {
             var classId = file.webkitRelativePath.replaceAll("java/", "").replaceAll(".java", "").replaceAll("/", ".");
             var className = classId.split(".")[classId.split(".").length - 1];
+            classToLocationMap.set(className, classId);
             if (cfg.targetFiles.includes(classId)) {
                 logTxt("Found "+classId+" ["+file.name+"], processing...");
-                output.file(file.webkitRelativePath.replaceAll("java/", ""), await process(file, reader, classDataDump, className));
+                var javaFileContent = await process(file, reader, classDataDump, className);
+                if (cfg.includeReadFiles) {
+                    output.file(file.webkitRelativePath.replaceAll("java/", ""), javaFileContent);
+                }
             }
         }
     }
+    logTxt(`Creating manager file...`);
+    createManagerFile(templateManager, cfg, output, classDataDump, classToLocationMap);
+
+    logTxt(`Writing log.txt...`);
     output.file("log.txt", document.querySelector("#logs").innerText);
-    createManagerFile(templateManager, cfg, output, classDataDump);
+
     output.generateAsync({type:"blob"}).then(function(content) {
         saveAs(content, "patch.zip");
     });
