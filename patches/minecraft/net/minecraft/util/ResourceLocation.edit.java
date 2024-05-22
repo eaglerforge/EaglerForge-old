@@ -9,9 +9,14 @@
 
 + 	public String resourceName;
 
-> INSERT  1 : 3  @  1
+> INSERT  1 : 8  @  1
 
 + 	public Object cachedPointer = null;
++ 	public int cachedPointerType = 0;
++ 
++ 	public static final int CACHED_POINTER_NONE = 0;
++ 	public static final int CACHED_POINTER_TEXTURE = 1;
++ 	public static final int CACHED_POINTER_EAGLER_MESH = 2;
 + 
 
 > INSERT  1 : 2  @  1
