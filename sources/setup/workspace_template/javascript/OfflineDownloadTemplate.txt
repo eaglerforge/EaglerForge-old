@@ -410,6 +410,9 @@ function displayGui() {
     addBtn.innerHTML = "Add new";
     addBtn.addEventListener("click", () => {
       var newMod = window.prompt("URL of Mod: ", "http://example.com/example.js");
+      if (!newMod) {
+        return; //User pressed cancel
+      }
       Mods.push(
         newMod
       );
