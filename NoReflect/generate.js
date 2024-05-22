@@ -36,7 +36,7 @@ reflect_%classname%_constructors.add(reflect_%classname%_constructor_%constructo
 `;
 const templateMethod = `
 BaseData reflect_%classname%_method_%methodname%_%idx% = new ModData();
-reflect_%classname%_method_%methodname%_%idx%.set("methodName", %methodname%);
+reflect_%classname%_method_%methodname%_%idx%.set("methodName", "%methodname%");
 reflect_%classname%_method_%methodname%_%idx%.set("returnType", %returntype%);
 reflect_%classname%_method_%methodname%_%idx%.set("static", %static%);
 reflect_%classname%_method_%methodname%_%idx%.set("argnames", %argkeys%);
@@ -82,6 +82,7 @@ function process(file, reader, classDataDump, className) {
         reader.addEventListener("load", ()=>{
             var output = reader.result;
             classDataDump[className] = (reconJ(output, className));
+            console.log(classDataDump[className].usedClasses);
             res(output);
         });
         reader.readAsText(file);
@@ -92,9 +93,9 @@ function createManagerFile(managerTemplate, config, zip, dataDump) {
     var filePath = config.managerFile.replaceAll(".", "/") + ".java";
 
     for (let i = 0; i < config.targetFiles.length; i++) {
-        manager = `import ${config.targetFiles[i]}\n` + ";" + manager;
+        manager = `import ${config.targetFiles[i]}` + ";\n" + manager;
     }
-    manager = `package ${config.managerFile.match(/(.*)(?=\.[^.]*$)/g)[0]}\n` + ";" + manager;
+    manager = `package ${config.managerFile.match(/(.*)(?=\.[^.]*$)/g)[0]}` + ";\n" + manager;
     
 
     var classText = "";
@@ -140,6 +141,45 @@ function createManagerFile(managerTemplate, config, zip, dataDump) {
             constructorText += tmpConstructorText;
         }
         tmpClassText = tmpClassText.replaceAll("%constructordefs%", constructorText);
+
+
+        var methodText = "";
+        for (let i = 0; i < dataDump[className].methods.length; i++) {
+            const method = dataDump[className].methods[i];
+            var tmpMethodText = templateMethod;
+            tmpMethodText = tmpMethodText.replaceAll("%classname%", className);
+            tmpMethodText = tmpMethodText.replaceAll("%idx%", method.idx);
+            tmpMethodText = tmpMethodText.replaceAll("%static%", method.isStatic);
+            tmpMethodText = tmpMethodText.replaceAll("%methodname%", method.name);
+            tmpMethodText = tmpMethodText.replaceAll("%returntype%", "\""+className+"\"");
+            tmpMethodText = tmpMethodText.replaceAll("%argkeys%", `new String[]{${(()=>{
+                var txt = "";
+                var argumentKeys = Object.keys(method.arguments);
+                for (let i = 0; i < argumentKeys.length; i++) {
+                    const k = argumentKeys[i];
+                    txt += `"${k}"`;
+                    if (i !== argumentKeys.length - 1) {
+                        txt += ", ";
+                    }
+                }
+                return txt;
+            })()}}`);
+            tmpMethodText = tmpMethodText.replaceAll("%argvalues%", `new String[]{${(()=>{
+                var txt = "";
+                var argumentKeys = Object.keys(method.arguments);
+                for (let i = 0; i < argumentKeys.length; i++) {
+                    const k = argumentKeys[i];
+                    txt += `"${method.arguments[k]}"`;
+                    if (i !== argumentKeys.length - 1) {
+                        txt += ", ";
+                    }
+                }
+                return txt;
+            })()}}`);
+            tmpMethodText = tmpMethodText.replaceAll("%methodimpl%", method.impl);
+            methodText += tmpMethodText;
+        }
+        tmpClassText = tmpClassText.replaceAll("%methoddefs%", methodText);
 
         classText += tmpClassText;
     }
