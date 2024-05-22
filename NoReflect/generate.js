@@ -256,5 +256,5 @@ window.addEventListener("load", ()=>{
         generate(document.querySelector('#data').files);
     });
     logClear();
-    logTxt("//Upload the ./src/main/java folder and press generate to begin code rewriting");
+    logTxt("//Upload the ./src/main/java folder and press generate to begin hook generation");
 });
