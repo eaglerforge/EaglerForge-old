@@ -1,6 +1,12 @@
 function reflect_hook() {
   var ModAPI = window.ModAPI || {};
-  ModAPI.javaClass = function javaClass(getClass) {
-    
+  //Todo
+  var reflectInternals = ModAPI.__reflect_internals;
+
+  //Todo
+
+  ModAPI.javaClass = function javaClass(className) {
+    //Todo
   }
+  //Todo
 }
