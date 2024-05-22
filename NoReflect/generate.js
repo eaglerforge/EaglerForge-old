@@ -19,6 +19,7 @@ for (int i = 0; i < reflect_%classname%_methods_arr.length; i++) {
 reflect_%classname%.set("constructors", reflect_%classname%_constructors_arr);
 reflect_%classname%.set("methods", reflect_%classname%_methods_arr);
 reflect_%classname%.set("className", "%classname%");
+reflect_%classname%.set("class", %classname%.class);
 reflectProfiles.add(reflect_%classname%);
 
 `;
