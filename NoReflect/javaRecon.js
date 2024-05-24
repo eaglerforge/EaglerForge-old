@@ -7,6 +7,15 @@ const getStatements = {
     "char": "params.getChar(%s)",
     "double": "params.getDouble(%s)",
 }
+const primitiveDefaultValues = {
+    "int": "0",
+    "String": "\"\"",
+    "boolean": "false",
+    "float": "0.0f",
+    "byte": "(byte) 0",
+    "char": "\'a\'",
+    "double": "0.0d",
+}
 const callbackStatements = {
     "boolean": "setCallbackBooleanWithDataArg",
     "int": "setCallbackIntWithDataArg",
@@ -26,7 +35,7 @@ function reconJ(java, className) {
     let constructorRegex = /(public|protected|private|static|\s) +(\w+) *\(([^)]*)\)/g;
 
     let constructors = [...javaText.matchAll(constructorRegex).filter((line)=>{
-        return !line[0].includes(" private ") && !line[0].includes(" protected ");
+        return !line[0].includes(" private ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t") && line[1] !== "private" && line[1] !== "protected";
     })];
 
     let constructorDetails = constructors.map((constructor) => {
@@ -56,7 +65,7 @@ function reconJ(java, className) {
         }
 
 
-        let impl = `setCallbackReflectiveWithArgs("${constructorName}", (BaseData params) -> {
+        let impl = `setCallbackReflectiveWithDataArg("${constructorName}", (BaseData params) -> {
             return new ${className}(${argStr});
         });
         `;
@@ -65,14 +74,15 @@ function reconJ(java, className) {
             name: constructorName,
             idx: constructors.indexOf(constructor),
             arguments: arguments,
-            impl: impl
+            impl: impl,
+            data: constructor
         };
     });
 
-    let methodRegex = /(public|static|\s)* +([\w\<\>\[\]]+)\s+(\w+) *\(([^)]*)\)/g;
+    let methodRegex = /(public|static|private|protected|\s)* +([\w\<\>\[\]]+)\s+(\w+) *\(([^)]*)\)/g;
 
     let methods = [...javaText.matchAll(methodRegex).filter((line)=>{
-        return !line[0].includes("> ") && !line[0].startsWith(" else ") && !line[0].startsWith(" new ") && !line[0].includes(" private ") && !line[0].includes(" protected ");
+        return !line[0].includes("> ") && !line[0].startsWith(" else ") && !line[0].startsWith(" new ") && !line[0].includes(" private ") && !line[0].includes("\tprotected ") && !line[0].includes("\tprivate ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t");
         //Doesn't support Type<Subtype> yet
     })];
 
@@ -103,22 +113,34 @@ function reconJ(java, className) {
                 argStr += ", "
             }
         }
-        let prefix = isStatic ? className : `((${className}) params.get("_self"))`;
+        let prefix = isStatic ? className : `((${className}) params.getReflective("_self"))`;
         let impl;
         if (returnType === "void") {
-            impl = `setCallbackVoidWithArgs("${methodName}", (BaseData params) -> {
-                ${prefix}.${methodName}(${argStr});
+            impl = `setCallbackVoidWithDataArg("${methodName}", (BaseData params) -> {
+                try {
+                    ${prefix}.${methodName}(${argStr});
+                } catch (Exception _exception_reflect_) {
+                    return;
+                }
             });
             `;
         } else if (callbackStatementsTypes.includes(returnType)) {
             impl = `${callbackStatements[returnType]}("${methodName}", (BaseData params) -> {
-                return (${returnType}) ${prefix}.${methodName}(${argStr});
+                try {
+                    return (${returnType}) ${prefix}.${methodName}(${argStr});
+                } catch (Exception _exception_reflect_) {
+                    return ${primitiveDefaultValues[returnType]};
+                }
             });
             `;
         } else {
             usedClasses.push(returnType);
-            impl = `setCallbackReflectiveWithArgs("${methodName}", (BaseData params) -> {
-                return (${returnType}) ${prefix}.${methodName}(${argStr});
+            impl = `setCallbackReflectiveWithDataArg("${methodName}", (BaseData params) -> {
+                try {
+                    return (${returnType}) ${prefix}.${methodName}(${argStr});
+                } catch (Exception _exception_reflect_) {
+                    return null;
+                }
             });
             `;
         }
@@ -130,7 +152,8 @@ function reconJ(java, className) {
             isStatic: isStatic,
             arguments: arguments,
             impl: impl,
-            idx: methods.indexOf(method)
+            idx: methods.indexOf(method),
+            data: method
         };
     });
     return {
