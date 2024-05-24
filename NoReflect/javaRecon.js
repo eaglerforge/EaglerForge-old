@@ -103,7 +103,7 @@ function reconJ(java, className) {
                 argStr += ", "
             }
         }
-        let prefix = isStatic ? className : `((${className}) params.get("_self"))`;
+        let prefix = isStatic ? className : `((${className}) params.getReflective("_self"))`;
         let impl;
         if (returnType === "void") {
             impl = `setCallbackVoidWithArgs("${methodName}", (BaseData params) -> {
