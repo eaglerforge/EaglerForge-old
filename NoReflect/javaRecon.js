@@ -65,7 +65,7 @@ function reconJ(java, className) {
         }
 
 
-        let impl = `setCallbackReflectiveWithDataArg("${constructorName}", (BaseData params) -> {
+        let impl = `setCallbackReflectiveWithDataArg("exec", (BaseData params) -> {
             return new ${className}(${argStr});
         });
         `;
@@ -116,7 +116,7 @@ function reconJ(java, className) {
         let prefix = isStatic ? className : `((${className}) params.getReflective("_self"))`;
         let impl;
         if (returnType === "void") {
-            impl = `setCallbackVoidWithDataArg("${methodName}", (BaseData params) -> {
+            impl = `setCallbackVoidWithDataArg("exec", (BaseData params) -> {
                 try {
                     ${prefix}.${methodName}(${argStr});
                 } catch (Exception _exception_reflect_) {
@@ -125,7 +125,7 @@ function reconJ(java, className) {
             });
             `;
         } else if (callbackStatementsTypes.includes(returnType)) {
-            impl = `${callbackStatements[returnType]}("${methodName}", (BaseData params) -> {
+            impl = `${callbackStatements[returnType]}("exec", (BaseData params) -> {
                 try {
                     return (${returnType}) ${prefix}.${methodName}(${argStr});
                 } catch (Exception _exception_reflect_) {
@@ -135,7 +135,7 @@ function reconJ(java, className) {
             `;
         } else {
             usedClasses.push(returnType);
-            impl = `setCallbackReflectiveWithDataArg("${methodName}", (BaseData params) -> {
+            impl = `setCallbackReflectiveWithDataArg("exec", (BaseData params) -> {
                 try {
                     return (${returnType}) ${prefix}.${methodName}(${argStr});
                 } catch (Exception _exception_reflect_) {
