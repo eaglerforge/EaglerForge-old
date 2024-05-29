@@ -22,7 +22,7 @@
 
 > DELETE  1  @  1 : 4
 
-> CHANGE  1 : 60  @  1 : 4
+> CHANGE  1 : 61  @  1 : 4
 
 ~ 
 ~ import net.eaglerforge.EaglerForge;
@@ -38,6 +38,7 @@
 ~ 
 ~ import net.lax1dude.eaglercraft.v1_8.Display;
 ~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
+~ import net.lax1dude.eaglercraft.v1_8.EagUtils;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglerXBungeeVersion;
 ~ import net.lax1dude.eaglercraft.v1_8.HString;
 ~ import net.lax1dude.eaglercraft.v1_8.IOUtils;
@@ -450,7 +451,21 @@
 
 ~ 				Util.func_181617_a((FutureTask) this.scheduledTasks.remove(0), logger);
 
-> DELETE  18  @  18 : 26
+> CHANGE  7 : 18  @  7 : 8
+
+~ 		if (this.timer.elapsedTicks > 1) {
+~ 			long watchdog = System.currentTimeMillis();
+~ 			for (int j = 0; j < this.timer.elapsedTicks; ++j) {
+~ 				this.runTick();
+~ 				long millis = System.currentTimeMillis();
+~ 				if (millis - watchdog > 50l) {
+~ 					watchdog = millis;
+~ 					EagUtils.sleep(0l);
+~ 				}
+~ 			}
+~ 		} else if (this.timer.elapsedTicks == 1) {
+
+> DELETE  10  @  10 : 18
 
 > CHANGE  1 : 4  @  1 : 5
 
@@ -523,9 +538,13 @@
 
 + 		Mouse.tickCursorShape();
 
-> INSERT  5 : 6  @  5
+> INSERT  5 : 10  @  5
 
-+ 		Display.setVSync(this.gameSettings.enableVsync);
++ 		if (Display.isVSyncSupported()) {
++ 			Display.setVSync(this.gameSettings.enableVsync);
++ 		} else {
++ 			this.gameSettings.enableVsync = false;
++ 		}
 
 > DELETE  34  @  34 : 52
 
@@ -788,7 +807,11 @@
 ~ 		GameSettings g = theMinecraft.gameSettings;
 ~ 		return g.ambientOcclusion != 0 && !g.shadersAODisable;
 
-> CHANGE  130 : 131  @  130 : 131
+> CHANGE  2 : 3  @  2 : 3
+
+~ 	public void middleClickMouse() {
+
+> CHANGE  127 : 128  @  127 : 128
 
 ~ 				return EagRuntime.getVersion();
 

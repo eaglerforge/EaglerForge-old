@@ -608,7 +608,7 @@ public class PlatformRuntime {
 					FixWebMDurationJS.getRecUrl(evt, (int) (System.currentTimeMillis() - startTime), url -> {
 						HTMLAnchorElement a = (HTMLAnchorElement) doc.createElement("a");
 						dateInstance.setTime(startTime);
-						a.setDownload(EaglercraftVersion.mainMenuStringB + " - " + EaglerProfile.getName() + " - " + fmt.format(dateInstance) + ".webm");
+						a.setDownload(EaglercraftVersion.getMainMenuStringB() + " - " + EaglerProfile.getName() + " - " + fmt.format(dateInstance) + ".webm");
 						a.setHref(url);
 						a.click();
 						TeaVMUtils.freeDataURL(url);

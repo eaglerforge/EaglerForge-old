@@ -6,6 +6,17 @@ import org.teavm.jso.JSFunctor;
 
 public abstract class BaseData implements JSObject {
     @JSFunctor
+    public interface ClassFinderCallback extends JSObject {
+        BaseData onCallback(String classIdentifier);
+    }
+
+    @JSBody(params = { "key", "value" }, script = "this[key]=value;")
+    public native void setCallbackClassFinder(String key, ClassFinderCallback value);
+
+
+
+
+    @JSFunctor
     public interface VoidCallback extends JSObject {
         void onCallback();
     }
@@ -18,6 +29,16 @@ public abstract class BaseData implements JSObject {
     @JSFunctor
     public interface ObjectCallback extends JSObject {
         JSObject onCallback();
+    }
+
+    @JSFunctor
+    public interface ReflectiveObjectCallback extends JSObject {
+        Object onCallback();
+    }
+
+    @JSFunctor
+    public interface DataReflectiveObjectCallback extends JSObject {
+        Object onCallback(BaseData data);
     }
 
     @JSFunctor
@@ -139,6 +160,9 @@ public abstract class BaseData implements JSObject {
     public native void set(String key, String value);
 
     @JSBody(params = { "key", "value" }, script = "this[key]=value;")
+    public native void set(String key, Object value);
+
+    @JSBody(params = { "key", "value" }, script = "this[key]=value;")
     public native void set(String key, int value);
 
     @JSBody(params = { "key", "value" }, script = "this[key]=value;")
@@ -161,6 +185,9 @@ public abstract class BaseData implements JSObject {
 
     @JSBody(params = { "key", "value" }, script = "this[key]=value;")
     public native void set(String key, BaseData value);
+
+    @JSBody(params = { "key", "value" }, script = "this[key]=value;")
+    public native void setReflective(String key, Object value);
 
     @JSBody(params = { "key", "value" }, script = "this[key]=value;")
     public native void set(String key, String[] value);
@@ -215,6 +242,12 @@ public abstract class BaseData implements JSObject {
 
     @JSBody(params = { "key", "value" }, script = "this[key]=value;")
     public native void setCallbackFloat(String key, FloatCallback value);
+
+    @JSBody(params = { "key", "value" }, script = "this[key]=value;")
+    public native void setCallbackReflective(String key, ReflectiveObjectCallback value);
+
+    @JSBody(params = { "key", "value" }, script = "this[key]=value;")
+    public native void setCallbackReflectiveWithDataArg(String key, DataReflectiveObjectCallback value);
 
     @JSBody(params = { "key", "value" }, script = "this[key]=value;")
     public native void setCallbackObject(String key, ObjectCallback value);
@@ -299,6 +332,9 @@ public abstract class BaseData implements JSObject {
 
     @JSBody(params = { "key" }, script = "return this[key];")
     public native JSObject getObject(String key);
+
+    @JSBody(params = { "key" }, script = "return this[key];")
+    public native Object getReflective(String key);
 
     @JSBody(params = { "key" }, script = "return this[key];")
     public native BaseData getBaseData(String key);

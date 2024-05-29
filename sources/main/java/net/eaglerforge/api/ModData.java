@@ -1,4 +1,4 @@
 package net.eaglerforge.api;
 
-public class ModData extends BaseData{
+public class ModData extends BaseData {
 }
