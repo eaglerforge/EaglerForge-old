@@ -82,7 +82,7 @@ function reconJ(java, className) {
     let methodRegex = /(public|static|private|protected|\s)* +([\w\<\>\[\]]+)\s+(\w+) *\(([^)]*)\)/g;
 
     let methods = [...javaText.matchAll(methodRegex).filter((line)=>{
-        return !line[0].includes("> ") && !line[0].startsWith(" else ") && !line[0].startsWith(" new ") && !line[0].includes(" private ") && !line[0].includes("\tprotected ") && !line[0].includes("\tprivate ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t");
+        return !line[0].includes("> ") && !line[0].startsWith(" else ") && !line[0].startsWith(" new ") && !line[0].includes(" private ") && !line[0].includes("\tprotected ") && !line[0].includes("\tprivate ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t") && line[0].includes("public ");
         //Doesn't support Type<Subtype> yet
     })];
 
@@ -96,7 +96,9 @@ function reconJ(java, className) {
         if (argumentString.trim().length > 0) {
             let argumentList = argumentString.split(",");
             argumentList.forEach((argument) => {
-                let [type, name] = argument.trim().split(" ");
+                let [type, name] = argument.trim().split(" ").filter(potential => {
+                    return potential !== "final";
+                });
                 arguments[name] = type;
             });
         }

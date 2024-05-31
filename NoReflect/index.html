@@ -97,8 +97,16 @@
 <br>
 <textarea id="config" spellcheck="false">
 {
-    "targetFiles": ["net.minecraft.item.ItemStack", "net.minecraft.client.Minecraft"],
-    "imports": ["java.lang.String"],
+    "targetFiles": ["net.minecraft.item.ItemStack", 
+        "net.minecraft.client.Minecraft", 
+        "net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU", 
+        "net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager",
+        "net.minecraft.util.AxisAlignedBB", 
+        "net.minecraft.util.Vec3",
+        "net.minecraft.client.multiplayer.WorldClient",
+        "net.minecraft.world.World",
+        "net.minecraft.world.WorldServer"],
+    "imports": ["java.lang.String", "java.util.Calendar"],
     "managerFile": "net.eaglerforge.reflect.PLReflect",
     "includeReadFiles": false,
     "attemptAutoImport": true
