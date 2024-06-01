@@ -31,12 +31,17 @@ function reconJ(java, className) {
 
     javaText = javaText.replace(/\/\/.*$/gm, '');
     javaText = javaText.replace(/\/\*[\s\S]*?\*\//gm, '');
+    javaText = javaText.replace(/[ \t](public|private|protected|)\s*(static|) (class|enum) .+ \{(\W|\w)*?\n(\t)\}/gm, '');
 
     let constructorRegex = /(public|protected|private|static|\s) +(\w+) *\(([^)]*)\)/g;
 
     let constructors = [...javaText.matchAll(constructorRegex).filter((line)=>{
         return !line[0].includes(" private ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t") && line[1] !== "private" && line[1] !== "protected";
     })];
+
+    if (javaText.match(/^(public|private|protected|) abstract class /gm)) {
+        constructors = [];
+    }
 
     let constructorDetails = constructors.map((constructor) => {
         let constructorName = constructor[2];
@@ -79,10 +84,10 @@ function reconJ(java, className) {
         };
     });
 
-    let methodRegex = /(public|static|private|protected|\s)* +([\w\<\>\[\]]+)\s+(\w+) *\(([^)]*)\)/g;
+    let methodRegex = /(public|static|private|protected|final|\s)* +([\w\<\>\[\]]+)\s+(\w+) *\(([^)]*)\)/g;
 
     let methods = [...javaText.matchAll(methodRegex).filter((line)=>{
-        return !line[0].includes("> ") && !line[0].startsWith(" else ") && !line[0].startsWith(" new ") && !line[0].includes(" private ") && !line[0].includes("\tprotected ") && !line[0].includes("\tprivate ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t");
+        return !line[0].includes("> ") && !line[0].startsWith(" else ") && !line[0].startsWith(" new ") && !line[0].includes(" private ") && !line[0].includes("\tprotected ") && !line[0].includes("\tprivate ") && !line[0].includes(" protected ") && !line[0].includes("\n\t\t") && line[0].includes("public ");
         //Doesn't support Type<Subtype> yet
     })];
 
@@ -93,12 +98,22 @@ function reconJ(java, className) {
         let argumentString = method[4];
         let arguments = {};
 
+        let methodContainsInlineClasses = false;
         if (argumentString.trim().length > 0) {
             let argumentList = argumentString.split(",");
             argumentList.forEach((argument) => {
-                let [type, name] = argument.trim().split(" ");
+                let [type, name] = argument.trim().split(" ").filter(potential => {
+                    return potential !== "final";
+                });
+                if (type.includes(".")) {
+                    methodContainsInlineClasses = true;
+                }
                 arguments[name] = type;
             });
+        }
+
+        if (methodContainsInlineClasses) {
+            return false;
         }
 
         let argStr = "";
@@ -158,8 +173,8 @@ function reconJ(java, className) {
     });
     return {
         className: className,
-        constructors: constructorDetails,
-        methods: methodDetails,
+        constructors: constructorDetails.filter(obj => obj),
+        methods: methodDetails.filter(obj => obj),
         usedClasses: [...new Set(usedClasses)]
     }
 }

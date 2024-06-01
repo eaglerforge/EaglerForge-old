@@ -1,51 +1,59 @@
 const templateClassdef = `
-//CLASSDEF FOR %classname%
-BaseData reflect_%classname% = new ModData();
+    //classdef for %classname%
+    public static void reflect_%classname%_generator(ArrayList<BaseData> reflectProfiles) {
+        BaseData reflect_%classname% = new ModData();
 
-ArrayList<BaseData> reflect_%classname%_constructors = new ArrayList<BaseData>();
-%constructordefs%
-BaseData[] reflect_%classname%_constructors_arr = new BaseData[reflect_%classname%_constructors.size()];
-for (int i = 0; i < reflect_%classname%_constructors_arr.length; i++) {
-    reflect_%classname%_constructors_arr[i] = reflect_%classname%_constructors.get(i);
-}
+        ArrayList<BaseData> reflect_%classname%_constructors = new ArrayList<BaseData>();
+        %constructordefs%
+        BaseData[] reflect_%classname%_constructors_arr = new BaseData[reflect_%classname%_constructors.size()];
+        for (int i = 0; i < reflect_%classname%_constructors_arr.length; i++) {
+            reflect_%classname%_constructors_arr[i] = reflect_%classname%_constructors.get(i);
+        }
 
-ArrayList<BaseData> reflect_%classname%_methods = new ArrayList<BaseData>();
-%methoddefs%
-BaseData[] reflect_%classname%_methods_arr = new BaseData[reflect_%classname%_methods.size()];
-for (int i = 0; i < reflect_%classname%_methods_arr.length; i++) {
-    reflect_%classname%_methods_arr[i] = reflect_%classname%_methods.get(i);
-}
+        ArrayList<BaseData> reflect_%classname%_methods = new ArrayList<BaseData>();
+        %methoddefs%
+        BaseData[] reflect_%classname%_methods_arr = new BaseData[reflect_%classname%_methods.size()];
+        for (int i = 0; i < reflect_%classname%_methods_arr.length; i++) {
+            reflect_%classname%_methods_arr[i] = reflect_%classname%_methods.get(i);
+        }
 
-reflect_%classname%.set("constructors", reflect_%classname%_constructors_arr);
-reflect_%classname%.set("methods", reflect_%classname%_methods_arr);
-reflect_%classname%.set("className", "%classname%");
-reflect_%classname%.set("classId", "%classid%");
-reflect_%classname%.set("class", %classname%.class);
-reflectProfiles.add(reflect_%classname%);
+        reflect_%classname%.set("constructors", reflect_%classname%_constructors_arr);
+        reflect_%classname%.set("methods", reflect_%classname%_methods_arr);
+        reflect_%classname%.set("className", "%classname%");
+        reflect_%classname%.set("classId", "%classid%");
+        reflect_%classname%.set("class", %classname%.class);
+        reflect_%classname%.setCallbackBooleanWithDataArg("isObjInstanceOf", (args)->{
+            return args.getReflective("obj") instanceof %classname%;
+        });
+        reflectProfiles.add(reflect_%classname%);
+    }
 
 `;
 //IXCVVIX
 //CXVIIVX
 //MVVMCXI
 const templateConstructor = `
-BaseData reflect_%classname%_constructor_%constructorname%_%idx% = new ModData();
-reflect_%classname%_constructor_%constructorname%_%idx%.set("returnType", %returntype%);
-reflect_%classname%_constructor_%constructorname%_%idx%.set("argnames", %argkeys%);
-reflect_%classname%_constructor_%constructorname%_%idx%.set("argtypes", %argvalues%);
-reflect_%classname%_constructor_%constructorname%_%idx%.%constructorimpl%
-reflect_%classname%_constructors.add(reflect_%classname%_constructor_%constructorname%_%idx%);
+        BaseData reflect_%classname%_constructor_%constructorname%_%idx% = new ModData();
+        reflect_%classname%_constructor_%constructorname%_%idx%.set("returnType", %returntype%);
+        reflect_%classname%_constructor_%constructorname%_%idx%.set("argnames", %argkeys%);
+        reflect_%classname%_constructor_%constructorname%_%idx%.set("argtypes", %argvalues%);
+        reflect_%classname%_constructor_%constructorname%_%idx%.%constructorimpl%
+        reflect_%classname%_constructors.add(reflect_%classname%_constructor_%constructorname%_%idx%);
 
 `;
 const templateMethod = `
-BaseData reflect_%classname%_method_%methodname%_%idx% = new ModData();
-reflect_%classname%_method_%methodname%_%idx%.set("methodName", "%methodname%");
-reflect_%classname%_method_%methodname%_%idx%.set("returnType", %returntype%);
-reflect_%classname%_method_%methodname%_%idx%.set("static", %static%);
-reflect_%classname%_method_%methodname%_%idx%.set("argnames", %argkeys%);
-reflect_%classname%_method_%methodname%_%idx%.set("argtypes", %argvalues%);
-reflect_%classname%_method_%methodname%_%idx%.%methodimpl%
-reflect_%classname%_methods.add(reflect_%classname%_method_%methodname%_%idx%);
+        BaseData reflect_%classname%_method_%methodname%_%idx% = new ModData();
+        reflect_%classname%_method_%methodname%_%idx%.set("methodName", "%methodname%");
+        reflect_%classname%_method_%methodname%_%idx%.set("returnType", %returntype%);
+        reflect_%classname%_method_%methodname%_%idx%.set("static", %static%);
+        reflect_%classname%_method_%methodname%_%idx%.set("argnames", %argkeys%);
+        reflect_%classname%_method_%methodname%_%idx%.set("argtypes", %argvalues%);
+        reflect_%classname%_method_%methodname%_%idx%.%methodimpl%
+        reflect_%classname%_methods.add(reflect_%classname%_method_%methodname%_%idx%);
 
+`;
+
+const classDefCallTemplate = `        PLReflect.reflect_%classname%_generator(reflectProfiles);
 `;
 const templateManager = `
 import net.eaglerforge.api.*;
@@ -55,14 +63,24 @@ import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSFunctor;
 
-//AUTOGENERATED BY NOREFLECT
+//  _  _     ___      __ _        _   
+//  | \\| |___| _ \\___ / _| |___ __| |_ 
+//  | .\` / _ \\   / -_)  _| / -_) _|  _|
+//  |_|\\_\\___/_|_\\___|_| |_\\___\\__|\\__|
+//   _________________________________
+
+
+//AutoGenerated by NoReflect
 //Made by ZXMushroom63
 
 public class PLReflect extends ModData {
+    %classdefs%
+
     public static PLReflect makeModData() {
         PLReflect plReflectGlobal = new PLReflect();
         ArrayList<BaseData> reflectProfiles = new ArrayList<BaseData>();
-        %classdefs%
+        
+%classdefcalls%
         BaseData[] reflectProfilesArr = new BaseData[reflectProfiles.size()];
         for (int i = 0; i < reflectProfilesArr.length; i++) {
             reflectProfilesArr[i] = reflectProfiles.get(i);
@@ -127,6 +145,7 @@ function createManagerFile(managerTemplate, config, zip, dataDump, classIdMap) {
     var imports = [];
 
     var classText = "";
+    var classCallText = "";
     var classes = Object.keys(dataDump);
     for (let i = 0; i < classes.length; i++) {
         const className = classes[i];
@@ -182,7 +201,7 @@ function createManagerFile(managerTemplate, config, zip, dataDump, classIdMap) {
             tmpMethodText = tmpMethodText.replaceAll("%idx%", method.idx);
             tmpMethodText = tmpMethodText.replaceAll("%static%", method.isStatic);
             tmpMethodText = tmpMethodText.replaceAll("%methodname%", method.name);
-            tmpMethodText = tmpMethodText.replaceAll("%returntype%", "\""+className+"\"");
+            tmpMethodText = tmpMethodText.replaceAll("%returntype%", "\""+method.returnType+"\"");
             tmpMethodText = tmpMethodText.replaceAll("%argkeys%", `new String[]{${(()=>{
                 var txt = "";
                 var argumentKeys = Object.keys(method.arguments);
@@ -214,6 +233,7 @@ function createManagerFile(managerTemplate, config, zip, dataDump, classIdMap) {
         tmpClassText = tmpClassText.replaceAll("%methoddefs%", methodText);
 
         classText += tmpClassText;
+        classCallText += classDefCallTemplate.replaceAll("%classname%", className);
     }
     for (let i = 0; i < config.imports.length; i++) {
         manager = `import ${config.imports[i]}` + ";\n" + manager;
@@ -232,6 +252,7 @@ function createManagerFile(managerTemplate, config, zip, dataDump, classIdMap) {
     manager = `package ${config.managerFile.match(/(.*)(?=\.[^.]*$)/g)[0]}` + ";\n" + manager;
 
     manager = manager.replaceAll("%classdefs%", classText);
+    manager = manager.replaceAll("%classdefcalls%", classCallText);
 
     zip.file(filePath, manager);
 }
@@ -247,7 +268,10 @@ async function generate(fileList) {
         return;
     }
     try {
-        cfg = JSON.parse(document.querySelector("#config").value.trim());
+        var cfgString = document.querySelector("#config").value.trim();
+        cfgString = cfgString.replace(/\/\/.*$/gm, '');
+        cfgString = cfgString.replace(/\/\*[\s\S]*?\*\//gm, '');
+        cfg = JSON.parse(cfgString);
     } catch (e) {
         logTxt("[ERROR] Invalid config.");
         return;
