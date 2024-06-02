@@ -329,7 +329,7 @@
 > CHANGE  1 : 3  @  1 : 2
 
 ~ 		this.drawString(this.fontRendererObj, s, 2, this.height - 20, -1);
-~ 		s = EaglercraftVersion.mainMenuStringB;
+~ 		s = EaglercraftVersion.getMainMenuStringB();
 
 > CHANGE  1 : 3  @  1 : 2
 

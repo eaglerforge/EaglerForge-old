@@ -1,6 +1,7 @@
 package net.eaglerforge.api;
 
 import net.eaglerforge.gui.ModGUI;
+import net.eaglerforge.reflect.PLReflect;
 import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
 import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
@@ -310,6 +311,7 @@ public class ModAPI {
         setGlobal("mcinstance", mc);
         setMinecraftContext(mc);
         setGlobal("platform", PlatformAPI.makeModData());
+        setGlobal("reflect", PLReflect.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
         //setGlobal("emptygui", EmptyGui.makeModData());
         setGlobal("ScaledResolution", ScaledResolution.makeModData());

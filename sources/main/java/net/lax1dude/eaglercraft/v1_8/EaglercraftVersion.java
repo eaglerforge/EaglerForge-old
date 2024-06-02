@@ -1,5 +1,6 @@
 package net.lax1dude.eaglercraft.v1_8;
 
+import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
 import java.math.BigInteger;
 
 import static net.eaglerforge.api.ModLoader.returntotalloadedmods;
@@ -12,7 +13,7 @@ public class EaglercraftVersion {
 	/// Customize these to fit your fork:
 
 	public static final String projectForkName = "EaglerForge";
-	public static final String projectForkVersion = "v1.3.1";
+	public static final String projectForkVersion = "v1.3.2";
 	public static final String projectForkVendor = "radmanplays";
 
 	public static final String projectForkURL = "https://github.com/eaglerforge/EaglerForge";
@@ -22,7 +23,7 @@ public class EaglercraftVersion {
 	public static final String projectOriginName = "EaglercraftX";
 	public static final String projectOriginAuthor = "lax1dude";
 	public static final String projectOriginRevision = "1.8";
-	public static final String projectOriginVersion = "u29";
+	public static final String projectOriginVersion = "u31";
 	
 	public static final String projectOriginURL = "https://gitlab.com/lax1dude/eaglercraftx-1.8"; // rest in peace
 	
@@ -43,9 +44,20 @@ public class EaglercraftVersion {
 	
 	// Miscellaneous variables:
 
-	public static int loadedmods = returntotalloadedmods();
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
-	public static String mainMenuStringB = projectForkName + " " + projectForkVersion + " (" + loadedmods + " Mods loaded)";
+	public static String getMainMenuStringB() {
+		int loadedmods = returntotalloadedmods();
+		String mainMenuStringB = projectForkName + " " + projectForkVersion;
+		if(!PlatformRuntime.isDebugRuntime()) {
+			if(loadedmods == 1) {
+				mainMenuStringB = mainMenuStringB + " (" + loadedmods + " Mod loaded)";
+			} else {
+				mainMenuStringB = mainMenuStringB + " (" + loadedmods + " Mods loaded)";
+			}
+		}
+
+		return mainMenuStringB;
+	}
 	public static final String mainMenuStringC = "";
 	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
 
@@ -60,5 +72,7 @@ public class EaglercraftVersion {
 	public static final boolean mainMenuEnableGithubButton = true;
 
 	public static final boolean forceDemoMode = false;
+
+	public static final String localStorageNamespace = "_eaglercraftX";
 
 }

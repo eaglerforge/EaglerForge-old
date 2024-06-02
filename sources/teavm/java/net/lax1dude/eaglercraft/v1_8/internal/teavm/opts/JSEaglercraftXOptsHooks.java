@@ -1,8 +1,7 @@
 package net.lax1dude.eaglercraft.v1_8.internal.teavm.opts;
 
-import org.teavm.jso.JSIndexer;
+import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
 
 /**
  * Copyright (c) 2024 lax1dude. All Rights Reserved.
@@ -19,12 +18,12 @@ import org.teavm.jso.JSProperty;
  * POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-public interface JSEaglercraftXOptsServersArray extends JSObject {
+public abstract class JSEaglercraftXOptsHooks implements JSObject {
 
-	@JSIndexer
-	JSEaglercraftXOptsServer get(int idx);
+	@JSBody(script = "return (typeof this.localStorageSaved === \"function\") ? this.localStorageSaved : null;")
+	public native JSObject getLocalStorageSavedHook();
 
-	@JSProperty
-	int getLength();
+	@JSBody(script = "return (typeof this.localStorageLoaded === \"function\") ? this.localStorageLoaded : null;")
+	public native JSObject getLocalStorageLoadedHook();
 
 }
