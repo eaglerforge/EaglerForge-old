@@ -16,12 +16,15 @@
 ~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
 ~ import net.lax1dude.eaglercraft.v1_8.HString;
 
-> INSERT  1 : 28  @  1
+> INSERT  1 : 31  @  1
 
 + 
 + import com.google.common.base.Predicate;
 + import com.google.common.base.Predicates;
 + 
++ import net.eaglerforge.api.BaseData;
++ import net.eaglerforge.api.ModAPI;
++ import net.eaglerforge.api.ModData;
 + import net.lax1dude.eaglercraft.v1_8.Display;
 + import net.lax1dude.eaglercraft.v1_8.Mouse;
 + import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
@@ -144,7 +147,11 @@
 
 ~ 				f = this.mc.isZoomKey ? this.mc.adjustedZoomValue : this.mc.gameSettings.fovSetting;
 
-> CHANGE  169 : 173  @  169 : 172
+> CHANGE  155 : 156  @  155 : 156
+
+~ 	public void setupCameraTransform(float partialTicks, int pass) {
+
+> CHANGE  13 : 17  @  13 : 16
 
 ~ 		float farPlane = this.farPlaneDistance * 2.0f * MathHelper.SQRT_2;
 ~ 		GlStateManager.gluPerspective(currentProjMatrixFOV = this.getFOVModifier(partialTicks, true),
@@ -339,7 +346,14 @@
 
 ~ 			effectrenderer.renderParticles(entity, partialTicks, 2);
 
-> CHANGE  44 : 45  @  44 : 45
+> INSERT  30 : 34  @  30
+
++ 		BaseData eventData = new ModData();
++ 		eventData.set("partialTicks", partialTicks);
++ 		ModAPI.callEvent("render", eventData);
++ 
+
+> CHANGE  14 : 15  @  14 : 15
 
 ~ 			GlStateManager.gluPerspective(this.getFOVModifier(partialTicks, true),
 

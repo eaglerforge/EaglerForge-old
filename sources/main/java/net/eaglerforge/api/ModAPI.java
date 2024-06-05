@@ -95,6 +95,7 @@ public class ModAPI {
         newEvent("sendchatmessage");
         newEvent("update");
         newEvent("frame");
+        newEvent("render");
 
         /*newEvent("packetjoingame");
         newEvent("packetspawnobject");
