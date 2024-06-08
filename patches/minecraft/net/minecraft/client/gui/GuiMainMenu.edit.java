@@ -13,9 +13,10 @@
 
 + import java.util.Arrays;
 
-> CHANGE  2 : 30  @  2 : 4
+> CHANGE  2 : 31  @  2 : 4
 
 ~ 
+~ import net.eaglerforge.gui.GuiMods;
 ~ import net.eaglerforge.gui.ModGUI;
 ~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
 ~ import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
@@ -212,8 +213,8 @@
 > CHANGE  5 : 8  @  5 : 8
 
 ~ 		if (parGuiButton.id == 69420) {
-~ 			// this.mc.displayGuiScreen(new WIP_GuiMods(this));
-~ 			ModGUI.displayGui();
+~ 			this.mc.displayGuiScreen(new GuiMods(this));
+~ 			// ModGUI.displayGui();
 
 > CHANGE  3 : 4  @  3 : 4
 

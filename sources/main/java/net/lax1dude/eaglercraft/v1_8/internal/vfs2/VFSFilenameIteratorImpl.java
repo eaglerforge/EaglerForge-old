@@ -29,5 +29,4 @@ class VFSFilenameIteratorImpl implements VFSFilenameIterator {
 	public void next(String entry) {
 		itr.next(new VFile2(entry));
 	}
-
 }
