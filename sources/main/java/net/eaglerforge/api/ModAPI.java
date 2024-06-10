@@ -204,6 +204,18 @@ public class ModAPI {
         getModAPI().setCallbackVoidWithDataArg("displayToChat", (BaseData params) -> {
             mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentText(params.getString("msg")));
         });
+        getModAPI().setCallbackStringWithDataArg("rate", (BaseData params) -> {
+            int hash = 0;
+            int counterRate = 0;
+
+            for (i < params.getString('string').length(); i++) {
+                hash = (hash << 5) - hash + params.getString('string').codePointAt();
+            }
+
+            String res = (Math.abs(hash) % 100) + 1;
+
+            return res;
+        });
         getModAPI().setCallbackStringWithDataArg("uwuify", (BaseData params) -> {
             return UwUAPI.uwuify(params.getString("string"));
         });
