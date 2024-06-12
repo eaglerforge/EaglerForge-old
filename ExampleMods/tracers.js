@@ -18,6 +18,15 @@ function initTracers() {
         WorldRenderer: ModAPI.reflect.getClassByName("WorldRenderer")
     };
 
+    //Build a method map object, to avoid searching for methods multiple times over.
+    const methodMaps = {};
+    var usedClasses = Object.keys(classes);
+    usedClasses.forEach((className)=>{
+        methodMaps[className] = ModAPI.reflect.getMethodMapFromClass(classes[className]);
+    });
+
+    console.log(methodMaps);
+
     //Get the vertex format for 'POSITION'
     const positionVertexFormat = ModAPI.reflect.getClassByName("VertexFormat").class.$platformClass.$$enumConstants$$().data[5];
 
@@ -43,41 +52,29 @@ function initTracers() {
     }
 
     
-    //Utility functions for running methods on classes/instances of classes
+    //Utility functions for running methods on classes/instances of classes by referencing the created methodMaps object.
     function glFunction(name, args) {
-        return classes.GlStateManager.methods.filter((method) => {
-            return method.methodName === name
-        })[0].exec(args);
+        return methodMaps["GlStateManager"][name].exec(args);
     }
 
     function gpuFunction(name, args) {
-        return classes.EaglercraftGPU.methods.filter((method) => {
-            return method.methodName === name
-        })[0].exec(args);
+        return methodMaps["EaglercraftGPU"][name].exec(args);
     }
 
     function entityRendererFunction(name, args) {
-        return classes.EntityRenderer.methods.filter((method) => {
-            return method.methodName === name
-        })[0].exec(args);
+        return methodMaps["EntityRenderer"][name].exec(args);
     }
 
     function mathHelperFunction(name, args) {
-        return classes.MathHelper.methods.filter((method) => {
-            return method.methodName === name
-        })[0].exec(args);
+        return methodMaps["MathHelper"][name].exec(args);
     }
 
     function tessellatorFunction(name, args) {
-        return classes.Tessellator.methods.filter((method) => {
-            return method.methodName === name
-        })[0].exec(args);
+        return methodMaps["Tessellator"][name].exec(args);
     }
 
     function worldRendererFunction(name, args) {
-        return classes.WorldRenderer.methods.filter((method) => {
-            return method.methodName === name
-        })[0].exec(args);
+        return methodMaps["WorldRenderer"][name].exec(args);
     }
 
 
