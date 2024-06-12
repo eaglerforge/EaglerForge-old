@@ -74,10 +74,14 @@ import org.teavm.jso.JSFunctor;
 //Made by ZXMushroom63
 
 public class PLReflect extends ModData {
+    @JSBody(params = { "reflectInst" }, script = "reflectInst.getMethodMapFromClass = function(classObj) {var outMethodMap = {}; classObj.methods.forEach(method=>{outMethodMap[method.methodName]=method;}); return outMethodMap;}")
+    public static native BaseData setMethodMapFn(BaseData reflectInst);
+
     %classdefs%
 
     public static PLReflect makeModData() {
         PLReflect plReflectGlobal = new PLReflect();
+        setMethodMapFn(plReflectGlobal);
         ArrayList<BaseData> reflectProfiles = new ArrayList<BaseData>();
         
 %classdefcalls%
