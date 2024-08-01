@@ -1,12 +1,12 @@
 package net.eaglerforge.gui;
 
-// WIP -radmanplays
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.teavm.jso.JSBody;
 
 import com.google.common.collect.Lists;
 
@@ -33,6 +33,9 @@ public class GuiMods extends GuiScreen {
 	private GuiModList rows;
 	public Minecraft mc = Minecraft.getMinecraft();
 	private GuiButton deleteButton;
+
+	@JSBody(params = { "name" }, script = "return window.prompt(name, '') || '';")
+    private static native String prompt(String name);
 
 	public void updateModsList() {
 		// what is this 'vfs' thing! doesn't even have ability to index a directory!!
@@ -76,6 +79,9 @@ public class GuiMods extends GuiScreen {
 		this.buttonList.add(deleteButton = new GuiOptionButton(3, this.width / 2 - 154, this.height - 48,
 				I18n.format("selectWorld.delete"
 						+ "", new Object[0])));
+		this.buttonList.add(btn = new GuiOptionButton(4, this.width / 2, this.height - 48,
+				I18n.format("eaglerforge.menu.mods.addmodurl"
+						+ "", new Object[0])));
 		deleteButton.enabled = false;
 		rows = new GuiModList(Minecraft.getMinecraft(), this.width, this.height, 48, this.height - 56, 14, this);
 		rows.registerScrollButtons(4, 5);
@@ -109,8 +115,30 @@ public class GuiMods extends GuiScreen {
 					}
 				}
 				modListData.setAllChars(String.join("|", mods_new));
-				modList.get(selectedModIdx).delete();
+
+				//After a bunch of debugging, I think this doesn't properly cleanup anything, as indexedDb is still polluted with deleted mods.
+				try {
+					modList.get(selectedModIdx).delete();
+				} catch (Exception e) {
+					// remote mod (url)
+				}
+
 				updateModsList();
+			} else if (parGuiButton.id == 4) {
+				String url = GuiMods.prompt("Enter the mod url: ");
+				if (url != "" && url != null) {
+					VFile2 modListData = new VFile2("mods.txt");
+					String[] mods = modListData.getAllChars().split("\\|");
+					String[] mods_new = new String[mods.length + 1];
+
+					for (int i = 0; i < mods.length; i++) {
+						mods_new[i] = mods[i];
+					}
+					mods_new[mods.length] = "web@" + url;
+
+					modListData.setAllChars(String.join("|", mods_new));
+					updateModsList();
+				}
 			} else {
 				rows.actionPerformed(parGuiButton);
 			}
@@ -131,7 +159,7 @@ public class GuiMods extends GuiScreen {
 				this.width / 2,
 				8, 0xFFFFFF);
 		mc.fontRendererObj.drawSplitString(
-				"Warning: malicious mods can download files to your device, potentially giving you a virus. They can also ip-grab you and wipe all saved Eaglercraft data.",
+				"Warning: Mods can run any Javascript code they want, potentially running malicious code. They can also ip-grab you and wipe all saved Eaglercraft data.",
 				0, 24, this.width - 20, 0xFF2200); // I18n.format("eaglerforge.menu.mods.info", new Object[0]) Don't
 													// know where
 		// to change this, so hardcoded for now :P

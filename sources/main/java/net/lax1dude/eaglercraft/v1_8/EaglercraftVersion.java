@@ -3,7 +3,7 @@ package net.lax1dude.eaglercraft.v1_8;
 import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
 import java.math.BigInteger;
 
-import static net.eaglerforge.api.ModLoader.returntotalloadedmods;
+import net.eaglerforge.api.ModLoader;
 
 public class EaglercraftVersion {
 	
@@ -46,7 +46,8 @@ public class EaglercraftVersion {
 
 	public static final String mainMenuStringA = "Minecraft* 1.8.8";
 	public static String getMainMenuStringB() {
-		int loadedmods = returntotalloadedmods();
+		//int loadedmods = ModLoader.returnTotalLoadedMods();
+		int loadedmods = -1;
 		String mainMenuStringB = projectForkName + " " + projectForkVersion;
 		if(!PlatformRuntime.isDebugRuntime()) {
 			if(loadedmods == 1) {

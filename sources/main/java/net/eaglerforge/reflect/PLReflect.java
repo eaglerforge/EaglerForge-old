@@ -158,6 +158,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import java.util.Calendar;
 import java.lang.String;
+import me.otterdev.UwUAPI;
 import net.minecraft.init.Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -267,6 +268,7 @@ import org.teavm.jso.JSFunctor;
 public class PLReflect extends ModData {
     @JSBody(params = { "reflectInst" }, script = "reflectInst.getMethodMapFromClass = function(classObj) {var outMethodMap = {}; classObj.methods.forEach(method=>{outMethodMap[method.methodName]=method;}); return outMethodMap;}")
     public static native BaseData setMethodMapFn(BaseData reflectInst);
+
     
     //classdef for World
     public static void reflect_World_generator(ArrayList<BaseData> reflectProfiles) {
@@ -35994,13 +35996,30 @@ public class PLReflect extends ModData {
         reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_getNativeTexture_30);
 
 
-        BaseData reflect_EaglercraftGPU_method_drawHighPoly_31 = new ModData();
-        reflect_EaglercraftGPU_method_drawHighPoly_31.set("methodName", "drawHighPoly");
-        reflect_EaglercraftGPU_method_drawHighPoly_31.set("returnType", "void");
-        reflect_EaglercraftGPU_method_drawHighPoly_31.set("static", false);
-        reflect_EaglercraftGPU_method_drawHighPoly_31.set("argnames", new String[]{"mesh"});
-        reflect_EaglercraftGPU_method_drawHighPoly_31.set("argtypes", new String[]{"HighPolyMesh"});
-        reflect_EaglercraftGPU_method_drawHighPoly_31.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_regenerateTexture_31 = new ModData();
+        reflect_EaglercraftGPU_method_regenerateTexture_31.set("methodName", "regenerateTexture");
+        reflect_EaglercraftGPU_method_regenerateTexture_31.set("returnType", "void");
+        reflect_EaglercraftGPU_method_regenerateTexture_31.set("static", false);
+        reflect_EaglercraftGPU_method_regenerateTexture_31.set("argnames", new String[]{"tex"});
+        reflect_EaglercraftGPU_method_regenerateTexture_31.set("argtypes", new String[]{"int"});
+        reflect_EaglercraftGPU_method_regenerateTexture_31.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
+                try {
+                    ((EaglercraftGPU) params.getReflective("_self")).regenerateTexture((int) params.getInt("tex"));
+                } catch (Exception _exception_reflect_) {
+                    return;
+                }
+            });
+            
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_regenerateTexture_31);
+
+
+        BaseData reflect_EaglercraftGPU_method_drawHighPoly_32 = new ModData();
+        reflect_EaglercraftGPU_method_drawHighPoly_32.set("methodName", "drawHighPoly");
+        reflect_EaglercraftGPU_method_drawHighPoly_32.set("returnType", "void");
+        reflect_EaglercraftGPU_method_drawHighPoly_32.set("static", false);
+        reflect_EaglercraftGPU_method_drawHighPoly_32.set("argnames", new String[]{"mesh"});
+        reflect_EaglercraftGPU_method_drawHighPoly_32.set("argtypes", new String[]{"HighPolyMesh"});
+        reflect_EaglercraftGPU_method_drawHighPoly_32.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
                 try {
                     ((EaglercraftGPU) params.getReflective("_self")).drawHighPoly((HighPolyMesh) params.getReflective("mesh"));
                 } catch (Exception _exception_reflect_) {
@@ -36008,35 +36027,18 @@ public class PLReflect extends ModData {
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_drawHighPoly_31);
-
-
-        BaseData reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32 = new ModData();
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32.set("methodName", "createFramebufferHDR16FTexture");
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32.set("returnType", "void");
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32.set("static", false);
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32.set("argnames", new String[]{"target", "level", "w", "h", "format", "allow32bitFallback"});
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32.set("argtypes", new String[]{"int", "int", "int", "int", "int", "boolean"});
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
-                try {
-                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR16FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (boolean) params.getBoolean("allow32bitFallback"));
-                } catch (Exception _exception_reflect_) {
-                    return;
-                }
-            });
-            
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_32);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_drawHighPoly_32);
 
 
         BaseData reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33 = new ModData();
         reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("methodName", "createFramebufferHDR16FTexture");
         reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("returnType", "void");
         reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("static", false);
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("argnames", new String[]{"target", "level", "w", "h", "format", "pixelData"});
-        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("argtypes", new String[]{"int", "int", "int", "int", "int", "ByteBuffer"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("argnames", new String[]{"target", "level", "w", "h", "format", "allow32bitFallback"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.set("argtypes", new String[]{"int", "int", "int", "int", "int", "boolean"});
         reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
                 try {
-                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR16FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (ByteBuffer) params.getReflective("pixelData"));
+                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR16FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (boolean) params.getBoolean("allow32bitFallback"));
                 } catch (Exception _exception_reflect_) {
                     return;
                 }
@@ -36045,32 +36047,32 @@ public class PLReflect extends ModData {
         reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_33);
 
 
-        BaseData reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34 = new ModData();
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34.set("methodName", "createFramebufferHDR32FTexture");
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34.set("returnType", "void");
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34.set("static", false);
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34.set("argnames", new String[]{"target", "level", "w", "h", "format", "allow16bitFallback"});
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34.set("argtypes", new String[]{"int", "int", "int", "int", "int", "boolean"});
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34 = new ModData();
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34.set("methodName", "createFramebufferHDR16FTexture");
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34.set("returnType", "void");
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34.set("static", false);
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34.set("argnames", new String[]{"target", "level", "w", "h", "format", "pixelData"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34.set("argtypes", new String[]{"int", "int", "int", "int", "int", "ByteBuffer"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
                 try {
-                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR32FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (boolean) params.getBoolean("allow16bitFallback"));
+                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR16FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (ByteBuffer) params.getReflective("pixelData"));
                 } catch (Exception _exception_reflect_) {
                     return;
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_34);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_createFramebufferHDR16FTexture_34);
 
 
         BaseData reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35 = new ModData();
         reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("methodName", "createFramebufferHDR32FTexture");
         reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("returnType", "void");
         reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("static", false);
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("argnames", new String[]{"target", "level", "w", "h", "format", "pixelData"});
-        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("argtypes", new String[]{"int", "int", "int", "int", "int", "ByteBuffer"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("argnames", new String[]{"target", "level", "w", "h", "format", "allow16bitFallback"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.set("argtypes", new String[]{"int", "int", "int", "int", "int", "boolean"});
         reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
                 try {
-                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR32FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (ByteBuffer) params.getReflective("pixelData"));
+                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR32FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (boolean) params.getBoolean("allow16bitFallback"));
                 } catch (Exception _exception_reflect_) {
                     return;
                 }
@@ -36079,13 +36081,30 @@ public class PLReflect extends ModData {
         reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_35);
 
 
-        BaseData reflect_EaglercraftGPU_method_warmUpCache_36 = new ModData();
-        reflect_EaglercraftGPU_method_warmUpCache_36.set("methodName", "warmUpCache");
-        reflect_EaglercraftGPU_method_warmUpCache_36.set("returnType", "void");
-        reflect_EaglercraftGPU_method_warmUpCache_36.set("static", false);
-        reflect_EaglercraftGPU_method_warmUpCache_36.set("argnames", new String[]{});
-        reflect_EaglercraftGPU_method_warmUpCache_36.set("argtypes", new String[]{});
-        reflect_EaglercraftGPU_method_warmUpCache_36.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36 = new ModData();
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36.set("methodName", "createFramebufferHDR32FTexture");
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36.set("returnType", "void");
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36.set("static", false);
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36.set("argnames", new String[]{"target", "level", "w", "h", "format", "pixelData"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36.set("argtypes", new String[]{"int", "int", "int", "int", "int", "ByteBuffer"});
+        reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
+                try {
+                    ((EaglercraftGPU) params.getReflective("_self")).createFramebufferHDR32FTexture((int) params.getInt("target"), (int) params.getInt("level"), (int) params.getInt("w"), (int) params.getInt("h"), (int) params.getInt("format"), (ByteBuffer) params.getReflective("pixelData"));
+                } catch (Exception _exception_reflect_) {
+                    return;
+                }
+            });
+            
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_createFramebufferHDR32FTexture_36);
+
+
+        BaseData reflect_EaglercraftGPU_method_warmUpCache_37 = new ModData();
+        reflect_EaglercraftGPU_method_warmUpCache_37.set("methodName", "warmUpCache");
+        reflect_EaglercraftGPU_method_warmUpCache_37.set("returnType", "void");
+        reflect_EaglercraftGPU_method_warmUpCache_37.set("static", false);
+        reflect_EaglercraftGPU_method_warmUpCache_37.set("argnames", new String[]{});
+        reflect_EaglercraftGPU_method_warmUpCache_37.set("argtypes", new String[]{});
+        reflect_EaglercraftGPU_method_warmUpCache_37.setCallbackVoidWithDataArg("exec", (BaseData params) -> {
                 try {
                     ((EaglercraftGPU) params.getReflective("_self")).warmUpCache();
                 } catch (Exception _exception_reflect_) {
@@ -36093,16 +36112,16 @@ public class PLReflect extends ModData {
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_warmUpCache_36);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_warmUpCache_37);
 
 
-        BaseData reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37 = new ModData();
-        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37.set("methodName", "checkHDRFramebufferSupport");
-        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37.set("returnType", "boolean");
-        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37.set("static", false);
-        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37.set("argnames", new String[]{"bits"});
-        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37.set("argtypes", new String[]{"int"});
-        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38 = new ModData();
+        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38.set("methodName", "checkHDRFramebufferSupport");
+        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38.set("returnType", "boolean");
+        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38.set("static", false);
+        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38.set("argnames", new String[]{"bits"});
+        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38.set("argtypes", new String[]{"int"});
+        reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
                 try {
                     return (boolean) ((EaglercraftGPU) params.getReflective("_self")).checkHDRFramebufferSupport((int) params.getInt("bits"));
                 } catch (Exception _exception_reflect_) {
@@ -36110,16 +36129,16 @@ public class PLReflect extends ModData {
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_37);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkHDRFramebufferSupport_38);
 
 
-        BaseData reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38 = new ModData();
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38.set("methodName", "checkHasHDRFramebufferSupport");
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38.set("returnType", "boolean");
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38.set("static", false);
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38.set("argnames", new String[]{});
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38.set("argtypes", new String[]{});
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39 = new ModData();
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39.set("methodName", "checkHasHDRFramebufferSupport");
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39.set("returnType", "boolean");
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39.set("static", false);
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39.set("argnames", new String[]{});
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39.set("argtypes", new String[]{});
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
                 try {
                     return (boolean) ((EaglercraftGPU) params.getReflective("_self")).checkHasHDRFramebufferSupport();
                 } catch (Exception _exception_reflect_) {
@@ -36127,16 +36146,16 @@ public class PLReflect extends ModData {
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_38);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupport_39);
 
 
-        BaseData reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39 = new ModData();
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39.set("methodName", "checkHasHDRFramebufferSupportWithFilter");
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39.set("returnType", "boolean");
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39.set("static", false);
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39.set("argnames", new String[]{});
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39.set("argtypes", new String[]{});
-        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40 = new ModData();
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40.set("methodName", "checkHasHDRFramebufferSupportWithFilter");
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40.set("returnType", "boolean");
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40.set("static", false);
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40.set("argnames", new String[]{});
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40.set("argtypes", new String[]{});
+        reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
                 try {
                     return (boolean) ((EaglercraftGPU) params.getReflective("_self")).checkHasHDRFramebufferSupportWithFilter();
                 } catch (Exception _exception_reflect_) {
@@ -36144,16 +36163,16 @@ public class PLReflect extends ModData {
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_39);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkHasHDRFramebufferSupportWithFilter_40);
 
 
-        BaseData reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40 = new ModData();
-        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40.set("methodName", "checkLinearHDR32FSupport");
-        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40.set("returnType", "boolean");
-        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40.set("static", false);
-        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40.set("argnames", new String[]{});
-        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40.set("argtypes", new String[]{});
-        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
+        BaseData reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41 = new ModData();
+        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41.set("methodName", "checkLinearHDR32FSupport");
+        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41.set("returnType", "boolean");
+        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41.set("static", false);
+        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41.set("argnames", new String[]{});
+        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41.set("argtypes", new String[]{});
+        reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41.setCallbackBooleanWithDataArg("exec", (BaseData params) -> {
                 try {
                     return (boolean) ((EaglercraftGPU) params.getReflective("_self")).checkLinearHDR32FSupport();
                 } catch (Exception _exception_reflect_) {
@@ -36161,7 +36180,7 @@ public class PLReflect extends ModData {
                 }
             });
             
-        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_40);
+        reflect_EaglercraftGPU_methods.add(reflect_EaglercraftGPU_method_checkLinearHDR32FSupport_41);
 
 
         BaseData[] reflect_EaglercraftGPU_methods_arr = new BaseData[reflect_EaglercraftGPU_methods.size()];
@@ -38390,6 +38409,53 @@ public class PLReflect extends ModData {
     }
 
 
+    //classdef for UwUAPI
+    public static void reflect_UwUAPI_generator(ArrayList<BaseData> reflectProfiles) {
+        BaseData reflect_UwUAPI = new ModData();
+
+        ArrayList<BaseData> reflect_UwUAPI_constructors = new ArrayList<BaseData>();
+        
+        BaseData[] reflect_UwUAPI_constructors_arr = new BaseData[reflect_UwUAPI_constructors.size()];
+        for (int i = 0; i < reflect_UwUAPI_constructors_arr.length; i++) {
+            reflect_UwUAPI_constructors_arr[i] = reflect_UwUAPI_constructors.get(i);
+        }
+
+        ArrayList<BaseData> reflect_UwUAPI_methods = new ArrayList<BaseData>();
+        
+        BaseData reflect_UwUAPI_method_uwuify_0 = new ModData();
+        reflect_UwUAPI_method_uwuify_0.set("methodName", "uwuify");
+        reflect_UwUAPI_method_uwuify_0.set("returnType", "String");
+        reflect_UwUAPI_method_uwuify_0.set("static", true);
+        reflect_UwUAPI_method_uwuify_0.set("argnames", new String[]{"stringToUwuify"});
+        reflect_UwUAPI_method_uwuify_0.set("argtypes", new String[]{"String"});
+        reflect_UwUAPI_method_uwuify_0.setCallbackStringWithDataArg("exec", (BaseData params) -> {
+                try {
+                    return (String) UwUAPI.uwuify((String) params.getString("stringToUwuify"));
+                } catch (Exception _exception_reflect_) {
+                    return "";
+                }
+            });
+            
+        reflect_UwUAPI_methods.add(reflect_UwUAPI_method_uwuify_0);
+
+
+        BaseData[] reflect_UwUAPI_methods_arr = new BaseData[reflect_UwUAPI_methods.size()];
+        for (int i = 0; i < reflect_UwUAPI_methods_arr.length; i++) {
+            reflect_UwUAPI_methods_arr[i] = reflect_UwUAPI_methods.get(i);
+        }
+
+        reflect_UwUAPI.set("constructors", reflect_UwUAPI_constructors_arr);
+        reflect_UwUAPI.set("methods", reflect_UwUAPI_methods_arr);
+        reflect_UwUAPI.set("className", "UwUAPI");
+        reflect_UwUAPI.set("classId", "me.otterdev.UwUAPI");
+        reflect_UwUAPI.set("class", UwUAPI.class);
+        reflect_UwUAPI.setCallbackBooleanWithDataArg("isObjInstanceOf", (args)->{
+            return args.getReflective("obj") instanceof UwUAPI;
+        });
+        reflectProfiles.add(reflect_UwUAPI);
+    }
+
+
 
     public static PLReflect makeModData() {
         PLReflect plReflectGlobal = new PLReflect();
@@ -38484,6 +38550,7 @@ public class PLReflect extends ModData {
         PLReflect.reflect_GlStateManager_generator(reflectProfiles);
         PLReflect.reflect_VertexFormat_generator(reflectProfiles);
         PLReflect.reflect_WorldRenderer_generator(reflectProfiles);
+        PLReflect.reflect_UwUAPI_generator(reflectProfiles);
 
         BaseData[] reflectProfilesArr = new BaseData[reflectProfiles.size()];
         for (int i = 0; i < reflectProfilesArr.length; i++) {

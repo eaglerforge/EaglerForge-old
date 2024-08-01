@@ -12,7 +12,7 @@
 ~ eaglercraft.recording.start=Record Screen...
 ~ eaglercraft.soundCategory.voice=Recording Voice
 
-> INSERT  1 : 245  @  1
+> INSERT  1 : 246  @  1
 
 + eaglercraft.resourcePack.prompt.title=What do you want to do with '%s'?
 + eaglercraft.resourcePack.prompt.text=Tip: Hold Shift to skip this screen when selecting a resource pack!
@@ -254,7 +254,8 @@
 + eaglerforge.menu.mods=Mods
 + eaglerforge.menu.mods.title1=Available mods
 + eaglerforge.menu.mods.title2=Selected mods
-+ eaglerforge.menu.mods.addmod=Add Mod
++ eaglerforge.menu.mods.addmod=Upload Mod
++ eaglerforge.menu.mods.addmodurl=Add Mod (URL)
 + eaglerforge.menu.mods.removemod=Remove Mod
 + eaglerforge.menu.mods.info=(Only .js files)
 + 

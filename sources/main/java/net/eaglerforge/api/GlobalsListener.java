@@ -17,12 +17,12 @@ class GlobalsListener {
         void onUpdate();
     }
 
-    @JSBody(params = { "handler" }, script = "window.ModAPI.globals.onGlobalsUpdate = handler;")
+    @JSBody(params = { "handler" }, script = "globalThis.ModAPI.globals.onGlobalsUpdate = handler;")
     static native void provideCallback(GlobalsHandler handler);
 
-    @JSBody(params = { "handler" }, script = "window.ModAPI.globals.onRequire = handler;")
+    @JSBody(params = { "handler" }, script = "globalThis.ModAPI.globals.onRequire = handler;")
     static native void provideRequireCallback(GlobalsHandler handler);
 
-    @JSBody(params = { "handler" }, script = "window.ModAPI.update = handler;")
+    @JSBody(params = { "handler" }, script = "globalThis.ModAPI.update = handler;")
     static native void provideUpdateCallback(UpdateHandler handler);
 }

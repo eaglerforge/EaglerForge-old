@@ -36,8 +36,10 @@ public class ModAPI {
     public static final Logger log = LogManager.getLogger();
     public static String version = projectForkVersion;
     public static boolean clientPacketSendEventsEnabled = true;
+    
     @JSBody(params = { "version" }, script = "initAPI(version)")
     public static native void initAPI(String version);
+
     @JSBody(params = { "name" }, script = "ModAPI.events.newEvent(name);")
     private static native void newEvent(String name);
 
@@ -56,7 +58,7 @@ public class ModAPI {
     @JSBody(params = { "data" }, script = "console.log(data);")
     public static native void logJSObj(JSObject data);
 
-    @JSBody(params = { "minecraft" }, script = "window.Minecraft = minecraft;")
+    @JSBody(params = { "minecraft" }, script = "globalThis.Minecraft = minecraft;")
     public static native void setMinecraftContext(BaseData minecraft);
 
 
@@ -204,18 +206,6 @@ public class ModAPI {
         getModAPI().setCallbackVoidWithDataArg("displayToChat", (BaseData params) -> {
             mc.ingameGUI.getChatGUI().printChatMessage(new ChatComponentText(params.getString("msg")));
         });
-        getModAPI().setCallbackStringWithDataArg("rate", (BaseData params) -> {
-            int hash = 0;
-            int counterRate = 0;
-
-            for (i < params.getString('string').length(); i++) {
-                hash = (hash << 5) - hash + params.getString('string').codePointAt();
-            }
-
-            String res = (Math.abs(hash) % 100) + 1;
-
-            return res;
-        });
         getModAPI().setCallbackStringWithDataArg("uwuify", (BaseData params) -> {
             return UwUAPI.uwuify(params.getString("string"));
         });
@@ -326,20 +316,19 @@ public class ModAPI {
         setGlobal("platform", PlatformAPI.makeModData());
         setGlobal("reflect", PLReflect.makeModData());
         setGlobal("logger", LoggerAPI.makeModData());
-        //setGlobal("emptygui", EmptyGui.makeModData());
         setGlobal("ScaledResolution", ScaledResolution.makeModData());
         setGlobal("GlStateManager", GlStateManager.makeModData());
         setGlobal("sp", SingleplayerServerController.makeModData());
         getModAPI().setCallbackString("currentScreen", () -> {
             return mc.currentScreen.toString();
         });
-        getModAPI().setCallbackInt("getdisplayHeight", () -> {
+        getModAPI().setCallbackInt("getDisplayHeight", () -> {
             return mc.displayHeight;
         });
-        getModAPI().setCallbackInt("getdisplayWidth", () -> {
+        getModAPI().setCallbackInt("getDisplayWidth", () -> {
             return mc.displayWidth;
         });
-        getModAPI().setCallbackInt("getdisplayWidth", () -> {
+        getModAPI().setCallbackInt("getDisplayWidth", () -> {
             return mc.displayWidth;
         });
         getModAPI().setCallbackInt("getFONT_HEIGHT", () -> {
@@ -355,9 +344,9 @@ public class ModAPI {
             mc.fontRendererObj.drawString(params.getString("msg"), params.getFloat("x"), params.getFloat("y"), params.getInt("color"), false);
         });
         getModAPI().setCallbackVoidWithDataArg("drawRect", (BaseData params) -> {
-            gui.drawRect(params.getInt("left"), params.getInt("top"), params.getInt("right"), params.getInt("bottom"), params.getInt("color"));
+            Gui.drawRect(params.getInt("left"), params.getInt("top"), params.getInt("right"), params.getInt("bottom"), params.getInt("color"));
         });
-        getModAPI().setCallbackVoid("reloadchunks", () -> {
+        getModAPI().setCallbackVoid("reloadChunks", () -> {
             mc.renderGlobal.loadRenderers();
         });
         getModAPI().setCallbackString("getProfileName", () -> {
@@ -393,7 +382,7 @@ public class ModAPI {
             ModAPI.setGlobal("network", mc.thePlayer.sendQueue.makeModData());
         }
         if (requiredList.contains("server") && mc.getCurrentServerData() != null) {
-            ModAPI.setGlobal("server", server.makeModData());
+            ModAPI.setGlobal("server", ServerAPI.makeModData());
         }
         ModAPI.callEvent("update", new ModData());
     }
