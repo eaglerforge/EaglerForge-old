@@ -160,8 +160,14 @@ function initAPI(version) {
 }
 </script>
 <script type="text/javascript">
+function promisifyIDBRequest(request) {
+  return new Promise((resolve, reject) => {
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
 function loadLoader() {
-  window.ModLoader = function ModLoader(ModsArr) {
+  window.ModLoader = async function ModLoader(ModsArr) {
     if (!window.eaglerMLoaderMainRun) {
       var searchParams = new URLSearchParams(location.search);
       searchParams.getAll("Mod").forEach((ModToAdd) => {
@@ -178,11 +184,71 @@ function loadLoader() {
         eaglercraftXOpts.Mods.forEach((ModToAdd) => {
           console.log(
             "EaglerML: Adding Mod to loadlist from eaglercraftXOpts: " +
-              ModToAdd
+            ModToAdd
           );
           ModsArr.push(ModToAdd);
         });
       }
+
+      //Reverse engineer eaglercraftx virtual file system to gain external access to mod store WITHOUT messing with java teavm nonsense
+      var StoreId = null;
+      var decoder = new TextDecoder("utf-8");
+      console.log("EaglerML: Searching in iDB");
+      try {
+        var dbs = await indexedDB.databases();
+        for (let i=0; i<dbs.length; i++) {
+          const db = dbs[i];
+          if (db.name.endsWith("resourcePacks")) {
+            StoreId = db.name;
+            if (StoreId) {
+              var database = await promisifyIDBRequest(indexedDB.open(StoreId));
+              var storeIsValid = !!database.objectStoreNames[0];
+              if (!storeIsValid) {
+                break;
+              }
+              var key = database.objectStoreNames[0].length === 0 ? "filesystem" : database.objectStoreNames[0];
+              var transaction = database.transaction([key], "readwrite");
+              var objectStore = transaction.objectStore("filesystem");
+              var object = await promisifyIDBRequest(objectStore.get(["mods.txt"]));
+              if (!object) {
+                break;
+              }
+              var mods = decoder.decode(object.data);
+              if (mods.length === 0) {
+                break;
+              }
+              var modsArr = mods.split("|");
+              for (var modFilePath of modsArr) {
+                if (modFilePath.length === 0) {
+                  break;
+                }
+                var modUrl = null;
+                if (modFilePath.startsWith("web@")) {
+                  modUrl = modFilePath.replace("web@", "");
+                } else {
+                  var modFile = await promisifyIDBRequest(objectStore.get(["mods/" + modFilePath]));
+                  if (!modFile) {
+                    break;
+                  }
+                  var modData = decoder.decode(modFile.data);
+                  var modBlob = new Blob([modData], {
+                      type: 'text/javascript'
+                  });
+                  modUrl = URL.createObjectURL(modBlob);
+                }
+                if (!modUrl) {
+                  break;
+                }
+                ModsArr.push(modUrl);
+                console.log("Loaded iDB mod: "+modFilePath);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
       window.eaglerMLoaderMainRun = true;
     }
     if (window.noLoadMods === true) {
@@ -191,9 +257,9 @@ function loadLoader() {
     function checkModsLoaded(totalLoaded, identifier) {
       console.log(
         "EaglerML: Checking if Mods are finished :: " +
-          totalLoaded +
-          "/" +
-          ModsArr.length
+        totalLoaded +
+        "/" +
+        ModsArr.length
       );
       if (totalLoaded >= ModsArr.length) {
         clearInterval(identifier);
@@ -289,7 +355,7 @@ function loadLoader() {
     console.log(
       "EaglerML: Starting to load " + ModsArr.length + " Mods..."
     );
-    window.returntotalloadedmods = function returntotalloadedmods(){
+    window.returnTotalLoadedMods = function returnTotalLoadedMods() {
       return totalLoaded
     }
   };
