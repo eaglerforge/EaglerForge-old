@@ -17,7 +17,7 @@
  - **Patch files to mod the Minecraft 1.8 source code to make it browser-compatible**
  - **Browser-modified portions of Minecraft 1.8's open-source dependencies**
  - **Plugins for Minecraft servers to allow the Eagler client to connect to them**
- - **a javascript modding API**
+ - **a Javascript Modding API**
 
 ### This repository does NOT contain:
 
@@ -27,6 +27,8 @@
  - **Software configured by default to allow users to play without owning a copy of Minecraft**
 
 ## Getting Started:
+
+# NOTE - In order to compile this repo you MUST own a genuine copy of Minecraft: Java Edition
 
 ### To compile the latest version of the client, on Windows:
 
