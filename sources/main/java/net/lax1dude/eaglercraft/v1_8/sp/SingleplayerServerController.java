@@ -72,6 +72,8 @@ public class SingleplayerServerController extends ModData implements ISaveFormat
 	public static final ClientIntegratedServerNetworkManager localPlayerNetworkManager = new ClientIntegratedServerNetworkManager(PLAYER_CHANNEL);
 	private static final List<String> openLANChannels = new ArrayList();
 
+	private static final IPCPacketManager packetManagerInstance = new IPCPacketManager();
+
 	private SingleplayerServerController() {
 	}
 
@@ -249,7 +251,7 @@ public class SingleplayerServerController extends ModData implements ISaveFormat
 				if(packetData.channel.equals(SingleplayerServerController.IPC_CHANNEL)) {
 					IPCPacketBase ipc;
 					try {
-						ipc = IPCPacketManager.IPCDeserialize(packetData.contents);
+						ipc = packetManagerInstance.IPCDeserialize(packetData.contents);
 					}catch(IOException ex) {
 						throw new RuntimeException("Failed to deserialize IPC packet", ex);
 					}
@@ -404,7 +406,7 @@ public class SingleplayerServerController extends ModData implements ISaveFormat
 	public static void sendIPCPacket(IPCPacketBase ipc) {
 		byte[] pkt;
 		try {
-			pkt = IPCPacketManager.IPCSerialize(ipc);
+			pkt = packetManagerInstance.IPCSerialize(ipc);
 		}catch (IOException ex) {
 			throw new RuntimeException("Failed to serialize IPC packet", ex);
 		}

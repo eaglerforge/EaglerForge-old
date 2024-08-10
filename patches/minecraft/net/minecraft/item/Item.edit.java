@@ -82,4 +82,11 @@
 + 	}
 + 
 
+> INSERT  864 : 868  @  864
+
++ 
++ 	public float getHeldItemBrightnessEagler() {
++ 		return 0.0f;
++ 	}
+
 > EOF

@@ -377,9 +377,10 @@
 ~ 			logger.info("Caught error stitching, removing all assigned resourcepacks");
 ~ 			logger.info(runtimeexception);
 
-> INSERT  9 : 11  @  9
+> INSERT  9 : 12  @  9
 
 + 		ShaderSource.clearCache();
++ 		GuiMainMenu.doResourceReloadHack();
 + 
 
 > CHANGE  7 : 10  @  7 : 19
@@ -429,9 +430,20 @@
 
 > DELETE  10  @  10 : 11
 
-> INSERT  9 : 10  @  9
+> INSERT  9 : 21  @  9
 
-+ 			SingleplayerServerController.shutdownEaglercraftServer();
++ 			if (SingleplayerServerController.isWorldRunning()) {
++ 				SingleplayerServerController.shutdownEaglercraftServer();
++ 				while (SingleplayerServerController.getStatusState() == IntegratedServerState.WORLD_UNLOADING) {
++ 					EagUtils.sleep(50l);
++ 					SingleplayerServerController.runTick();
++ 				}
++ 			}
++ 			if (SingleplayerServerController.isIntegratedServerWorkerAlive()
++ 					&& SingleplayerServerController.canKillWorker()) {
++ 				SingleplayerServerController.killWorker();
++ 				EagUtils.sleep(50l);
++ 			}
 
 > CHANGE  1 : 2  @  1 : 2
 

@@ -64,7 +64,16 @@
 
 ~ 			return Chunk.getNoSkyLightValue();
 
-> INSERT  94 : 98  @  94
+> CHANGE  74 : 80  @  74 : 75
+
+~ 		if (lightValue < 0) {
+~ 			j += -lightValue;
+~ 			if (j > 15) {
+~ 				j = 15;
+~ 			}
+~ 		} else if (j < lightValue) {
+
+> INSERT  19 : 23  @  19
 
 + 	public Block getBlock(BlockPos pos) {
 + 		return getBlockState(pos).getBlock();
