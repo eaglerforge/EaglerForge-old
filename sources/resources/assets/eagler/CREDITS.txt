@@ -10,7 +10,7 @@
  OtterDev/OtterCodes101:
  
   - Developer for EaglerForge
-  - Mainly manages the project nowadays
+  - Mainly manages it nowadays
 
  ZXMushroom63:
 
