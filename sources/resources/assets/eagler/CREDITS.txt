@@ -1,3 +1,22 @@
+ EaglerForge Developers
+ ~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+
+ radmanplays:
+ 
+  - Creator and lead maintainer of EaglerForge
+  - ported eaglerreborn's plugin api to u22
+
+ OtterDev/OtterCodes101:
+ 
+  - Developer for EaglerForge
+  - Mainly manages the project nowadays
+
+ ZXMushroom63:
+
+  - Main developer for the Mod API
+  - Coded NoReflect
+  - Countless bug fixes
 
  EaglercraftX Developers
  ~~~~~~~~~~~~~~~~~~~~~~~
