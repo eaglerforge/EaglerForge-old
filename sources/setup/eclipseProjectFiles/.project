@@ -18,12 +18,23 @@
 		<link>
 			<name>src_lwjgl_java</name>
 			<type>2</type>
-			<location>${LWJGL_SRC_FOLDER}</location>
+			<locationURI>$%7BLWJGL_SRC_FOLDER%7D</locationURI>
 		</link>
 		<link>
 			<name>src_main_java</name>
 			<type>2</type>
-			<location>${MAIN_SRC_FOLDER}</location>
+			<locationURI>$%7BMAIN_SRC_FOLDER%7D</locationURI>
 		</link>
 	</linkedResources>
+	<filteredResources>
+		<filter>
+			<id>1726874673112</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>
