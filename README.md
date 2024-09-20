@@ -1,8 +1,10 @@
 #### This is discontinued. Use the injector. 
 
-HTML Portable - https://raw.githubusercontent.com/eaglerforge/EaglerForgeInjector/refs/heads/main/index.html 
+HTML Portable - 
+https://raw.githubusercontent.com/eaglerforge/EaglerForgeInjector/refs/heads/main/index.html 
 
-Zip with everything - https://github.com/eaglerforge/EaglerForgeInjector/archive/refs/heads/main.zip
+Zip with everything - 
+https://github.com/eaglerforge/EaglerForgeInjector/archive/refs/heads/main.zip
 
 (right click and click "save as")
 
