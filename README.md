@@ -1,3 +1,5 @@
+#### This is discontinued. Use the injector. 
+
 # EaglerForge
 
 ### Play Minecraft 1.8 in your browser, supports singleplayer and multiplayer with a javascript modding API
