@@ -1,5 +1,11 @@
 #### This is discontinued. Use the injector. 
 
+HTML Portable - https://raw.githubusercontent.com/eaglerforge/EaglerForgeInjector/refs/heads/main/index.html 
+
+Zip with everything - https://github.com/eaglerforge/EaglerForgeInjector/archive/refs/heads/main.zip
+
+(right click and click "save as")
+
 # EaglerForge
 
 ### Play Minecraft 1.8 in your browser, supports singleplayer and multiplayer with a javascript modding API
